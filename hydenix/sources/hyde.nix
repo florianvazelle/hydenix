@@ -6,9 +6,12 @@ pkgs.stdenv.mkDerivation {
   nativeBuildInputs = with pkgs; [
     gnutar
     unzip
+    makeWrapper
   ];
 
   buildPhase = ''
+    runHook preBuild
+
     # remove assets folder
     rm -rf Source/assets
 
@@ -66,10 +69,22 @@ pkgs.stdenv.mkDerivation {
     # BUILD GTK THEME
     mkdir -p $out/share/themes
     tar xzf ./Source/arcs/Gtk_Wallbash.tar.gz -C $out/share/themes
+
+    runHook postBuild
   '';
 
   installPhase = ''
+    runHook preInstall
+
     mkdir -p $out
     cp -r . $out
+
+    runHook postInstall
+  '';
+
+  postInstall = ''
+    wrapProgram $out/Configs/.local/bin/hyde-shell \
+      --prefix PATH : "${pkgs.lib.makeBinPath [ pkgs.python3 ]}" \
+      --prefix PYTHONPATH : "${pkgs.python3.pkgs.makePythonPath [ pkgs.python-pyamdgpuinfo ]}" \
   '';
 }

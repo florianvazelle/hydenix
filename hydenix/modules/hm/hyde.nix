@@ -84,11 +84,9 @@ in
       };
 
       ".local/bin/hyde-shell" = {
-        source = pkgs.writeShellScript "hyde-shell" ''
-          export PYTHONPATH="${pkgs.python-pyamdgpuinfo}/${pkgs.python3.sitePackages}:$PYTHONPATH"
-          exec ${pkgs.bashInteractive}/bin/bash "${pkgs.hyde}/Configs/.local/bin/hyde-shell" "$@"
-        '';
+        source = "${pkgs.hyde}/Configs/.local/bin/hyde-shell";
         executable = true;
+        force = true;
       };
 
       ".local/lib/hyde" = {

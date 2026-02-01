@@ -7,6 +7,7 @@ let
   pkgs = import inputs.nixpkgs {
     inherit system;
     config.allowUnfree = true;
+    overlays = [ inputs.self.overlays.default ]; 
   };
 
   # Function to create Hyde package with specific source
