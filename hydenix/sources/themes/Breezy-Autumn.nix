@@ -1,4 +1,7 @@
-{ pkgs, mkTheme }:
+{
+  pkgs,
+  mkTheme,
+}:
 mkTheme rec {
   name = "Breezy Autumn";
   src = pkgs.fetchFromGitHub {
@@ -6,11 +9,11 @@ mkTheme rec {
     repo = "Breezy-Autumn";
     # locking commit
     rev = "db980839c1f3daae629a11def5fb479ae3eebf5e";
-    name = name;
+    inherit name;
     sha256 = "sha256-ffEKwNoJDk31JMOC0bYevyW9iJMHv4Xg1e9l5sWnpnE=";
   };
   meta = {
-    name = name;
+    inherit name;
     description = "HyDE Theme: Breezy Autumn";
     homepage = "https://github.com/Maroc02/Breezy-Autumn";
   };

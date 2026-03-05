@@ -2,9 +2,7 @@
   config,
   lib,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.hyprland;
 
   # Collect all active overrides
@@ -16,8 +14,7 @@ let
     (lib.optionalString (cfg.monitors.overrideConfig != null) "monitors.overrideConfig")
     (lib.optionalString (cfg.overrideMain != null) "overrideMain")
   ];
-in
-{
+in {
   config = lib.mkIf cfg.enable {
     assertions = [
       {
@@ -46,7 +43,7 @@ in
       }
     ];
 
-    warnings = lib.optionals (cfg.enable && activeOverrides != [ ] && !cfg.suppressWarnings) [
+    warnings = lib.optionals (cfg.enable && activeOverrides != [] && !cfg.suppressWarnings) [
       "hydenix.hm.hyprland: The following configs are overriding Hyde defaults. Note this may break hydenix, hope you know what you're doing! (set suppressWarnings = true to hide this warning): ${lib.concatStringsSep ", " activeOverrides}"
     ];
   };

@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   imports = [
     # ./example.nix - add your modules here
   ];

@@ -3,7 +3,6 @@
   stdenv,
   pkgs,
 }:
-
 stdenv.mkDerivation {
   pname = "Bibata-Modern-Ice";
   version = "1.0.0";
@@ -28,6 +27,6 @@ stdenv.mkDerivation {
     homepage = "https://github.com/HyDE-Project/HyDE";
     license = lib.licenses.gpl3;
     platforms = lib.platforms.all;
-    maintainers = [ ];
+    maintainers = [];
   };
 }

@@ -1,11 +1,8 @@
-{ pkgs }:
-let
-  mkTheme = import ./utils/mkTheme.nix { inherit pkgs; };
+{pkgs}: let
+  mkTheme = import ./utils/mkTheme.nix {inherit pkgs;};
   # Helper function to call each theme file with pkgs and mkTheme
-  callTheme = file: import file { inherit pkgs mkTheme; };
-in
-{
-
+  callTheme = file: import file {inherit pkgs mkTheme;};
+in {
   "1-Bit" = callTheme ./1-Bit.nix;
   "Abyssal-Wave" = callTheme ./Abyssal-Wave.nix;
   "AbyssGreen" = callTheme ./AbyssGreen.nix;

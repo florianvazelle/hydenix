@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.social;
-in
-{
+in {
   options.hydenix.hm.social = {
     enable = lib.mkOption {
       type = lib.types.bool;

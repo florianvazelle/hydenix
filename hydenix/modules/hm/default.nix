@@ -1,8 +1,4 @@
-{
-  lib,
-  ...
-}:
-{
+{lib, ...}: {
   imports = [
     ./mutable.nix
     ./comma.nix
@@ -42,5 +38,4 @@
     # let home-manager control itself
     programs.home-manager.enable = true;
   };
-
 }

@@ -3,9 +3,7 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.hyprland;
 
   workflowPresets = [
@@ -15,25 +13,23 @@ let
     "powersaver"
     "snappy"
   ];
-in
-{
+in {
   config = lib.mkIf (cfg.enable && cfg.workflows.enable) {
     home.file = lib.mkMerge [
       # Active workflow
       {
         ".config/hypr/workflows.conf" =
-          if cfg.workflows.overrides ? ${cfg.workflows.active} then
-            {
-              text = cfg.workflows.overrides.${cfg.workflows.active};
-              force = true;
-              mutable = true;
-            }
-          else
-            {
-              source = "${pkgs.hyde}/Configs/.config/hypr/workflows/${cfg.workflows.active}.conf";
-              force = true;
-              mutable = true;
-            };
+          if cfg.workflows.overrides ? ${cfg.workflows.active}
+          then {
+            text = cfg.workflows.overrides.${cfg.workflows.active};
+            force = true;
+            mutable = true;
+          }
+          else {
+            source = "${pkgs.hyde}/Configs/.config/hypr/workflows/${cfg.workflows.active}.conf";
+            force = true;
+            mutable = true;
+          };
       }
 
       # All workflow presets (with overrides)
@@ -41,16 +37,16 @@ in
         map (workflow: {
           name = ".config/hypr/workflows/${workflow}.conf";
           value =
-            if cfg.workflows.overrides ? ${workflow} then
-              {
-                text = cfg.workflows.overrides.${workflow};
-                force = true;
-              }
-            else
-              {
-                source = "${pkgs.hyde}/Configs/.config/hypr/workflows/${workflow}.conf";
-              };
-        }) workflowPresets
+            if cfg.workflows.overrides ? ${workflow}
+            then {
+              text = cfg.workflows.overrides.${workflow};
+              force = true;
+            }
+            else {
+              source = "${pkgs.hyde}/Configs/.config/hypr/workflows/${workflow}.conf";
+            };
+        })
+        workflowPresets
       ))
 
       # Custom workflows (exclude the standard presets)

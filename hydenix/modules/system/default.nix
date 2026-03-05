@@ -1,9 +1,10 @@
-{ lib, config, ... }:
-
-let
-  cfg = config.hydenix;
-in
 {
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.hydenix;
+in {
   imports = [
     ./audio.nix
     ./boot.nix

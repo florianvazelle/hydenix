@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.lockscreen;
-in
-{
+in {
   options.hydenix.hm.lockscreen = {
     enable = lib.mkOption {
       type = lib.types.bool;

@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.fastfetch;
-in
-{
+in {
   options.hydenix.hm.fastfetch = {
     enable = lib.mkOption {
       type = lib.types.bool;

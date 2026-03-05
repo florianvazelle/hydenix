@@ -2,12 +2,9 @@
   config,
   lib,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.hyprland;
-in
-{
+in {
   options.hydenix.hm.hyprland = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -32,9 +29,11 @@ in
 
     # Animation configurations
     animations = {
-      enable = lib.mkEnableOption "animation configurations" // {
-        default = cfg.enable;
-      };
+      enable =
+        lib.mkEnableOption "animation configurations"
+        // {
+          default = cfg.enable;
+        };
       preset = lib.mkOption {
         type = lib.types.str;
         default = "standard";
@@ -50,7 +49,7 @@ in
       };
       overrides = lib.mkOption {
         type = lib.types.attrsOf lib.types.lines;
-        default = { };
+        default = {};
         description = "Override specific animation files by name";
         example = lib.literalExpression ''
           {
@@ -64,9 +63,11 @@ in
 
     # Shader configurations
     shaders = {
-      enable = lib.mkEnableOption "shader configurations" // {
-        default = cfg.enable;
-      };
+      enable =
+        lib.mkEnableOption "shader configurations"
+        // {
+          default = cfg.enable;
+        };
       active = lib.mkOption {
         type = lib.types.str;
         default = "disable";
@@ -77,7 +78,7 @@ in
       };
       overrides = lib.mkOption {
         type = lib.types.attrsOf lib.types.lines;
-        default = { };
+        default = {};
         description = "Override or add custom shaders";
         example = lib.literalExpression ''
           {
@@ -92,9 +93,11 @@ in
 
     # Workflow configurations
     workflows = {
-      enable = lib.mkEnableOption "workflow configurations" // {
-        default = cfg.enable;
-      };
+      enable =
+        lib.mkEnableOption "workflow configurations"
+        // {
+          default = cfg.enable;
+        };
       active = lib.mkOption {
         type = lib.types.str;
         default = "default";
@@ -105,7 +108,7 @@ in
       };
       overrides = lib.mkOption {
         type = lib.types.attrsOf lib.types.lines;
-        default = { };
+        default = {};
         description = "Override or add custom workflows";
         example = lib.literalExpression ''
           {
@@ -119,9 +122,11 @@ in
 
     # Hypridle configurations
     hypridle = {
-      enable = lib.mkEnableOption "hypridle configurations" // {
-        default = cfg.enable;
-      };
+      enable =
+        lib.mkEnableOption "hypridle configurations"
+        // {
+          default = cfg.enable;
+        };
       extraConfig = lib.mkOption {
         type = lib.types.lines;
         default = "";
@@ -136,9 +141,11 @@ in
 
     # Keybindings configurations
     keybindings = {
-      enable = lib.mkEnableOption "keybindings configurations" // {
-        default = cfg.enable;
-      };
+      enable =
+        lib.mkEnableOption "keybindings configurations"
+        // {
+          default = cfg.enable;
+        };
       extraConfig = lib.mkOption {
         type = lib.types.lines;
         default = "";
@@ -153,9 +160,11 @@ in
 
     # Window rules configurations
     windowrules = {
-      enable = lib.mkEnableOption "window rules configurations" // {
-        default = cfg.enable;
-      };
+      enable =
+        lib.mkEnableOption "window rules configurations"
+        // {
+          default = cfg.enable;
+        };
       extraConfig = lib.mkOption {
         type = lib.types.lines;
         default = "";
@@ -170,9 +179,11 @@ in
 
     # NVIDIA configurations
     nvidia = {
-      enable = lib.mkEnableOption "NVIDIA configurations" // {
-        default = config.hardware.nvidia.enabled or false;
-      };
+      enable =
+        lib.mkEnableOption "NVIDIA configurations"
+        // {
+          default = config.hardware.nvidia.enabled or false;
+        };
       extraConfig = lib.mkOption {
         type = lib.types.lines;
         default = "";
@@ -187,9 +198,11 @@ in
 
     # Pyprland configurations
     pyprland = {
-      enable = lib.mkEnableOption "pyprland configurations" // {
-        default = cfg.enable;
-      };
+      enable =
+        lib.mkEnableOption "pyprland configurations"
+        // {
+          default = cfg.enable;
+        };
       extraConfig = lib.mkOption {
         type = lib.types.lines;
         default = "";
@@ -204,9 +217,11 @@ in
 
     # Monitor configurations
     monitors = {
-      enable = lib.mkEnableOption "monitor configurations" // {
-        default = cfg.enable;
-      };
+      enable =
+        lib.mkEnableOption "monitor configurations"
+        // {
+          default = cfg.enable;
+        };
       overrideConfig = lib.mkOption {
         type = lib.types.nullOr lib.types.lines;
         default = null;

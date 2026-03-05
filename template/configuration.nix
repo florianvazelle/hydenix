@@ -3,7 +3,7 @@
   pkgs,
   ...
 }:
-  # FOLLOW THE BELOW INSTRUCTIONS LINE BY LINE TO SET UP YOUR SYSTEM
+# FOLLOW THE BELOW INSTRUCTIONS LINE BY LINE TO SET UP YOUR SYSTEM
 {
   imports = [
     # hydenix inputs - Required modules, don't modify unless you know what you're doing
@@ -44,17 +44,15 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {inherit inputs;};
     # User Configuration - REQUIRED: Change "hydenix" to your actual username
     # This must match the username you define in users.users below
-    users."hydenix" =
-      { ... }:
-      {
-        imports = [
-          inputs.hydenix.homeModules.default
-          ./modules/hm # Your custom home-manager modules (configure hydenix.hm here!)
-        ];
-      };
+    users."hydenix" = {...}: {
+      imports = [
+        inputs.hydenix.homeModules.default
+        ./modules/hm # Your custom home-manager modules (configure hydenix.hm here!)
+      ];
+    };
   };
 
   # User Account Setup - REQUIRED: Change "hydenix" to your desired username (must match above)

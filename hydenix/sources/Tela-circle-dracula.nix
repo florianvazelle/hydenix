@@ -3,7 +3,6 @@
   stdenv,
   pkgs,
 }:
-
 stdenv.mkDerivation {
   pname = "Tela-dracula-icon-theme";
   version = "1.0.0"; # You may want to update this with a specific version
@@ -28,6 +27,6 @@ stdenv.mkDerivation {
     homepage = "https://github.com/HyDE-Project/hyde-themes";
     license = lib.licenses.gpl3; # You may need to verify the actual license
     platforms = lib.platforms.all;
-    maintainers = [ ];
+    maintainers = [];
   };
 }

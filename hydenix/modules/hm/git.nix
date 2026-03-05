@@ -1,10 +1,10 @@
-{ lib, config, ... }:
-
-let
-  cfg = config.hydenix.hm.git;
-in
 {
-
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.hydenix.hm.git;
+in {
   options.hydenix.hm.git = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -24,7 +24,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-
     programs.git = {
       enable = true;
       settings = {

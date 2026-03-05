@@ -4,7 +4,6 @@
   fetchFromGitHub,
   libdrm,
 }:
-
 python3.pkgs.buildPythonPackage rec {
   pname = "pyamdgpuinfo";
   version = "v2.1.6";
@@ -30,7 +29,7 @@ python3.pkgs.buildPythonPackage rec {
 
   NIX_CFLAGS_COMPILE = "-I${libdrm.dev}/include/libdrm";
 
-  pythonImportsCheck = [ "pyamdgpuinfo" ];
+  pythonImportsCheck = ["pyamdgpuinfo"];
 
   meta = {
     description = "AMD GPU stats";

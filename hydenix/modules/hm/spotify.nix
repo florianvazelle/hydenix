@@ -7,8 +7,7 @@
 # TODO: add spicetify support using flatpak
 let
   cfg = config.hydenix.hm.spotify;
-in
-{
+in {
   options.hydenix.hm.spotify = {
     enable = lib.mkOption {
       type = lib.types.bool;

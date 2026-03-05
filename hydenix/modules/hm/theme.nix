@@ -3,9 +3,7 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.theme;
 
   # Helper function to find a theme package by name, returns null if not found
@@ -13,8 +11,7 @@ let
 
   # Filter out themes that don't have corresponding packages
   availableThemes = lib.filter (themeName: findThemeByName themeName != null) cfg.themes;
-in
-{
+in {
   options.hydenix.hm.theme = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -52,16 +49,16 @@ in
     ];
 
     # walks through the themes and creates symlinks in the hyde themes directory
-    home.file =
-      let
-        # Find the package for each theme name, filtering out missing ones
-        themesList = lib.filter (t: t.pkg != null) (
-          map (themeName: {
-            name = themeName;
-            pkg = findThemeByName themeName;
-          }) availableThemes
-        );
-      in
+    home.file = let
+      # Find the package for each theme name, filtering out missing ones
+      themesList = lib.filter (t: t.pkg != null) (
+        map (themeName: {
+          name = themeName;
+          pkg = findThemeByName themeName;
+        })
+        availableThemes
+      );
+    in
       lib.mkMerge (
         map (theme: {
           ".config/hyde/themes/${theme.name}" = {
@@ -70,24 +67,24 @@ in
             recursive = true;
             mutable = true;
           };
-        }) themesList
+        })
+        themesList
       );
 
     /*
-      We require both an activation script and a service to set the theme.
-      theme.set.sh uses dconf partially to set vars, which requires graphical targets to run
-      This is only an issue for the *first* rebuild, as dbus has never been started
+    We require both an activation script and a service to set the theme.
+    theme.set.sh uses dconf partially to set vars, which requires graphical targets to run
+    This is only an issue for the *first* rebuild, as dbus has never been started
 
-      #TODO: this works but a more robust implementation is possible. just do what theme.set.sh/dconf.set.sh does and use home.file to set the correct gtk/qt/etc options
+    #TODO: this works but a more robust implementation is possible. just do what theme.set.sh/dconf.set.sh does and use home.file to set the correct gtk/qt/etc options
     */
 
     # applies what it can before graphical.target, think of this like a "first content paint"
-    home.activation.setTheme = lib.hm.dag.entryAfter [ "mutableGeneration" ] ''
+    home.activation.setTheme = lib.hm.dag.entryAfter ["mutableGeneration"] ''
       # Define path with required tools
       export PATH="${
         lib.makeBinPath (
-          with pkgs;
-          [
+          with pkgs; [
             swww
             killall
             hyprland
@@ -132,8 +129,8 @@ in
           "graphical-session.target"
           "dbus.service"
         ];
-        Wants = [ "dbus.service" ];
-        PartOf = [ "graphical-session.target" ];
+        Wants = ["dbus.service"];
+        PartOf = ["graphical-session.target"];
       };
       Service = {
         Type = "oneshot";
@@ -158,7 +155,7 @@ in
           "${config.home.homeDirectory}/.local/bin"
         ];
       };
-      Install.WantedBy = [ "graphical-session.target" ];
+      Install.WantedBy = ["graphical-session.target"];
     };
 
     # reapplies the theme to fix dconf
@@ -170,8 +167,8 @@ in
           "dbus.service"
           "setThemeDconf.service"
         ];
-        Wants = [ "dbus.service" ];
-        PartOf = [ "graphical-session.target" ];
+        Wants = ["dbus.service"];
+        PartOf = ["graphical-session.target"];
       };
       Service = {
         Type = "oneshot";
@@ -197,8 +194,7 @@ in
           "${config.home.homeDirectory}/.local/bin"
         ];
       };
-      Install.WantedBy = [ "graphical-session.target" ];
+      Install.WantedBy = ["graphical-session.target"];
     };
-
   };
 }

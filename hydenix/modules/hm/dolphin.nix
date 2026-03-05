@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.dolphin;
-in
-{
+in {
   options.hydenix.hm.dolphin = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -18,7 +15,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-
     home.packages = with pkgs.kdePackages; [
       dolphin # KDE file manager
       qtimageformats # Image format support for Qt5
@@ -34,9 +30,9 @@ in
 
     xdg.mimeApps = {
       defaultApplications = {
-        "inode/directory" = [ "org.kde.dolphin.desktop" ];
-        "x-scheme-handler/file" = [ "org.kde.dolphin.desktop" ];
-        "x-scheme-handler/about" = [ "org.kde.dolphin.desktop" ];
+        "inode/directory" = ["org.kde.dolphin.desktop"];
+        "x-scheme-handler/file" = ["org.kde.dolphin.desktop"];
+        "x-scheme-handler/about" = ["org.kde.dolphin.desktop"];
       };
     };
 

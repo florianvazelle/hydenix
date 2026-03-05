@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.notifications;
-in
-{
+in {
   options.hydenix.hm.notifications = {
     enable = lib.mkOption {
       type = lib.types.bool;

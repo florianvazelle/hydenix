@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hardware;
-in
-{
+in {
   options.hydenix.hardware = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -19,7 +16,6 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-
       brightnessctl # screen brightness control
       udiskie # manage removable media
       ntfs3g # ntfs support

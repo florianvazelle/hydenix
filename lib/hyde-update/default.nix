@@ -1,23 +1,20 @@
-{
-  inputs,
-}:
-
-let
+{inputs}: let
   system = "x86_64-linux";
   pkgs = import inputs.nixpkgs {
     inherit system;
     config.allowUnfree = true;
-    overlays = [ inputs.self.overlays.default ]; 
+    overlays = [inputs.self.overlays.default];
   };
 
   # Function to create Hyde package with specific source
-  mkHyde =
-    src:
+  mkHyde = src:
     import ../../hydenix/sources/hyde.nix {
       inherit pkgs;
-      inputs = inputs // {
-        hyde = src;
-      };
+      inputs =
+        inputs
+        // {
+          hyde = src;
+        };
     };
 
   # Current pinned Hyde version
@@ -33,16 +30,16 @@ let
     }
   );
 in
-pkgs.writeShellApplication {
-  name = "hyde-update";
-  runtimeInputs = with pkgs; [
-    coreutils
-    diffutils
-  ];
-  # Pass the built packages to the script
-  text = ''
-    export HYDE_PINNED="${hyde-pinned}"
-    export HYDE_MASTER="${hyde-master}"
-    ${builtins.readFile ./run.sh}
-  '';
-}
+  pkgs.writeShellApplication {
+    name = "hyde-update";
+    runtimeInputs = with pkgs; [
+      coreutils
+      diffutils
+    ];
+    # Pass the built packages to the script
+    text = ''
+      export HYDE_PINNED="${hyde-pinned}"
+      export HYDE_MASTER="${hyde-master}"
+      ${builtins.readFile ./run.sh}
+    '';
+  }

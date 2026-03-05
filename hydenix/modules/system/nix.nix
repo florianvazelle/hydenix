@@ -3,12 +3,9 @@
   inputs,
   lib,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.nix;
-in
-{
+in {
   options.hydenix.nix = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -18,14 +15,17 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-
     nixpkgs.pkgs = lib.mkDefault (import inputs.nixpkgs {
-        system = "x86_64-linux";
-        config.allowUnfree = true;
-        overlays = [
-          (if inputs ? hydenix then inputs.hydenix.overlays.default else inputs.self.overlays.default)
-        ];
-      });
+      system = "x86_64-linux";
+      config.allowUnfree = true;
+      overlays = [
+        (
+          if inputs ? hydenix
+          then inputs.hydenix.overlays.default
+          else inputs.self.overlays.default
+        )
+      ];
+    });
 
     nix = {
       settings = {

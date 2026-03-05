@@ -1,4 +1,7 @@
-{ pkgs, mkTheme }:
+{
+  pkgs,
+  mkTheme,
+}:
 mkTheme rec {
   name = "1-Bit";
   src = pkgs.fetchFromGitHub {
@@ -6,11 +9,11 @@ mkTheme rec {
     repo = "1-Bit";
     # locking commit
     rev = "ee6a133693e676802976fb870567829b941a8624";
-    name = name;
+    inherit name;
     sha256 = "sha256-dYRZKGHO0Q8x4h80Q+PrajaPaY/ZJHZgnp3QVI5d0Lc=";
   };
   meta = {
-    name = name;
+    inherit name;
     description = "HyDE Theme: 1-Bit";
     homepage = "https://github.com/amit-0i/1-Bit";
   };

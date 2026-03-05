@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.sddm;
-in
-{
+in {
   options.hydenix.sddm = {
     enable = lib.mkOption {
       type = lib.types.bool;

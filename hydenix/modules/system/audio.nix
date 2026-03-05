@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.audio;
-in
-{
+in {
   options.hydenix.audio = {
     enable = lib.mkOption {
       type = lib.types.bool;

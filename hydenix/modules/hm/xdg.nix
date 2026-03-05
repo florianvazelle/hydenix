@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.xdg;
-in
-{
+in {
   options.hydenix.hm.xdg = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -18,7 +15,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-
     xdg = {
       enable = true;
 

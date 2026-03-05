@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.qt;
-in
-{
+in {
   options.hydenix.hm.qt = {
     enable = lib.mkOption {
       type = lib.types.bool;

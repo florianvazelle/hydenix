@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.screenshots;
-in
-{
+in {
   options.hydenix.hm.screenshots = {
     enable = lib.mkOption {
       type = lib.types.bool;

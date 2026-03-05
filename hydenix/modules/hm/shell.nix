@@ -3,11 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.hydenix.hm.shell;
-in
-{
+in {
   options.hydenix.hm.shell = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -85,8 +83,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages =
-      with pkgs;
+    home.packages = with pkgs;
       [
         fastfetch
       ]
@@ -101,11 +98,11 @@ in
         zsh-autosuggestions
         zsh-syntax-highlighting
       ]
-      ++ lib.optionals cfg.bash.enable [ bash ]
-      ++ lib.optionals cfg.fish.enable [ fish ]
-      ++ lib.optionals cfg.pokego.enable [ pokego ]
-      ++ lib.optionals cfg.starship.enable [ starship ]
-      ++ lib.optionals cfg.p10k.enable [ zsh-powerlevel10k ];
+      ++ lib.optionals cfg.bash.enable [bash]
+      ++ lib.optionals cfg.fish.enable [fish]
+      ++ lib.optionals cfg.pokego.enable [pokego]
+      ++ lib.optionals cfg.starship.enable [starship]
+      ++ lib.optionals cfg.p10k.enable [zsh-powerlevel10k];
 
     programs.zsh = lib.mkIf cfg.zsh.enable {
       enable = true;
@@ -114,7 +111,7 @@ in
       syntaxHighlighting.enable = true;
       oh-my-zsh = {
         enable = true;
-        plugins = cfg.zsh.plugins;
+        inherit (cfg.zsh) plugins;
       };
       dotDir = "${config.xdg.configHome}/zsh";
 
@@ -281,23 +278,19 @@ in
       (lib.mkIf cfg.zsh.enable {
         # Zsh configs
         ".zshenv".source = "${pkgs.hyde}/Configs/.zshenv";
-        ".config/zsh/completions/hyde-shell.zsh".source =
-          "${pkgs.hyde}/Configs/.config/zsh/completions/hyde-shell.zsh";
+        ".config/zsh/completions/hyde-shell.zsh".source = "${pkgs.hyde}/Configs/.config/zsh/completions/hyde-shell.zsh";
         ".config/zsh/.p10k.zsh" = {
           source = "${pkgs.hyde}/Configs/.config/zsh/.p10k.zsh";
-          enable = cfg.p10k.enable;
+          inherit (cfg.p10k) enable;
         };
         ".config/zsh/completions/fzf.zsh".source = "${pkgs.hyde}/Configs/.config/zsh/completions/fzf.zsh";
-        ".config/zsh/completions/hydectl.zsh".source =
-          "${pkgs.hyde}/Configs/.config/zsh/completions/hydectl.zsh";
+        ".config/zsh/completions/hydectl.zsh".source = "${pkgs.hyde}/Configs/.config/zsh/completions/hydectl.zsh";
         ".config/zsh/functions/bat.zsh".source = "${pkgs.hyde}/Configs/.config/zsh/functions/bat.zsh";
-        ".config/zsh/functions/bind_M_n_history.zsh".source =
-          "${pkgs.hyde}/Configs/.config/zsh/functions/bind_M_n_history.zsh";
+        ".config/zsh/functions/bind_M_n_history.zsh".source = "${pkgs.hyde}/Configs/.config/zsh/functions/bind_M_n_history.zsh";
         ".config/zsh/functions/duf.zsh".source = "${pkgs.hyde}/Configs/.config/zsh/functions/duf.zsh";
         ".config/zsh/functions/eza.zsh".source = "${pkgs.hyde}/Configs/.config/zsh/functions/eza.zsh";
         ".config/zsh/functions/fzf.zsh".source = "${pkgs.hyde}/Configs/.config/zsh/functions/fzf.zsh";
-        ".config/zsh/functions/kb_help.zsh".source =
-          "${pkgs.hyde}/Configs/.config/zsh/functions/kb_help.zsh";
+        ".config/zsh/functions/kb_help.zsh".source = "${pkgs.hyde}/Configs/.config/zsh/functions/kb_help.zsh";
 
         # We are not including any of these configurations as they are part of the existing zsh home-manager options
         # ".config/zsh/functions/error-handlers.zsh".source = "${pkgs.hydenix.hyde}/Configs/.config/zsh/functions/error-handlers.zsh";
@@ -312,19 +305,13 @@ in
       })
       (lib.mkIf cfg.fish.enable {
         # Fish configs
-        ".config/fish/completions/hyde-shell.fish".source =
-          "${pkgs.hyde}/Configs/.config/fish/completions/hyde-shell.fish";
+        ".config/fish/completions/hyde-shell.fish".source = "${pkgs.hyde}/Configs/.config/fish/completions/hyde-shell.fish";
         ".config/fish/conf.d/hyde.fish".source = "${pkgs.hyde}/Configs/.config/fish/conf.d/hyde.fish";
-        ".config/fish/functions/bind_M_n_history.fish".source =
-          "${pkgs.hyde}/Configs/.config/fish/functions/bind_M_n_history.fish";
-        ".config/fish/functions/fzf/ffcd.fish".source =
-          "${pkgs.hyde}/Configs/.config/fish/functions/fzf/ffcd.fish";
-        ".config/fish/functions/fzf/ffch.fish".source =
-          "${pkgs.hyde}/Configs/.config/fish/functions/fzf/ffch.fish";
-        ".config/fish/functions/fzf/ffec.fish".source =
-          "${pkgs.hyde}/Configs/.config/fish/functions/fzf/ffec.fish";
-        ".config/fish/functions/fzf/ffe.fish".source =
-          "${pkgs.hyde}/Configs/.config/fish/functions/fzf/ffe.fish";
+        ".config/fish/functions/bind_M_n_history.fish".source = "${pkgs.hyde}/Configs/.config/fish/functions/bind_M_n_history.fish";
+        ".config/fish/functions/fzf/ffcd.fish".source = "${pkgs.hyde}/Configs/.config/fish/functions/fzf/ffcd.fish";
+        ".config/fish/functions/fzf/ffch.fish".source = "${pkgs.hyde}/Configs/.config/fish/functions/fzf/ffch.fish";
+        ".config/fish/functions/fzf/ffec.fish".source = "${pkgs.hyde}/Configs/.config/fish/functions/fzf/ffec.fish";
+        ".config/fish/functions/fzf/ffe.fish".source = "${pkgs.hyde}/Configs/.config/fish/functions/fzf/ffe.fish";
         ".config/fish/user.fish".source = "${pkgs.hyde}/Configs/.config/fish/user.fish";
       })
 

@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.hyprland;
-in
-{
+in {
   imports = [
     ./options.nix
     ./assertions.nix
@@ -30,7 +27,7 @@ in
       pkgs.hyprcursor
     ];
 
-    home.activation.createHyprConfigs = lib.hm.dag.entryAfter [ "mutableGeneration" ] ''
+    home.activation.createHyprConfigs = lib.hm.dag.entryAfter ["mutableGeneration"] ''
       mkdir -p "$HOME/.config/hypr/animations"
       mkdir -p "$HOME/.config/hypr/themes"
       mkdir -p "$HOME/.config/hypr/shaders"
@@ -54,16 +51,15 @@ in
         recursive = true;
       };
       ".config/hypr/hyprland.conf" =
-        if cfg.overrideMain != null then
-          {
-            text = cfg.overrideMain;
-            force = true;
-          }
-        else
-          {
-            source = "${pkgs.hyde}/Configs/.config/hypr/hyprland.conf";
-            force = true;
-          };
+        if cfg.overrideMain != null
+        then {
+          text = cfg.overrideMain;
+          force = true;
+        }
+        else {
+          source = "${pkgs.hyde}/Configs/.config/hypr/hyprland.conf";
+          force = true;
+        };
 
       ".config/hypr/userprefs.conf" = {
         text = cfg.extraConfig;

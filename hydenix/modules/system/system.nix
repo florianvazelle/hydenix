@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.system;
-in
-{
+in {
   options.hydenix.system = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -18,7 +15,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-
     environment.systemPackages = with pkgs; [
       parallel # Shell tool for executing jobs in parallel
       jq # Command-line JSON processor
@@ -98,13 +94,13 @@ in
 
     # For polkit authentication
     security.polkit.enable = true;
-    security.pam.services.swaylock = { };
+    security.pam.services.swaylock = {};
     security.rtkit.enable = true;
     systemd.user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
+      wantedBy = ["graphical-session.target"];
+      wants = ["graphical-session.target"];
+      after = ["graphical-session.target"];
       serviceConfig = {
         Type = "simple";
         ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
@@ -120,8 +116,7 @@ in
     # For proper XDG desktop integration
     xdg.portal = {
       enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      extraPortals = [pkgs.xdg-desktop-portal-gtk];
     };
-
   };
 }

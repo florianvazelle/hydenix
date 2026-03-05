@@ -1,8 +1,4 @@
-{
-  inputs,
-  ...
-}:
-let
+{inputs, ...}: let
   system = "x86_64-linux";
   pkgs = import inputs.nixpkgs {
     inherit system;
@@ -12,12 +8,12 @@ let
     ];
   };
 in
-inputs.nixpkgs.lib.nixosSystem {
-  inherit system pkgs;
-  specialArgs = {
-    inherit inputs;
-  };
-  modules = [
-    ./configuration.nix
-  ];
-}
+  inputs.nixpkgs.lib.nixosSystem {
+    inherit system pkgs;
+    specialArgs = {
+      inherit inputs;
+    };
+    modules = [
+      ./configuration.nix
+    ];
+  }

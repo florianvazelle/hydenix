@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.editors;
-in
-{
+in {
   options.hydenix.hm.editors = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -63,19 +60,19 @@ in
 
     xdg.mimeApps = {
       defaultApplications = {
-        "text/plain" = [ "${cfg.default}.desktop" ];
-        "application/x-shellscript" = [ "${cfg.default}.desktop" ];
-        "text/css" = [ "${cfg.default}.desktop" ];
-        "application/javascript" = [ "${cfg.default}.desktop" ];
-        "application/json" = [ "${cfg.default}.desktop" ];
-        "application/xml" = [ "${cfg.default}.desktop" ];
-        "text/x-python" = [ "${cfg.default}.desktop" ];
-        "text/x-java-source" = [ "${cfg.default}.desktop" ];
-        "text/x-c++src" = [ "${cfg.default}.desktop" ];
-        "text/x-csrc" = [ "${cfg.default}.desktop" ];
-        "text/x-go" = [ "${cfg.default}.desktop" ];
-        "text/x-typescript" = [ "${cfg.default}.desktop" ];
-        "text/markdown" = [ "${cfg.default}.desktop" ];
+        "text/plain" = ["${cfg.default}.desktop"];
+        "application/x-shellscript" = ["${cfg.default}.desktop"];
+        "text/css" = ["${cfg.default}.desktop"];
+        "application/javascript" = ["${cfg.default}.desktop"];
+        "application/json" = ["${cfg.default}.desktop"];
+        "application/xml" = ["${cfg.default}.desktop"];
+        "text/x-python" = ["${cfg.default}.desktop"];
+        "text/x-java-source" = ["${cfg.default}.desktop"];
+        "text/x-c++src" = ["${cfg.default}.desktop"];
+        "text/x-csrc" = ["${cfg.default}.desktop"];
+        "text/x-go" = ["${cfg.default}.desktop"];
+        "text/x-typescript" = ["${cfg.default}.desktop"];
+        "text/markdown" = ["${cfg.default}.desktop"];
       };
     };
 

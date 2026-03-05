@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.network;
-in
-{
+in {
   options.hydenix.network = {
     enable = lib.mkOption {
       type = lib.types.bool;

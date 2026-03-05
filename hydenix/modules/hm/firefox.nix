@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.firefox;
-in
-{
+in {
   options.hydenix.hm.firefox = {
     enable = lib.mkOption {
       type = lib.types.bool;

@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.waybar;
-in
-{
+in {
   options.hydenix.hm.waybar = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -38,20 +35,18 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages =
-      with pkgs;
+    home.packages = with pkgs;
       lib.optionals cfg.waybar.enable [
         waybar # system bar
         playerctl # media player cli
         gobject-introspection # for python packages
-        (python3.withPackages (ps: with ps; [ pygobject3 ])) # python with pygobject3
+        (python3.withPackages (ps: with ps; [pygobject3])) # python with pygobject3
         python-pyamdgpuinfo # AMD GPU information library
         lm_sensors # sensors information library
         power-profiles-daemon # power profiles daemon
       ];
 
     home.file = {
-
       # Modules for waybar
       # Note: some of these may not work for NixOS
       # TODO: review waybar modules for nix compatibility
@@ -233,7 +228,7 @@ in
           @import "theme.css";
 
           /* Users who want to override the current style add/edit 'user-style.css' */
-          @import "user-style.css";  
+          @import "user-style.css";
         '';
         force = true;
         mutable = true;

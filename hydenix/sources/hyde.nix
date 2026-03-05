@@ -1,4 +1,7 @@
-{ pkgs, inputs }:
+{
+  pkgs,
+  inputs,
+}:
 pkgs.stdenv.mkDerivation {
   name = "hyde-modified";
   src = inputs.hyde;
@@ -84,7 +87,7 @@ pkgs.stdenv.mkDerivation {
 
   postInstall = ''
     wrapProgram $out/Configs/.local/bin/hyde-shell \
-      --prefix PATH : "${pkgs.lib.makeBinPath [ pkgs.python3 ]}" \
-      --prefix PYTHONPATH : "${pkgs.python3.pkgs.makePythonPath [ pkgs.python-pyamdgpuinfo ]}" \
+      --prefix PATH : "${pkgs.lib.makeBinPath [pkgs.python3]}" \
+      --prefix PYTHONPATH : "${pkgs.python3.pkgs.makePythonPath [pkgs.python-pyamdgpuinfo]}" \
   '';
 }

@@ -2,9 +2,7 @@
   inputs,
   pkgs,
   ...
-}:
-
-{
+}: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
@@ -21,14 +19,12 @@
       inherit inputs;
     };
 
-    users."hydenix" =
-      { ... }:
-      {
-        imports = [
-          inputs.self.homeModules.default
-          ./home.nix
-        ];
-      };
+    users."hydenix" = {...}: {
+      imports = [
+        inputs.self.homeModules.default
+        ./home.nix
+      ];
+    };
   };
 
   hydenix = {

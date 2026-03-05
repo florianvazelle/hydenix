@@ -3,9 +3,7 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.hyprland;
 
   standardShaders = [
@@ -21,8 +19,7 @@ let
     "vibrance"
     "wallbash"
   ];
-in
-{
+in {
   config = lib.mkIf (cfg.enable && cfg.shaders.enable) {
     home.file = lib.mkMerge [
       # Standard shaders (generated from list)
@@ -34,7 +31,8 @@ in
             value = {
               source = "${pkgs.hyde}/Configs/.config/hypr/shaders/${shader}.frag";
             };
-          }) standardShaders
+          })
+          standardShaders
         ))
 
         # Additional shader files
@@ -56,19 +54,19 @@ in
             force = true;
             mutable = true;
           };
-          ".config/hypr/shaders/wallbash.inc".source =
-            "${pkgs.hyde}/Configs/.config/hypr/shaders/wallbash.inc";
+          ".config/hypr/shaders/wallbash.inc".source = "${pkgs.hyde}/Configs/.config/hypr/shaders/wallbash.inc";
         }
       ])
 
       # Custom/override shaders
       (lib.mapAttrs' (name: content: {
-        name = ".config/hypr/shaders/${name}";
-        value = {
-          text = content;
-          force = true;
-        };
-      }) cfg.shaders.overrides)
+          name = ".config/hypr/shaders/${name}";
+          value = {
+            text = content;
+            force = true;
+          };
+        })
+        cfg.shaders.overrides)
     ];
   };
 }

@@ -3,9 +3,7 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.hyprland;
 
   animationPresets = [
@@ -28,28 +26,26 @@ let
     "standard"
     "vertical"
   ];
-in
-{
+in {
   config = lib.mkIf (cfg.enable && cfg.animations.enable) {
     home.file = lib.mkMerge [
       # Active animation preset
       {
         ".config/hypr/animations.conf" =
-          if cfg.animations.overrides ? ${cfg.animations.preset} then
-            {
-              text = ''
-                ${cfg.animations.overrides.${cfg.animations.preset}}
-                ${cfg.animations.extraConfig}
-              '';
-              force = true;
-              mutable = true;
-            }
-          else
-            {
-              source = "${pkgs.hyde}/Configs/.config/hypr/animations/${cfg.animations.preset}.conf";
-              force = true;
-              mutable = true;
-            };
+          if cfg.animations.overrides ? ${cfg.animations.preset}
+          then {
+            text = ''
+              ${cfg.animations.overrides.${cfg.animations.preset}}
+              ${cfg.animations.extraConfig}
+            '';
+            force = true;
+            mutable = true;
+          }
+          else {
+            source = "${pkgs.hyde}/Configs/.config/hypr/animations/${cfg.animations.preset}.conf";
+            force = true;
+            mutable = true;
+          };
       }
 
       # All animation presets (with overrides)
@@ -57,16 +53,16 @@ in
         map (preset: {
           name = ".config/hypr/animations/${preset}.conf";
           value =
-            if cfg.animations.overrides ? ${preset} then
-              {
-                text = cfg.animations.overrides.${preset};
-                force = true;
-              }
-            else
-              {
-                source = "${pkgs.hyde}/Configs/.config/hypr/animations/${preset}.conf";
-              };
-        }) animationPresets
+            if cfg.animations.overrides ? ${preset}
+            then {
+              text = cfg.animations.overrides.${preset};
+              force = true;
+            }
+            else {
+              source = "${pkgs.hyde}/Configs/.config/hypr/animations/${preset}.conf";
+            };
+        })
+        animationPresets
       ))
     ];
   };

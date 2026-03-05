@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.uwsm;
-in
-{
+in {
   options.hydenix.hm.uwsm = {
     enable = lib.mkOption {
       type = lib.types.bool;

@@ -1,6 +1,4 @@
-{ ... }:
-{
-
+_: {
   hydenix.hm = {
     enable = true;
 

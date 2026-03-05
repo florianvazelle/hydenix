@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.gtk;
-in
-{
+in {
   options.hydenix.hm.gtk = {
     enable = lib.mkOption {
       type = lib.types.bool;

@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.swww;
-in
-{
+in {
   options.hydenix.hm.swww = {
     enable = lib.mkOption {
       type = lib.types.bool;

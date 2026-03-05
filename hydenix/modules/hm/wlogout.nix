@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.wlogout;
-in
-{
+in {
   options.hydenix.hm.wlogout = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -27,13 +24,11 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-
       # wlogout
       (lib.mkIf cfg.wlogout.enable wlogout) # logout menu
     ];
 
     home.file = {
-
       # icons
       ".config/wlogout/icons/" = {
         source = "${pkgs.hyde}/Configs/.config/wlogout/icons/";
@@ -61,7 +56,6 @@ in
         force = true;
         mutable = true;
       };
-
     };
   };
 }

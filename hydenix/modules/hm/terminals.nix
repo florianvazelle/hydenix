@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.hm.terminals;
-in
-{
+in {
   options.hydenix.hm.terminals = {
     enable = lib.mkOption {
       type = lib.types.bool;

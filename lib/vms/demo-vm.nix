@@ -1,10 +1,12 @@
-{ inputs, ... }:
+{inputs, ...}:
 inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
   modules = [
     (
-      { config, pkgs, ... }:
       {
+        pkgs,
+        ...
+      }: {
         virtualisation.vmVariant = {
           virtualisation.forwardPorts = [
             {
@@ -29,13 +31,13 @@ inputs.nixpkgs.lib.nixosSystem {
             };
           };
           services.xserver = {
-            videoDrivers = [ "virtio" ];
+            videoDrivers = ["virtio"];
           };
 
           # Console font for readable CLI recordings at 1440p (2K)
           console = {
             earlySetup = true;
-            packages = [ pkgs.terminus_font ];
+            packages = [pkgs.terminus_font];
             font = "ter-v32b";
           };
 

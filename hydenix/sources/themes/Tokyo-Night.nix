@@ -1,11 +1,14 @@
-{ pkgs, mkTheme }:
+{
+  pkgs,
+  mkTheme,
+}:
 mkTheme rec {
   name = "Tokyo Night";
   src = pkgs.fetchFromGitHub {
     owner = "HyDE-Project";
     repo = "hyde-themes";
     rev = "4c4bda0ce67385fe865dc42be75b8931608793c6";
-    name = name;
+    inherit name;
     sha256 = "sha256-ntM6cfHI4BBiFkp1ylqDjZxAqefV4x/rG0A6gqD1jR4=";
   };
   meta = {

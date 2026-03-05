@@ -1,11 +1,8 @@
-{ pkgs }:
-{
+{pkgs}: {
   name,
   src,
   meta,
-}:
-let
-
+}: let
   # Helper function to find the first directory in a path
   findFirstDir = ''
     findFirstDir() {
@@ -65,10 +62,10 @@ let
         if [ -f "$icon_archive" ]; then
           echo "Installing icon theme from: $icon_archive"
           tar -xf "$icon_archive" --skip-old-files -C $out/share/icons
-          
+
           ICON_DIR=$(findFirstDir $out/share/icons)
           echo "Icon directory: $ICON_DIR"
-          
+
           # Only process broken symlinks if the icon directory exists
           if [ -n "$ICON_DIR" ] && [ -d "$out/share/icons/$ICON_DIR" ]; then
             # Fix broken symlinks in icon theme - limit to a reasonable depth
@@ -78,7 +75,7 @@ let
                 # Skip absolute links
                 continue
               fi
-              
+
               target_path="$(dirname "$link")/$target"
               if [ ! -e "$target_path" ]; then
                 rm "$link"
@@ -117,6 +114,5 @@ let
       platforms = platforms.all;
     };
   };
-
 in
-pkg
+  pkg

@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   cfg = config.hydenix.gaming;
-in
-{
+in {
   options.hydenix.gaming = {
     enable = lib.mkOption {
       type = lib.types.bool;
