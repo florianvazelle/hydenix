@@ -16,9 +16,11 @@ jobs:
   lockfile:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
 
-      - uses: cachix/install-nix-action@v24
+      - uses: cachix/install-nix-action@4e002c8ec80594ecd40e759629461e26c8abed15 # v31.9.0
         with:
           nix_path: nixpkgs=channel:nixos-unstable
 
@@ -74,7 +76,7 @@ jobs:
 
       - name: Create Pull Request
         id: create_pr
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
         with:
           commit-message: "chore(deps): update flake.lock"
           title: "chore(deps): update flake.lock"
@@ -111,9 +113,10 @@ jobs:
       - name: Enable auto-merge on PR
         if: ${{ steps.check_root.outputs.ROOT_CHECK_SUCCESS == 'true' && steps.check_template.outputs.TEMPLATE_CHECK_SUCCESS == 'true' && steps.create_pr.outputs.pull-request-number }}
         run: |
-          gh pr merge ${{ steps.create_pr.outputs.pull-request-number }} --auto --squash
+          gh pr merge $PULL_REQUEST --auto --squash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PULL_REQUEST: ${{ steps.create_pr.outputs.pull-request-number }}
 
       - name: Check overall status and fail if necessary
         if: ${{ steps.check_root.outputs.ROOT_CHECK_SUCCESS == 'false' || steps.check_template.outputs.TEMPLATE_CHECK_SUCCESS == 'false' }}
