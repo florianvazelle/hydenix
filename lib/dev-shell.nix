@@ -44,7 +44,7 @@ pkgs.mkShell {
 
     echo "Running template flake check..."
     cd template
-    sed -i 's|url = "github:richen604/hydenix"|url = "path:../"|' flake.nix
+    sed -i 's|url = "github:florianvazelle/hydenix"|url = "path:../"|' flake.nix
     nix flake check
     if [ $? -ne 0 ]; then
       echo "Error: template flake check failed"

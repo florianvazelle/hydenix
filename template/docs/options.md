@@ -13,7 +13,7 @@ going to let you in on a secret: the nix options system *is* the documentation.\
 let's walk through an example. say you want to find info about `hydenix.hm.theme`.\
 the easiest way is to search the github repo for the options:
 
-[search for `hydenix.hm.theme`](https://github.com/richen604/hydenix/search?q=hydenix.hm.theme)
+[search for `hydenix.hm.theme`](https://github.com/florianvazelle/hydenix/search?q=hydenix.hm.theme)
 
 you'll see the options in the search results, something like this:
 
@@ -237,7 +237,7 @@ below are the default options for hydenix. they are in *object format* and any o
       theme = {
         enable = true; # enable theme module
         active = "Catppuccin Mocha"; # active theme name
-        themes = [ "Catppuccin Mocha" "Catppuccin Latte" ]; # default enabled themes, full list in https://github.com/richen604/hydenix/tree/main/hydenix/sources/themes
+        themes = [ "Catppuccin Mocha" "Catppuccin Latte" ]; # default enabled themes, full list in https://github.com/florianvazelle/hydenix/tree/main/hydenix/sources/themes
       };
       waybar = {
         enable = true; # enable waybar module

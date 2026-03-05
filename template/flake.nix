@@ -6,7 +6,7 @@
       # url = "github:nixos/nixpkgs/nixos-unstable"; # uncomment this if you know what you're doing
       follows = "hydenix/nixpkgs"; # then comment this
     };
-    hydenix.url = "github:richen604/hydenix";
+    hydenix.url = "github:florianvazelle/hydenix";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
   };
 

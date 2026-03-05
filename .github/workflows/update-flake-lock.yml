@@ -61,7 +61,7 @@ jobs:
         continue-on-error: true # Temporarily set to true to capture output even on failure
         run: |
           cd template
-          sed -i 's|url = "github:richen604/hydenix"|url = "path:../"|' flake.nix
+          sed -i 's|url = "github:florianvazelle/hydenix"|url = "path:../"|' flake.nix
           TEMPLATE_CHECK_RESULT=$(nix flake check 2>&1 || true) # Capture output, and continue on error
           echo "template_check_output<<EOF" >> $GITHUB_OUTPUT
           echo "$TEMPLATE_CHECK_RESULT" >> $GITHUB_OUTPUT

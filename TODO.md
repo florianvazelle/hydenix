@@ -45,12 +45,12 @@ BREAKING CHANGES:
   +    # Hydenix
       hydenix = {
         # Available inputs:
-        # Main: github:richen604/hydenix
-  -      # Dev: github:richen604/hydenix/dev
-        # Commit: github:richen604/hydenix/<commit-hash>
-  -      # Version: github:richen604/hydenix/v1.0.0
-  +      # Version: github:richen604/hydenix/v1.0.0 - note the version may not be compatible with this template
-        url = "github:richen604/hydenix";
+        # Main: github:florianvazelle/hydenix
+  -      # Dev: github:florianvazelle/hydenix/dev
+        # Commit: github:florianvazelle/hydenix/<commit-hash>
+  -      # Version: github:florianvazelle/hydenix/v1.0.0
+  +      # Version: github:florianvazelle/hydenix/v1.0.0 - note the version may not be compatible with this template
+        url = "github:florianvazelle/hydenix";
   +      # uncomment the below if you know what you're doing, hydenix updates nixos-unstable every week or so
   +      # inputs.nixpkgs.follows = "nixpkgs";
       };

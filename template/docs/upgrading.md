@@ -16,11 +16,11 @@ inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hydenix = {
       # Available inputs:
-      # Main: github:richen604/hydenix
-      # Dev: github:richen604/hydenix/dev
-      # Commit: github:richen604/hydenix/<commit-hash>
-      # Version: github:richen604/hydenix/v1.0.0
-      url = "github:richen604/hydenix";
+      # Main: github:florianvazelle/hydenix
+      # Dev: github:florianvazelle/hydenix/dev
+      # Commit: github:florianvazelle/hydenix/<commit-hash>
+      # Version: github:florianvazelle/hydenix/v1.0.0
+      url = "github:florianvazelle/hydenix";
     };
   };
 ```
@@ -51,6 +51,6 @@ graph TD
 
 > [!Important]
 >
-> - **always review [release notes](https://github.com/richen604/hydenix/releases) for major updates (API changes)**
+> - **always review [release notes](https://github.com/florianvazelle/hydenix/releases) for major updates (API changes)**
 > - update to minor versions for new features
 > - keep up with patches for stability

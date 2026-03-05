@@ -82,11 +82,11 @@ inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hydenix = {
       # Available inputs:
-      # Main: github:richen604/hydenix
-      # Dev: github:richen604/hydenix/dev
-      # Commit: github:richen604/hydenix/<commit-hash>
-      # Version: github:richen604/hydenix/v1.0.0
-      url = "github:richen604/hydenix";
+      # Main: github:florianvazelle/hydenix
+      # Dev: github:florianvazelle/hydenix/dev
+      # Commit: github:florianvazelle/hydenix/<commit-hash>
+      # Version: github:florianvazelle/hydenix/v1.0.0
+      url = "github:florianvazelle/hydenix";
     };
   };
 ```
@@ -113,14 +113,14 @@ graph TD
     style G fill:#f6f6f6,stroke:#c79bf0,stroke-width:2px,color:#000
 ```
 
-- **always review [release notes](https://github.com/richen604/hydenix/releases) for major updates (api changes)**
+- **always review [release notes](https://github.com/florianvazelle/hydenix/releases) for major updates (api changes)**
 - keep up with patches for stability
 - update to minor versions for new features
 
 ### how do I fix (nix error / system error / bug / etc)?
 
 please see the [troubleshooting](./troubleshooting.md) guide for more information on how to diagnose and fix issues.
-or create an issue in the [hydenix GitHub repository](https://github.com/richen604/hydenix/issues).
+or create an issue in the [hydenix GitHub repository](https://github.com/florianvazelle/hydenix/issues).
 
 ### common errors
 
@@ -301,7 +301,7 @@ to clear the saved themes, run `rm -rf ~/.config/hydenix/themes/THEME_NAME` for 
 
 ### requesting features
 
-please open a [feature request](https://github.com/richen604/hydenix/issues/new?template=feature_request.md) if you have any feature requests.
+please open a [feature request](https://github.com/florianvazelle/hydenix/issues/new?template=feature_request.md) if you have any feature requests.
 
 <div align="right">
   <a href="#faq">

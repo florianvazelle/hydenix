@@ -10,7 +10,7 @@
 ```bash
 # create a new directory and initialize the template
 mkdir hydenix && cd hydenix
-nix flake init -t github:richen604/hydenix
+nix flake init -t github:florianvazelle/hydenix
 ```
 
 ## 2. configure your system
@@ -45,7 +45,7 @@ sudo nixos-rebuild switch --flake .#hydenix
 > - read the error carefully, it may be self-explanatory
 > - troubleshooting steps in [troubleshooting & issues](./troubleshooting.md)
 > - read the [faq](./faq.md), it may have the answer you're looking for
-> - please don't hesitate to ask in [discord](https://discord.gg/AYbJ9MJez7) or [github discussions](https://github.com/richen604/hydenix/discussions)!
+> - please don't hesitate to ask in [discord](https://discord.gg/AYbJ9MJez7) or [github discussions](https://github.com/florianvazelle/hydenix/discussions)!
 
 ## 6. launch hydenix
 

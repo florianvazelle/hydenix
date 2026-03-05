@@ -63,6 +63,6 @@ hydenix/
 
 ## getting help
 
-- [hydenix issues](https://github.com/richen604/hydenix/issues)
-- [hydenix discussions](https://github.com/richen604/hydenix/discussions)
+- [hydenix issues](https://github.com/florianvazelle/hydenix/issues)
+- [hydenix discussions](https://github.com/florianvazelle/hydenix/discussions)
 - [hyde discord](https://discord.gg/AYbJ9MJez7)

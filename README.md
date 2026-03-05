@@ -1,16 +1,11 @@
-
-> [!CAUTION]
-> hydenix is now in **maintenance mode**. </br>
-> nixpkgs and hyde version updates are halted and issues may go unaddressed.
-
 </br>
 
 <div align="center">
 
 [![NixOS Unstable](https://img.shields.io/badge/NixOS-unstable-ebbcba.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
-[![Release](https://img.shields.io/github/v/release/richen604/hydenix?style=flat-square&color=c79bf0)](https://github.com/richen604/hydenix/releases)
-[![Last Commit](https://img.shields.io/github/last-commit/richen604/hydenix/main?style=flat-square&color=ebbcba)](https://github.com/richen604/hydenix/commits/main)
-[![Nix Flake Check](https://img.shields.io/github/actions/workflow/status/richen604/hydenix/flake-check.yml?style=flat-square&color=c79bf0&label=flake%20check)](https://github.com/richen604/hydenix/actions/workflows/flake-check.yml)
+[![Release](https://img.shields.io/github/v/release/florianvazelle/hydenix?style=flat-square&color=c79bf0)](https://github.com/florianvazelle/hydenix/releases)
+[![Last Commit](https://img.shields.io/github/last-commit/florianvazelle/hydenix/main?style=flat-square&color=ebbcba)](https://github.com/florianvazelle/hydenix/commits/main)
+[![Nix Flake Check](https://img.shields.io/github/actions/workflow/status/florianvazelle/hydenix/flake-check.yml?style=flat-square&color=c79bf0&label=flake%20check)](https://github.com/florianvazelle/hydenix/actions/workflows/flake-check.yml)
 
 </div>
 
@@ -67,7 +62,7 @@ if you encounter issues running the vm, refer to the [virtio guide](./template/d
 
 ```bash
 # run the flake remotely
-nix run github:richen604/hydenix
+nix run github:florianvazelle/hydenix
 ```
 
 > [!NOTE]
