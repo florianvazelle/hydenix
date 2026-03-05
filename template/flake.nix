@@ -2,12 +2,9 @@
   description = "template for hydenix";
 
   inputs = {
-    nixpkgs = {
-      # url = "github:nixos/nixpkgs/nixos-unstable"; # uncomment this if you know what you're doing
-      follows = "hydenix/nixpkgs"; # then comment this
-    };
+    nixpkgs.follows = "hydenix/nixpkgs";
     hydenix.url = "github:florianvazelle/hydenix";
-    nixos-hardware.url = "github:nixos/nixos-hardware/master";
+    nixos-hardware.follows = "hydenix/nixos-hardware";
   };
 
   outputs =
