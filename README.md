@@ -1,5 +1,3 @@
-</br>
-
 <div align="center">
 
 [![NixOS Unstable](https://img.shields.io/badge/NixOS-unstable-ebbcba.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
@@ -9,7 +7,7 @@
 
 </div>
 
-<div align = center>
+<div align="center">
 <a href="https://discord.gg/AYbJ9MJez7">
 <img alt="Dynamic JSON Badge" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdiscordapp.com%2Fapi%2Finvites%2FmT5YqjaJFh%3Fwith_counts%3Dtrue&query=%24.approximate_member_count&suffix=%20members&style=for-the-badge&logo=discord&logoSize=auto&label=The%20HyDe%20Project&labelColor=ebbcba&color=c79bf0">
 </a>
@@ -25,40 +23,49 @@
 
 # hydenix
 
-a nixos and home-manager configuration for [HyDE](https://github.com/HyDE-Project/HyDE)
+**hydenix** is a **NixOS + Home Manager configuration** for [HyDE](https://github.com/HyDE-Project/HyDE).
 
-**features / why nixos? :**
+It brings the HyDE desktop experience to NixOS while taking advantage of
+the Nix module system and reproducible configuration management.
 
-- declarative `hydenix` and `hydenix.hm` configuration options
-- leveraged module system, easily extend disable or override any module
-- close feature parity with [HyDE](https://github.com/HyDE-Project/HyDE)
-- every community [hyde-gallery theme](https://github.com/HyDE-Project/hyde-gallery)
-- reproducible environments with easy rollbacks
-- version control for your desktop
 
-## requirements
+## ✨ Features
 
-- minimal install of nixos, follow instructions on [nixos iso](https://nixos.org/download/#nixos-iso)
+- Declarative configuration via `hydenix` and `hydenix.hm` options
+- Built on the **NixOS module system** (easily extend, override, or disable modules)
+- Close feature parity with the upstream [HyDE](https://github.com/HyDE-Project/HyDE)
+- Support for all community themes from [hyde-gallery](https://github.com/HyDE-Project/hyde-gallery)
+- Fully reproducible desktop environments
+- Easy system rollbacks
+- Version-controlled desktop configuration
 
-> [!IMPORTANT]
-> functional programming experience recommended. <br>
-> new to nix? see [nix resources](./template/docs/faq.md#how-do-i-learn-more-about-nix) or ask in discussions/discord.
+## 📋 Requirements
 
-## documentation
+- A **minimal NixOS installation**
 
-- [installation](./template/docs/installation.md)
-- [upgrading](./template/docs/upgrading.md)
-- [module options](./template/docs/options.md)
-- [faq](./template/docs/faq.md)
-- [troubleshooting & issues](./template/docs/troubleshooting.md)
-- [contributing](./template/docs/contributing.md)
-- [community configs](./template/docs/community.md)
-- [todo - sneak peak of whats coming soon](./TODO.md)
+Follow the official instructions from the [NixOS installation ISO](https://nixos.org/download/#nixos-iso).
 
-## hydenix vm
+> [!IMPORTANT]  
+> Some familiarity with **functional programming concepts** is recommended.  
+>  
+> If you are new to Nix, check the  [Nix resources](./template/docs/faq.md#how-do-i-learn-more-about-nix) or ask questions in **Discussions** or **Discord**.
 
-if your system supports it, the nixos vm is a great way to try out hydenix without installing it.
-if you encounter issues running the vm, refer to the [virtio guide](./template/docs/faq.md#how-do-i-run-hyprland-in-a-vm)
+## 📚 Documentation
+
+- [Installation](./template/docs/installation.md)
+- [Upgrading](./template/docs/upgrading.md)
+- [Module Options](./template/docs/options.md)
+- [FAQ](./template/docs/faq.md)
+- [Troubleshooting & Issues](./template/docs/troubleshooting.md)
+- [Contributing](./template/docs/contributing.md)
+- [Community Configurations](./template/docs/community.md)
+<!-- - [Roadmap / Upcoming Features](./TODO.md) -->
+
+## 🖥️ hydenix VM
+
+If your system supports virtualization, you can try **hydenix in a NixOS VM** without installing it on your machine.
+
+If you encounter issues running Hyprland inside the VM, see the [VirtIO guide](./template/docs/faq.md#how-do-i-run-hyprland-in-a-vm).
 
 ```bash
 # run the flake remotely
@@ -66,5 +73,8 @@ nix run github:florianvazelle/hydenix
 ```
 
 > [!NOTE]
-> any changes require the vm to be rebuilt. run `rm hydenix.qcow2` to remove the old one.
-</div>
+> Any configuration changes require rebuilding the VM.
+> To reset it, delete the disk image:
+> ```
+> rm hydenix.qcow2
+> ```
