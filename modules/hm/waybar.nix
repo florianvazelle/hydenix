@@ -53,18 +53,22 @@ in {
       ".config/waybar/modules" = {
         source = "${pkgs.hyde}/Configs/.config/waybar/modules";
         recursive = true;
+        force = true;
       };
       ".config/waybar/layouts" = {
         source = "${pkgs.hyde}/Configs/.config/waybar/layouts";
         recursive = true;
+        force = true;
       };
       ".config/waybar/menus" = {
         source = "${pkgs.hyde}/Configs/.config/waybar/menus";
         recursive = true;
+        force = true;
       };
       ".config/waybar/styles" = {
         source = "${pkgs.hyde}/Configs/.config/waybar/styles";
         recursive = true;
+        force = true;
       };
       ".config/waybar/includes/border-radius.css" = {
         source = "${pkgs.hyde}/Configs/.config/waybar/includes/border-radius.css";

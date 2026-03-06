@@ -44,6 +44,7 @@ in {
             }
             else {
               source = "${pkgs.hyde}/Configs/.config/hypr/workflows/${workflow}.conf";
+              force = true;
             };
         })
         workflowPresets

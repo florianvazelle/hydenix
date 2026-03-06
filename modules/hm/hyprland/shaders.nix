@@ -30,6 +30,7 @@ in {
             name = ".config/hypr/shaders/${shader}.frag";
             value = {
               source = "${pkgs.hyde}/Configs/.config/hypr/shaders/${shader}.frag";
+              force = true;
             };
           })
           standardShaders
@@ -54,7 +55,10 @@ in {
             force = true;
             mutable = true;
           };
-          ".config/hypr/shaders/wallbash.inc".source = "${pkgs.hyde}/Configs/.config/hypr/shaders/wallbash.inc";
+          ".config/hypr/shaders/wallbash.inc" = {
+            force = true;
+            source = "${pkgs.hyde}/Configs/.config/hypr/shaders/wallbash.inc";
+          };
         }
       ])
 

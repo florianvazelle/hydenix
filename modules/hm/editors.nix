@@ -79,8 +79,14 @@ in {
     home.file = lib.mkMerge [
       (lib.mkIf cfg.vscode.enable {
         # Editor flags
-        ".config/code-flags.conf".source = "${pkgs.hyde}/Configs/.config/code-flags.conf";
-        ".config/codium-flags.conf".source = "${pkgs.hyde}/Configs/.config/codium-flags.conf";
+        ".config/code-flags.conf" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/code-flags.conf";
+        };
+        ".config/codium-flags.conf" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/codium-flags.conf";
+        };
 
         # VS Code settings
         ".config/Code - OSS/User/settings.json" = {
@@ -115,8 +121,14 @@ in {
           force = true;
           mutable = true;
         };
-        ".config/vim/hyde.vim".source = "${pkgs.hyde}/Configs/.config/vim/hyde.vim";
-        ".config/vim/vimrc".source = "${pkgs.hyde}/Configs/.config/vim/vimrc";
+        ".config/vim/hyde.vim" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/vim/hyde.vim";
+        };
+        ".config/vim/vimrc" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/vim/vimrc";
+        };
       })
     ];
 

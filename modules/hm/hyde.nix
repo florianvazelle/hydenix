@@ -74,9 +74,11 @@ in {
           [Install]
           WantedBy=graphical-session.target
         '';
+        force = true;
       };
       ".config/systemd/user/hyde-ipc.service" = {
         source = "${pkgs.hyde}/Configs/.config/systemd/user/hyde-ipc.service";
+        force = true;
       };
 
       ".local/bin/hyde-shell" = {
@@ -105,11 +107,11 @@ in {
       ".local/share/fastfetch/presets/hyde" = {
         source = "${pkgs.hyde}/Configs/.local/share/fastfetch/presets/hyde";
         recursive = true;
+        force = true;
       };
       ".local/share/hyde" = {
         source = "${pkgs.hyde}/Configs/.local/share/hyde";
         recursive = true;
-        executable = true;
         force = true;
         mutable = true;
       };
@@ -122,18 +124,22 @@ in {
       ".local/share/waybar/includes" = {
         source = "${pkgs.hyde}/Configs/.local/share/waybar/includes";
         recursive = true;
+        force = true;
       };
       ".local/share/waybar/layouts" = {
         source = "${pkgs.hyde}/Configs/.local/share/waybar/layouts";
         recursive = true;
+        force = true;
       };
       ".local/share/waybar/menus" = {
         source = "${pkgs.hyde}/Configs/.local/share/waybar/menus";
         recursive = true;
+        force = true;
       };
       ".local/share/waybar/modules" = {
         source = "${pkgs.hyde}/Configs/.local/share/waybar/modules";
         recursive = true;
+        force = true;
       };
       ".local/share/waybar/styles" = {
         source = "${pkgs.hyde}/Configs/.local/share/waybar/styles";
@@ -143,16 +149,20 @@ in {
       };
       ".config/MangoHud/MangoHud.conf" = {
         source = "${pkgs.hyde}/Configs/.config/MangoHud/MangoHud.conf";
+        force = true;
       };
       ".local/share/kio/servicemenus/hydewallpaper.desktop" = {
         source = "${pkgs.hyde}/Configs/.local/share/kio/servicemenus/hydewallpaper.desktop";
+        force = true;
       };
       ".local/share/kxmlgui5/dolphin/dolphinui.rc" = {
         source = "${pkgs.hyde}/Configs/.local/share/kxmlgui5/dolphin/dolphinui.rc";
+        force = true;
       };
 
       ".config/electron-flags.conf" = {
         source = "${pkgs.hyde}/Configs/.config/electron-flags.conf";
+        force = true;
       };
 
       ".local/share/icons/Wallbash-Icon" = {

@@ -29,12 +29,15 @@ in {
     home.file = {
       ".config/qt5ct/qt5ct.conf" = {
         source = "${pkgs.hyde}/Configs/.config/qt5ct/qt5ct.conf";
+        force = true;
       };
       ".config/qt6ct/qt6ct.conf" = {
         source = "${pkgs.hyde}/Configs/.config/qt6ct/qt6ct.conf";
+        force = true;
       };
       ".config/menus/applications.menu" = {
         source = "${pkgs.hyde}/Configs/.config/menus/applications.menu";
+        force = true;
       };
 
       ".config/Kvantum/wallbash/wallbash.kvconfig" = {

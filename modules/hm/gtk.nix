@@ -30,6 +30,7 @@ in {
     home.file = {
       ".config/nwg-look/config" = {
         source = "${pkgs.hyde}/Configs/.config/nwg-look/config";
+        force = true;
       };
 
       # stateful files

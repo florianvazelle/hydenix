@@ -60,6 +60,7 @@ in {
             }
             else {
               source = "${pkgs.hyde}/Configs/.config/hypr/animations/${preset}.conf";
+              force = true;
             };
         })
         animationPresets

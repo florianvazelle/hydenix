@@ -277,20 +277,51 @@ in {
     home.file = lib.mkMerge [
       (lib.mkIf cfg.zsh.enable {
         # Zsh configs
-        ".zshenv".source = "${pkgs.hyde}/Configs/.zshenv";
-        ".config/zsh/completions/hyde-shell.zsh".source = "${pkgs.hyde}/Configs/.config/zsh/completions/hyde-shell.zsh";
+        ".zshenv" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.zshenv";
+        };
+        ".config/zsh/completions/hyde-shell.zsh" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/zsh/completions/hyde-shell.zsh";
+        };
         ".config/zsh/.p10k.zsh" = {
           source = "${pkgs.hyde}/Configs/.config/zsh/.p10k.zsh";
           inherit (cfg.p10k) enable;
+          force = true;
         };
-        ".config/zsh/completions/fzf.zsh".source = "${pkgs.hyde}/Configs/.config/zsh/completions/fzf.zsh";
-        ".config/zsh/completions/hydectl.zsh".source = "${pkgs.hyde}/Configs/.config/zsh/completions/hydectl.zsh";
-        ".config/zsh/functions/bat.zsh".source = "${pkgs.hyde}/Configs/.config/zsh/functions/bat.zsh";
-        ".config/zsh/functions/bind_M_n_history.zsh".source = "${pkgs.hyde}/Configs/.config/zsh/functions/bind_M_n_history.zsh";
-        ".config/zsh/functions/duf.zsh".source = "${pkgs.hyde}/Configs/.config/zsh/functions/duf.zsh";
-        ".config/zsh/functions/eza.zsh".source = "${pkgs.hyde}/Configs/.config/zsh/functions/eza.zsh";
-        ".config/zsh/functions/fzf.zsh".source = "${pkgs.hyde}/Configs/.config/zsh/functions/fzf.zsh";
-        ".config/zsh/functions/kb_help.zsh".source = "${pkgs.hyde}/Configs/.config/zsh/functions/kb_help.zsh";
+        ".config/zsh/completions/fzf.zsh" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/zsh/completions/fzf.zsh";
+        };
+        ".config/zsh/completions/hydectl.zsh" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/zsh/completions/hydectl.zsh";
+        };
+        ".config/zsh/functions/bat.zsh" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/zsh/functions/bat.zsh";
+        };
+        ".config/zsh/functions/bind_M_n_history.zsh" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/zsh/functions/bind_M_n_history.zsh";
+        };
+        ".config/zsh/functions/duf.zsh" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/zsh/functions/duf.zsh";
+        };
+        ".config/zsh/functions/eza.zsh" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/zsh/functions/eza.zsh";
+        };
+        ".config/zsh/functions/fzf.zsh" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/zsh/functions/fzf.zsh";
+        };
+        ".config/zsh/functions/kb_help.zsh" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/zsh/functions/kb_help.zsh";
+        };
 
         # We are not including any of these configurations as they are part of the existing zsh home-manager options
         # ".config/zsh/functions/error-handlers.zsh".source = "${pkgs.hydenix.hyde}/Configs/.config/zsh/functions/error-handlers.zsh";
@@ -305,26 +336,65 @@ in {
       })
       (lib.mkIf cfg.fish.enable {
         # Fish configs
-        ".config/fish/completions/hyde-shell.fish".source = "${pkgs.hyde}/Configs/.config/fish/completions/hyde-shell.fish";
-        ".config/fish/conf.d/hyde.fish".source = "${pkgs.hyde}/Configs/.config/fish/conf.d/hyde.fish";
-        ".config/fish/functions/bind_M_n_history.fish".source = "${pkgs.hyde}/Configs/.config/fish/functions/bind_M_n_history.fish";
-        ".config/fish/functions/fzf/ffcd.fish".source = "${pkgs.hyde}/Configs/.config/fish/functions/fzf/ffcd.fish";
-        ".config/fish/functions/fzf/ffch.fish".source = "${pkgs.hyde}/Configs/.config/fish/functions/fzf/ffch.fish";
-        ".config/fish/functions/fzf/ffec.fish".source = "${pkgs.hyde}/Configs/.config/fish/functions/fzf/ffec.fish";
-        ".config/fish/functions/fzf/ffe.fish".source = "${pkgs.hyde}/Configs/.config/fish/functions/fzf/ffe.fish";
-        ".config/fish/user.fish".source = "${pkgs.hyde}/Configs/.config/fish/user.fish";
+        ".config/fish/completions/hyde-shell.fish" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/fish/completions/hyde-shell.fish";
+        };
+        ".config/fish/conf.d/hyde.fish" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/fish/conf.d/hyde.fish";
+        };
+        ".config/fish/functions/bind_M_n_history.fish" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/fish/functions/bind_M_n_history.fish";
+        };
+        ".config/fish/functions/fzf/ffcd.fish" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/fish/functions/fzf/ffcd.fish";
+        };
+        ".config/fish/functions/fzf/ffch.fish" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/fish/functions/fzf/ffch.fish";
+        };
+        ".config/fish/functions/fzf/ffec.fish" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/fish/functions/fzf/ffec.fish";
+        };
+        ".config/fish/functions/fzf/ffe.fish" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/fish/functions/fzf/ffe.fish";
+        };
+        ".config/fish/user.fish" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/fish/user.fish";
+        };
       })
 
       # LSD configs - these are always included
       {
-        ".config/lsd/config.yaml".source = "${pkgs.hyde}/Configs/.config/lsd/config.yaml";
-        ".config/lsd/icons.yaml".source = "${pkgs.hyde}/Configs/.config/lsd/icons.yaml";
-        ".config/lsd/colors.yaml".source = "${pkgs.hyde}/Configs/.config/lsd/colors.yaml";
+        ".config/lsd/config.yaml" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/lsd/config.yaml";
+        };
+        ".config/lsd/icons.yaml" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/lsd/icons.yaml";
+        };
+        ".config/lsd/colors.yaml" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/lsd/colors.yaml";
+        };
       }
 
       (lib.mkIf cfg.starship.enable {
-        ".config/starship/powerline.toml".source = "${pkgs.hyde}/Configs/.config/starship/powerline.toml";
-        ".config/starship/starship.toml".source = "${pkgs.hyde}/Configs/.config/starship/starship.toml";
+        ".config/starship/powerline.toml" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/starship/powerline.toml";
+        };
+        ".config/starship/starship.toml" = {
+          force = true;
+          source = "${pkgs.hyde}/Configs/.config/starship/starship.toml";
+        };
       })
     ];
   };

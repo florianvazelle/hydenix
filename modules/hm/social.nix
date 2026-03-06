@@ -39,6 +39,7 @@ in {
     home.file = {
       ".config/electron-flags.conf" = {
         source = "${pkgs.hyde}/Configs/.config/electron-flags.conf";
+        force = true;
       };
     };
   };

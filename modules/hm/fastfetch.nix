@@ -18,12 +18,14 @@ in {
     home.file = {
       ".config/fastfetch/config.jsonc" = {
         source = "${pkgs.hyde}/Configs/.config/fastfetch/config.jsonc";
+        force = true;
       };
       # TODO: add hydenix logo
       # TODO: custom logos and pick defaults
       ".config/fastfetch/logos" = {
         source = "${pkgs.hyde}/Configs/.config/fastfetch/logos";
         recursive = true;
+        force = true;
       };
     };
   };

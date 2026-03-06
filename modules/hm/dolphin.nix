@@ -39,12 +39,15 @@ in {
     home.file = {
       ".config/dolphinrc" = {
         source = "${pkgs.hyde}/Configs/.config/dolphinrc";
+        force = true;
       };
       ".config/baloofilerc" = {
         source = "${pkgs.hyde}/Configs/.config/baloofilerc";
+        force = true;
       };
       ".config/menus/applications.menu" = {
         source = "${pkgs.hyde}/Configs/.config/menus/applications.menu";
+        force = true;
       };
 
       # stateful file for themes
