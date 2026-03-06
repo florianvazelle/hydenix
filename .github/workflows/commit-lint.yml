@@ -1,7 +1,6 @@
 name: Lint Commit Messages
 on:
   pull_request:
-    types: [opened, synchronize, ready_for_review]
 
 permissions: {}
   
