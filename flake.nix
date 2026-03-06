@@ -3,7 +3,7 @@
 
   inputs = {
     # Hydenix's nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/cad22e7d996aea55ecab064e84834289143e44a0";
+    nixpkgs.url = "github:nixos/nixpkgs/80bdc1e5ce51f56b19791b52b2901187931f5353";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,12 +16,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyde = {
-      url = "github:HyDE-Project/HyDE/be97b8b4db232bfffc9b74fd27ba90a3457b9354";
+      url = "github:HyDE-Project/HyDE/v25.10.1";
       flake = false;
     };
     # HyDE related binaries
     hyq = {
-      url = "github:richen604/hyprquery";
+      url = "github:florianvazelle/hyprquery";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     hydectl = {
       url = "github:richen604/hydectl";
