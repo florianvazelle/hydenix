@@ -3,7 +3,7 @@
 
 set -eo pipefail
 
-THEMES_DIR="hydenix/sources/themes"
+THEMES_DIR="pkgs/hydenix-themes"
 
 # Find all .nix files in the themes directory, excluding default.nix and files in utils/
 find "$THEMES_DIR" -name "*.nix" ! -name "default.nix" ! -path "*/utils/*" | while read -r NIX_FILE; do

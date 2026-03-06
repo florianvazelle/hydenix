@@ -22,8 +22,8 @@ in {
       Tela-circle-dracula
       kdePackages.kconfig # TODO: not sure if this is still needed
       wf-recorder # screen recorder for wlroots-based compositors such as sway
-      python-pyamdgpuinfo
-      hyq
+      pyamdgpuinfo
+      hyprquery
       hydectl
       hyde-ipc
       hyde-config

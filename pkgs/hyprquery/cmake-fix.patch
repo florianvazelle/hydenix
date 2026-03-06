@@ -1,0 +1,82 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4e79781..55d0059 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,19 +15,24 @@ find_package(PkgConfig REQUIRED)
+ 
+ include(FetchContent)
+ 
+-set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+-set(SPDLOG_FMT_EXTERNAL OFF CACHE BOOL "" FORCE)
+-set(SPDLOG_BUILD_SHARED OFF CACHE BOOL "" FORCE)
+-FetchContent_Declare(
+-    spdlog
+-    GIT_REPOSITORY https://github.com/gabime/spdlog.git
+-    GIT_TAG        v1.14.1
+-)
+-FetchContent_MakeAvailable(spdlog)
+-set(BUILD_SHARED_LIBS ON CACHE BOOL "" FORCE)
+-
++option(USE_SYSTEM_SPDLOG "Use system-installed spdlog instead of FetchContent" OFF)
+ option(USE_SYSTEM_HYPRLANG "Use system-installed hyprlang instead of FetchContent" OFF)
+ 
++if(USE_SYSTEM_SPDLOG)
++    pkg_check_modules(SPDLOG REQUIRED spdlog)
++else()
++    set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
++    set(SPDLOG_FMT_EXTERNAL OFF CACHE BOOL "" FORCE)
++    set(SPDLOG_BUILD_SHARED OFF CACHE BOOL "" FORCE)
++    FetchContent_Declare(
++        spdlog
++        GIT_REPOSITORY https://github.com/gabime/spdlog.git
++        GIT_TAG        v1.14.1
++    )
++    FetchContent_MakeAvailable(spdlog)
++    set(BUILD_SHARED_LIBS ON CACHE BOOL "" FORCE)
++endif()
++
+ if(USE_SYSTEM_HYPRLANG)
+     pkg_check_modules(HYPRLANG REQUIRED hyprlang)
+ else()
+@@ -72,7 +77,22 @@ set(SOURCES
+ 
+ add_executable(hyq ${SOURCES})
+ 
+-if(USE_SYSTEM_HYPRLANG)
++# Install target
++install(TARGETS hyq DESTINATION bin)
++
++if(USE_SYSTEM_HYPRLANG AND USE_SYSTEM_SPDLOG)
++    target_include_directories(hyq PRIVATE
++        ${CMAKE_CURRENT_SOURCE_DIR}/src
++        ${HYPRLANG_INCLUDE_DIRS}
++        ${SPDLOG_INCLUDE_DIRS}
++    )
++    target_link_libraries(hyq PRIVATE
++        ${HYPRLANG_LIBRARIES}
++        ${SPDLOG_LIBRARIES}
++        CLI11::CLI11
++        nlohmann_json::nlohmann_json
++    )
++elseif(USE_SYSTEM_HYPRLANG)
+     target_include_directories(hyq PRIVATE
+         ${CMAKE_CURRENT_SOURCE_DIR}/src
+         ${HYPRLANG_INCLUDE_DIRS}
+@@ -83,6 +103,17 @@ if(USE_SYSTEM_HYPRLANG)
+         CLI11::CLI11
+         nlohmann_json::nlohmann_json
+     )
++elseif(USE_SYSTEM_SPDLOG)
++    target_include_directories(hyq PRIVATE
++        ${CMAKE_CURRENT_SOURCE_DIR}/src
++        ${SPDLOG_INCLUDE_DIRS}
++    )
++    target_link_libraries(hyq PRIVATE
++        hyprlang
++        ${SPDLOG_LIBRARIES}
++        CLI11::CLI11
++        nlohmann_json::nlohmann_json
++    )
+ else()
+     target_include_directories(hyq PRIVATE
+         ${CMAKE_CURRENT_SOURCE_DIR}/src

@@ -1,10 +1,17 @@
 {
   pkgs,
-  inputs,
+  fetchFromGitHub,
 }:
 pkgs.stdenv.mkDerivation {
-  name = "hyde-modified";
-  src = inputs.hyde;
+  name = "hyde";
+  version = "25.10.1";
+
+  src = fetchFromGitHub {
+    owner = "HyDE-Project";
+    repo = "HyDE";
+    rev = "v25.10.1";
+    hash = "sha256-aJ5tOBf+XIq7fJygrsxQ+7adPwaZI6d7c+dFoCBm3V8=";
+  };
 
   nativeBuildInputs = with pkgs; [
     gnutar
@@ -88,6 +95,6 @@ pkgs.stdenv.mkDerivation {
   postInstall = ''
     wrapProgram $out/Configs/.local/bin/hyde-shell \
       --prefix PATH : "${pkgs.lib.makeBinPath [pkgs.python3]}" \
-      --prefix PYTHONPATH : "${pkgs.python3.pkgs.makePythonPath [pkgs.python-pyamdgpuinfo]}" \
+      --prefix PYTHONPATH : "${pkgs.python3.pkgs.makePythonPath [pkgs.pyamdgpuinfo]}" \
   '';
 }

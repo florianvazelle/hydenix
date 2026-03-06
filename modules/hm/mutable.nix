@@ -58,8 +58,8 @@ in {
 
     home.activation.mutableFileGeneration = let
       allFiles = builtins.concatLists (
-          map (attrPath: builtins.attrValues (lib.getAttrFromPath attrPath config)) fileOptionAttrPaths
-        );
+        map (attrPath: builtins.attrValues (lib.getAttrFromPath attrPath config)) fileOptionAttrPaths
+      );
 
       filterMutableFiles = builtins.filter (
         file:
@@ -70,49 +70,49 @@ in {
       mutableFiles = filterMutableFiles allFiles;
 
       toCommand = file: let
-          source = lib.escapeShellArg file.source;
-          target = lib.escapeShellArg file.target;
-          recursiveFlag =
-            if (file.recursive or false)
-            then "-r"
-            else "";
-        in ''
-          $VERBOSE_ECHO "Copying mutable file: ${source} -> ${target}"
+        source = lib.escapeShellArg file.source;
+        target = lib.escapeShellArg file.target;
+        recursiveFlag =
+          if (file.recursive or false)
+          then "-r"
+          else "";
+      in ''
+        $VERBOSE_ECHO "Copying mutable file: ${source} -> ${target}"
 
-          if [ -n "${recursiveFlag}" ]; then
-            $DRY_RUN_CMD cp -r --remove-destination --no-preserve=mode ${source}/. ${target} || {
-              echo "Error: Failed to copy recursive directory ${source} to ${target}"
-              exit 1
-            }
-          else
-            $DRY_RUN_CMD cp --remove-destination --no-preserve=mode ${source} ${target} || {
-              echo "Error: Failed to copy file ${source} to ${target}"
+        if [ -n "${recursiveFlag}" ]; then
+          $DRY_RUN_CMD cp -r --remove-destination --no-preserve=mode ${source}/. ${target} || {
+            echo "Error: Failed to copy recursive directory ${source} to ${target}"
+            exit 1
+          }
+        else
+          $DRY_RUN_CMD cp --remove-destination --no-preserve=mode ${source} ${target} || {
+            echo "Error: Failed to copy file ${source} to ${target}"
+            exit 1
+          }
+        fi
+
+        if [ -d ${target} ]; then
+          find ${target} -type f -exec sh -c '
+            for f do
+              type=$(${pkgs.file}/bin/file -b "$f")
+              if echo "$type" | grep -qE "executable|script" || [[ "$f" =~ \.sh$ ]]; then
+                $DRY_RUN_CMD chmod u+wx "$f" || {
+                  echo "Error: Failed to set permissions on $f"
+                  exit 1
+                }
+              fi
+            done
+          ' sh {} +
+        else
+          type=$(${pkgs.file}/bin/file -b ${target})
+          if echo "$type" | grep -qE "executable|script" || [[ ${target} =~ \.sh$ ]]; then
+            $DRY_RUN_CMD chmod u+wx ${target} || {
+              echo "Error: Failed to set permissions on ${target}"
               exit 1
             }
           fi
-
-          if [ -d ${target} ]; then
-            find ${target} -type f -exec sh -c '
-              for f do
-                type=$(${pkgs.file}/bin/file -b "$f")
-                if echo "$type" | grep -qE "executable|script" || [[ "$f" =~ \.sh$ ]]; then
-                  $DRY_RUN_CMD chmod u+wx "$f" || {
-                    echo "Error: Failed to set permissions on $f"
-                    exit 1
-                  }
-                fi
-              done
-            ' sh {} +
-          else
-            type=$(${pkgs.file}/bin/file -b ${target})
-            if echo "$type" | grep -qE "executable|script" || [[ ${target} =~ \.sh$ ]]; then
-              $DRY_RUN_CMD chmod u+wx ${target} || {
-                echo "Error: Failed to set permissions on ${target}"
-                exit 1
-              }
-            fi
-          fi
-        '';
+        fi
+      '';
 
       command =
         ''
@@ -120,6 +120,7 @@ in {
           echo "Copying mutable home files for $HOME"
         ''
         + lib.concatLines (map toCommand mutableFiles);
-    in lib.hm.dag.entryAfter ["linkGeneration"] command;
+    in
+      lib.hm.dag.entryAfter ["linkGeneration"] command;
   };
 }

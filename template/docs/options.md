@@ -237,7 +237,7 @@ below are the default options for hydenix. they are in *object format* and any o
       theme = {
         enable = true; # enable theme module
         active = "Catppuccin Mocha"; # active theme name
-        themes = [ "Catppuccin Mocha" "Catppuccin Latte" ]; # default enabled themes, full list in https://github.com/florianvazelle/hydenix/tree/main/hydenix/sources/themes
+        themes = [ "Catppuccin Mocha" "Catppuccin Latte" ]; # default enabled themes, full list in https://github.com/florianvazelle/hydenix/tree/main/pkgs/hydenix-themes
       };
       waybar = {
         enable = true; # enable waybar module

@@ -27,8 +27,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided by GitHub Actions
         run: |
-          chmod +x hydenix/sources/themes/utils/update-themes.sh
-          ./hydenix/sources/themes/utils/update-themes.sh
+          chmod +x pkgs/hydenix-themes/utils/update-themes.sh
+          ./pkgs/hydenix-themes/utils/update-themes.sh
 
       - name: Create Pull Request
         id: create_pr
@@ -47,7 +47,7 @@ jobs:
             themes
           assignees: ${{ github.actor }} # Assign to the user who triggered the workflow or the bot
           reviewers: ${{ github.actor }}
-          add-paths: "hydenix/sources/themes/*.nix"
+          add-paths: "pkgs/hydenix-themes/*.nix"
 
       - name: Install GitHub CLI
         run: |

@@ -20,104 +20,6 @@
         "type": "github"
       }
     },
-    "hyde": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1760110097,
-        "narHash": "sha256-aJ5tOBf+XIq7fJygrsxQ+7adPwaZI6d7c+dFoCBm3V8=",
-        "owner": "HyDE-Project",
-        "repo": "HyDE",
-        "rev": "f69960edbb77cc24815a0ede254c330025b7c2a3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "HyDE-Project",
-        "ref": "v25.10.1",
-        "repo": "HyDE",
-        "type": "github"
-      }
-    },
-    "hyde-config": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1754889600,
-        "narHash": "sha256-kn35QcO7OxZxcYyaZNxQ4tBsLdeSi1u2kbWdPg/pky0=",
-        "owner": "richen604",
-        "repo": "hyde-config",
-        "rev": "59dc0659e0cfb72552616553f5b2635cf40c2184",
-        "type": "github"
-      },
-      "original": {
-        "owner": "richen604",
-        "repo": "hyde-config",
-        "type": "github"
-      }
-    },
-    "hyde-ipc": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": "rust-overlay"
-      },
-      "locked": {
-        "lastModified": 1762476031,
-        "narHash": "sha256-cyCRPPqpSwjh4XN2RzCmlpOMBC2p9/GP4CCdBCS9Rww=",
-        "owner": "richen604",
-        "repo": "hyde-ipc",
-        "rev": "324839b4b4d45ed2760e4fca6a796a47a0704b2a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "richen604",
-        "repo": "hyde-ipc",
-        "type": "github"
-      }
-    },
-    "hydectl": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1755057332,
-        "narHash": "sha256-TVLjDL4+SdoXJrNu5TLiUSDD73CdVWfAn3aE2c4aShg=",
-        "owner": "richen604",
-        "repo": "hydectl",
-        "rev": "a19610347de2230175e5d8807584db65d0588134",
-        "type": "github"
-      },
-      "original": {
-        "owner": "richen604",
-        "repo": "hydectl",
-        "type": "github"
-      }
-    },
-    "hyq": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1772741694,
-        "narHash": "sha256-/PUA1ICNmDEAqrWnm4g5G+/7rkpNl8U6toBFqhXMYBE=",
-        "owner": "florianvazelle",
-        "repo": "hyprquery",
-        "rev": "df005306f4243eaa2a001883025d9e03c64b2be2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "florianvazelle",
-        "repo": "hyprquery",
-        "type": "github"
-      }
-    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -149,28 +51,11 @@
       },
       "original": {
         "owner": "nixos",
-        "ref": "master",
         "repo": "nixos-hardware",
         "type": "github"
       }
     },
     "nixpkgs": {
-      "locked": {
-        "lastModified": 1744536153,
-        "narHash": "sha256-awS2zRgF4uTwrOKwwiJcByDzDOdo3Q1rPZbiHQg/N38=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "18dd725c29603f582cf1900e0d25f9f1063dbf11",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
       "locked": {
         "lastModified": 1772624091,
         "narHash": "sha256-QKyJ0QGWBn6r0invrMAK8dmJoBYWoOWy7lN+UHzW1jc=",
@@ -189,33 +74,10 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "hyde": "hyde",
-        "hyde-config": "hyde-config",
-        "hyde-ipc": "hyde-ipc",
-        "hydectl": "hydectl",
-        "hyq": "hyq",
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "treefmt-nix": "treefmt-nix"
-      }
-    },
-    "rust-overlay": {
-      "inputs": {
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1762396738,
-        "narHash": "sha256-BarSecuxtzp1boERdABLkkoxQTi6s/V33lJwUbWLrLY=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "c63598992afd54d215d54f2b764adc0484c2b159",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
       }
     },
     "treefmt-nix": {

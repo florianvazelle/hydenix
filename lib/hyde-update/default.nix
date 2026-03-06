@@ -1,34 +1,16 @@
-{inputs}: let
-  system = "x86_64-linux";
-  pkgs = import inputs.nixpkgs {
-    inherit system;
-    config.allowUnfree = true;
-    overlays = [inputs.self.overlays.default];
-  };
-
-  # Function to create Hyde package with specific source
-  mkHyde = src:
-    import ../../hydenix/sources/hyde.nix {
-      inherit pkgs;
-      inputs =
-        inputs
-        // {
-          hyde = src;
-        };
-    };
-
+{pkgs}: let
   # Current pinned Hyde version
-  hyde-pinned = mkHyde inputs.hyde;
+  hyde-pinned = pkgs.hyde;
 
   # Latest master Hyde version
-  hyde-master = mkHyde (
-    pkgs.fetchFromGitHub {
-      owner = "HyDE-Project";
-      repo = "HyDE";
-      rev = "master";
-      sha256 = "sha256-9Z045RQIvLR8uY4RQsW8C+aMG5kljY5ZvROVNnTbtkY=";
-    }
-  );
+  hyde-master = pkgs.hyde.overrideAttrs (old: {
+      src = pkgs.fetchFromGitHub {
+        owner = "HyDE-Project";
+        repo = "HyDE";
+        rev = "master";
+        sha256 = "sha256-9Z045RQIvLR8uY4RQsW8C+aMG5kljY5ZvROVNnTbtkY=";
+      };
+    });
 in
   pkgs.writeShellApplication {
     name = "hyde-update";

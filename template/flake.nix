@@ -1,5 +1,5 @@
 {
-  description = "template for hydenix";
+  description = "Template for hydenix configuration";
 
   inputs = {
     nixpkgs.follows = "hydenix/nixpkgs";
