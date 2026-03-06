@@ -1,6 +1,12 @@
 {
   description = "Nix & home-manager configuration for HyDE, an Arch Linux based Hyprland desktop";
 
+  nixConfig = {
+    extra-substituters = ["https://hyprland.cachix.org"];
+    extra-trusted-substituters = ["https://hyprland.cachix.org"];
+    extra-trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/80bdc1e5ce51f56b19791b52b2901187931f5353";
     # Home Manager (for user specific configuration)
@@ -10,6 +16,9 @@
     };
     # NixOS hardware (for hardware profiles)
     nixos-hardware.url = "github:nixos/nixos-hardware";
+
+    # Hyprland (pin it to the latest version supported by HyDE)
+    hyprland.url = "github:hyprwm/Hyprland/v0.52.2";
 
     # Nix-index-database (for comma and command-not-found)
     nix-index-database = {
@@ -54,7 +63,7 @@
     nixosModules.default = import ./modules/system;
 
     # Define custom NixOS overlays
-    overlays.default = final: prev: (import ./pkgs final prev);
+    overlays.default = final: prev: (inputs.hyprland.overlays.default final prev) // (import ./pkgs final prev);
 
     # for `nix flake new -t <template>`
     templates.default = {

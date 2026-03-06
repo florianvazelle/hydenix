@@ -40,6 +40,11 @@
   #   };
   # };
 
+  # Overlays - this adds package definitions and modifications (e.g. for Hyprland)
+  nixpkgs.overlays = [
+    inputs.hydenix.overlays.default
+  ];
+
   # Home Manager Configuration - manages user-specific configurations (dotfiles, themes, etc.)
   home-manager = {
     useGlobalPkgs = true;
