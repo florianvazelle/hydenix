@@ -23,8 +23,9 @@
   };
   outputs = inputs: let
     system = "x86_64-linux";
-    pkgs = import inputs.nixpkgs {inherit system;
-    overlays = [inputs.self.overlays.default];
+    pkgs = import inputs.nixpkgs {
+      inherit system;
+      overlays = [inputs.self.overlays.default];
     };
 
     # Eval the treefmt modules from ./treefmt.nix

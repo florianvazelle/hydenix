@@ -3,14 +3,14 @@
   hyde-pinned = pkgs.hyde;
 
   # Latest master Hyde version
-  hyde-master = pkgs.hyde.overrideAttrs (old: {
-      src = pkgs.fetchFromGitHub {
-        owner = "HyDE-Project";
-        repo = "HyDE";
-        rev = "master";
-        sha256 = "sha256-9Z045RQIvLR8uY4RQsW8C+aMG5kljY5ZvROVNnTbtkY=";
-      };
-    });
+  hyde-master = pkgs.hyde.overrideAttrs (_old: {
+    src = pkgs.fetchFromGitHub {
+      owner = "HyDE-Project";
+      repo = "HyDE";
+      rev = "master";
+      sha256 = "sha256-9Z045RQIvLR8uY4RQsW8C+aMG5kljY5ZvROVNnTbtkY=";
+    };
+  });
 in
   pkgs.writeShellApplication {
     name = "hyde-update";
