@@ -11,7 +11,7 @@ buildGoModule {
     owner = "HyDE-Project";
     repo = "hyde-config";
     rev = "v0.1.4";
-    hash = "sha256-/dfxfhm6gMAgZMh96z1otToM940TO1dwwyOLzsCjq78=";
+    hash = "df0fe096b06fe892e17ffe38a8781ba76673e737";
   };
 
   vendorHash = "sha256-qQ7rr2Y+AnnuyW/N/ogwzT6lvyixHK31lM77Sv3ziiE=";
