@@ -1,11 +1,12 @@
 {
   pkgs,
   lib,
+  fetchFromGitHub,
 }:
 pkgs.stdenv.mkDerivation {
   name = "hyde-gallery";
 
-  src = pkgs.fetchFromGitHub {
+  src = fetchFromGitHub {
     owner = "HyDE-Project";
     repo = "hyde-gallery";
     rev = "8067df5d450294d3c477f5f40a804e1cafc5336f";

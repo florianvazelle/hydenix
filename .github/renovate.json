@@ -1,0 +1,23 @@
+{
+  "enabledManagers": ["custom.regex"],
+  "ignorePaths": ["**/hydenix-themes/**"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/\\.nix$/"],
+      "matchStrings": [
+        "fetchFromGitHub\\s*{[^}]*owner = \"(?<depOwner>[^\"]+)\";[^}]*repo = \"(?<depName>[^\"]+)\";[^}]*rev = \"(?<currentValue>[^\"]+)\";"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "{{depOwner}}/{{depName}}",
+      "versioningTemplate": "loose"
+    }
+  ],
+  "postUpgradeTasks": {
+    "commands": [
+      "./.github/update-nix-hash.sh {{packageFile}} {{depName}} {{newValue}}"
+    ],
+    "executionMode": "update",
+    "fileFilters": ["*.nix"]
+  }
+}
