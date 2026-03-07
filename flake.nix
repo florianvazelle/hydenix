@@ -85,7 +85,8 @@
       hyde-update = pkgs.callPackage ./lib/hyde-update {};
 
       # Add hyprquery, hydectl, hyde-ipc, and hyde-config for building
-      inherit (pkgs) hyprquery hydectl hyde-config hyde-ipc;
+      inherit (pkgs) hyprquery hydectl hyde-config hyde-ipc hyde hyde-gallery;
+      inherit (pkgs) pokego pyamdgpuinfo;
     };
 
     # for `nix flake check`

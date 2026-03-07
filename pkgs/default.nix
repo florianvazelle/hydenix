@@ -2,7 +2,7 @@ final: _prev: {
   # HyDE core packages
   hyde = final.callPackage ./hyde {};
   hyde-config = final.callPackage ./hyde-config {};
-  hyde-gallery = final.callPackage ./hyde-gallery.nix {};
+  hyde-gallery = final.callPackage ./hyde-gallery {};
   hyde-ipc = final.callPackage ./hyde-ipc {};
   hydectl = final.callPackage ./hydectl {};
   hyprquery = final.callPackage ./hyprquery {};
