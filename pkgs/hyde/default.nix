@@ -10,7 +10,7 @@ pkgs.stdenv.mkDerivation {
     owner = "HyDE-Project";
     repo = "HyDE";
     rev = "v25.10.1";
-    hash = "sha256-aJ5tOBf+XIq7fJygrsxQ+7adPwaZI6d7c+dFoCBm3V8=";
+    hash = "f69960edbb77cc24815a0ede254c330025b7c2a3";
   };
 
   nativeBuildInputs = with pkgs; [
