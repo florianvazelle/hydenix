@@ -6,13 +6,13 @@
 }:
 python3.pkgs.buildPythonPackage rec {
   pname = "pyamdgpuinfo";
-  version = "v2.1.6";
+  version = "2.1.6";
   format = "pyproject";
 
   src = fetchFromGitHub {
     owner = "mark9064";
     repo = "pyamdgpuinfo";
-    rev = version;
+    rev = "v2.1.6";
     hash = "sha256-waHLLGefLAq9qjuaeLGItAIsgXi2SZPKJzxax4HYQ7U=";
   };
 

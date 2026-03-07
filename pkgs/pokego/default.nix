@@ -10,7 +10,7 @@ buildGoModule rec {
   src = fetchFromGitHub {
     owner = "rubiin";
     repo = "pokego";
-    rev = "v${version}";
+    rev = "v0.3.0";
     hash = "sha256-cFpEi8wBdCzAl9dputoCwy8LeGyK3UF2vyylft7/1wY=";
   };
 

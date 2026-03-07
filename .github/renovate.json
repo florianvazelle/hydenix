@@ -1,0 +1,22 @@
+{
+  "enabledManagers": ["regex"],
+  "regexManagers": [
+    {
+      "fileMatch": ["\\.nix$"],
+      "matchStrings": [
+        "fetchFromGitHub\\s*{[^}]*owner = \"(?<depOwner>[^\"]+)\";[^}]*repo = \"(?<depName>[^\"]+)\";[^}]*rev = \"(?<currentValue>[^\"]+)\";[^}]*hash = \"(?<currentDigest>[^\"]+)\";"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "{{depOwner}}/{{depName}}",
+      "versioningTemplate": "loose"
+    }
+  ],
+
+  "postUpgradeTasks": {
+    "commands": [
+      "./.github/update-nix-hash.sh {{packageFile}} {{depOwner}} {{depName}} {{newValue}}"
+    ],
+    "executionMode": "update",
+    "fileFilters": ["*.nix"]
+  }
+}
