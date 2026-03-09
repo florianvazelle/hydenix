@@ -46,33 +46,48 @@ jobs:
         id: check_root
         continue-on-error: true # Temporarily set to true to capture output even on failure
         run: |
-          ROOT_CHECK_RESULT=$(nix flake check 2>&1 || true) # Capture output, and continue on error
-          echo "root_check_output<<EOF" >> $GITHUB_OUTPUT
-          echo "$ROOT_CHECK_RESULT" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-          if echo "$ROOT_CHECK_RESULT" | grep -q 'error'; then
-            echo "ROOT_CHECK_SUCCESS=false" >> $GITHUB_OUTPUT
+          set +e
+
+          OUTPUT=$(nix flake check 2>&1)
+          EXIT_CODE=$?
+
+          echo "root_check_output<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$OUTPUT" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+          if [ $EXIT_CODE -eq 0 ]; then
+            echo "ROOT_CHECK_SUCCESS=true" >> "$GITHUB_OUTPUT"
           else
-            echo "ROOT_CHECK_SUCCESS=true" >> $GITHUB_OUTPUT
+            echo "ROOT_CHECK_SUCCESS=false" >> "$GITHUB_OUTPUT"
           fi
+
+          exit 0
 
       - name: Check Template Flake
         id: check_template
-        continue-on-error: true # Temporarily set to true to capture output even on failure
+        continue-on-error: true
         run: |
           cd template
           sed -i 's|url = "github:florianvazelle/hydenix"|url = "path:../"|' flake.nix
-          TEMPLATE_CHECK_RESULT=$(nix flake check 2>&1 || true) # Capture output, and continue on error
-          echo "template_check_output<<EOF" >> $GITHUB_OUTPUT
-          echo "$TEMPLATE_CHECK_RESULT" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-          if echo "$TEMPLATE_CHECK_RESULT" | grep -q 'error'; then
-            echo "TEMPLATE_CHECK_SUCCESS=false" >> $GITHUB_OUTPUT
+
+          set +e
+          OUTPUT=$(nix flake check 2>&1)
+          EXIT_CODE=$?
+
+          echo "template_check_output<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$OUTPUT" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+          if [ $EXIT_CODE -eq 0 ]; then
+            echo "TEMPLATE_CHECK_SUCCESS=true" >> "$GITHUB_OUTPUT"
           else
-            echo "TEMPLATE_CHECK_SUCCESS=true" >> $GITHUB_OUTPUT
+            echo "TEMPLATE_CHECK_SUCCESS=false" >> "$GITHUB_OUTPUT"
           fi
+
           git checkout flake.nix
           rm -f flake.lock
+
+          exit 0
 
       - name: Create Pull Request
         id: create_pr
