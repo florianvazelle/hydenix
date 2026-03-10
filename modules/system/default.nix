@@ -21,46 +21,33 @@ in {
 
     hostname = lib.mkOption {
       type = lib.types.str;
-      description = "Hostname";
+      description = "The name of the machine.";
       example = "hydenix";
+      default = config.system.nixos.distroId;
     };
 
     timezone = lib.mkOption {
       type = lib.types.str;
-      description = "Timezone";
+      description = "The time zone used when displaying times and dates.";
       example = "America/Vancouver";
+      default = null;
     };
 
     locale = lib.mkOption {
       type = lib.types.str;
-      description = "Locale";
+      description = "The default locale.";
       example = "en_CA.UTF-8";
+      default = "en_US.UTF-8";
     };
   };
 
   config = {
     hydenix.enable = lib.mkDefault false;
 
-    # Assertions to check if required variables are set when hydenix is enabled
-    assertions = lib.mkIf cfg.enable [
-      {
-        assertion = cfg.hostname != "";
-        message = "hydenix.hostname must be set";
-      }
-      {
-        assertion = cfg.timezone != "";
-        message = "hydenix.timezone must be set";
-      }
-      {
-        assertion = cfg.locale != "";
-        message = "hydenix.locale must be set";
-      }
-    ];
-
     # Configuration for variables (only applied when hydenix is enabled)
-    time.timeZone = lib.mkIf cfg.enable cfg.timezone;
-    i18n.defaultLocale = lib.mkIf cfg.enable cfg.locale;
-    networking.hostName = lib.mkIf cfg.enable cfg.hostname;
+    time.timeZone = lib.mkDefault (lib.mkIf cfg.enable cfg.timezone);
+    i18n.defaultLocale = lib.mkDefault (lib.mkIf cfg.enable cfg.locale);
+    networking.hostName = lib.mkDefault (lib.mkIf cfg.enable cfg.hostname);
 
     system.stateVersion = "25.05";
   };

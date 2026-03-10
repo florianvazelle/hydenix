@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   fetchFromGitHub,
 }:
 pkgs.stdenv.mkDerivation {
@@ -97,4 +98,12 @@ pkgs.stdenv.mkDerivation {
       --prefix PATH : "${pkgs.lib.makeBinPath [pkgs.python3]}" \
       --prefix PYTHONPATH : "${pkgs.python3.pkgs.makePythonPath [pkgs.pyamdgpuinfo]}" \
   '';
+
+  meta = {
+    description = "HyDE, your Development Environment";
+    homepage = "https://github.com/HyDE-Project/HyDE";
+    license = lib.licenses.gpl3Only;
+    maintainers = ["florianvazelle"];
+    platforms = lib.platforms.all;
+  };
 }

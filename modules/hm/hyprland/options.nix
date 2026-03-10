@@ -29,11 +29,11 @@ in {
 
     # Animation configurations
     animations = {
-      enable =
-        lib.mkEnableOption "animation configurations"
-        // {
-          default = cfg.enable;
-        };
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = cfg.enable;
+        description = "Enable animation configurations";
+      };
       preset = lib.mkOption {
         type = lib.types.str;
         default = "standard";
@@ -63,11 +63,11 @@ in {
 
     # Shader configurations
     shaders = {
-      enable =
-        lib.mkEnableOption "shader configurations"
-        // {
-          default = cfg.enable;
-        };
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = cfg.enable;
+        description = "Enable shader configurations";
+      };
       active = lib.mkOption {
         type = lib.types.str;
         default = "disable";
@@ -93,11 +93,11 @@ in {
 
     # Workflow configurations
     workflows = {
-      enable =
-        lib.mkEnableOption "workflow configurations"
-        // {
-          default = cfg.enable;
-        };
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = cfg.enable;
+        description = "Enable workflow configurations";
+      };
       active = lib.mkOption {
         type = lib.types.str;
         default = "default";
@@ -122,11 +122,11 @@ in {
 
     # Hypridle configurations
     hypridle = {
-      enable =
-        lib.mkEnableOption "hypridle configurations"
-        // {
-          default = cfg.enable;
-        };
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = cfg.enable;
+        description = "Enable hypridle configurations";
+      };
       extraConfig = lib.mkOption {
         type = lib.types.lines;
         default = "";
@@ -141,11 +141,11 @@ in {
 
     # Keybindings configurations
     keybindings = {
-      enable =
-        lib.mkEnableOption "keybindings configurations"
-        // {
-          default = cfg.enable;
-        };
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = cfg.enable;
+        description = "Enable keybindings configurations";
+      };
       extraConfig = lib.mkOption {
         type = lib.types.lines;
         default = "";
@@ -160,11 +160,11 @@ in {
 
     # Window rules configurations
     windowrules = {
-      enable =
-        lib.mkEnableOption "window rules configurations"
-        // {
-          default = cfg.enable;
-        };
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = cfg.enable;
+        description = "Enable window rules configurations";
+      };
       extraConfig = lib.mkOption {
         type = lib.types.lines;
         default = "";
@@ -198,11 +198,11 @@ in {
 
     # Pyprland configurations
     pyprland = {
-      enable =
-        lib.mkEnableOption "pyprland configurations"
-        // {
-          default = cfg.enable;
-        };
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = cfg.enable;
+        description = "Enable pyprland configurations";
+      };
       extraConfig = lib.mkOption {
         type = lib.types.lines;
         default = "";
@@ -217,11 +217,11 @@ in {
 
     # Monitor configurations
     monitors = {
-      enable =
-        lib.mkEnableOption "monitor configurations"
-        // {
-          default = cfg.enable;
-        };
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = cfg.enable;
+        description = "Enable monitor configurations";
+      };
       overrideConfig = lib.mkOption {
         type = lib.types.nullOr lib.types.lines;
         default = null;

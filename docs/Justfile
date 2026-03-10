@@ -1,0 +1,16 @@
+default:
+    just --list
+
+fmt:
+    #!/usr/bin/env nix-shell
+    #! nix-shell -p rumdl -i sh
+    rumdl fmt .
+
+serve:
+    #!/usr/bin/env nix-shell
+    #! nix-shell -p mdbook -i sh
+    mdbook serve --open
+
+nix-options:
+    nix run github:Thunderbottom/nix-options-doc -- --path ../modules --out nixos-options.json --strip-prefix --format json
+    json_to_nix.py nixos-options.json > nixos-options.nix

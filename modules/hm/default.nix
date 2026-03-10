@@ -7,7 +7,6 @@
     ./fastfetch.nix
     ./firefox.nix
     ./gtk.nix
-    ./git.nix
     ./hyde.nix
     ./hyprland
     ./lockscreen.nix

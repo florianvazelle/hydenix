@@ -48,24 +48,24 @@ Follow the official instructions from the [NixOS installation ISO](https://nixos
 > [!IMPORTANT]  
 > Some familiarity with **functional programming concepts** is recommended.  
 >  
-> If you are new to Nix, check the  [Nix resources](./template/docs/faq.md#how-do-i-learn-more-about-nix) or ask questions in **Discussions** or **Discord**.
+> If you are new to Nix, check the  [Nix resources](./docs/src/faq.md#how-do-i-learn-more-about-nix) or ask questions in **Discussions** or **Discord**.
 
 ## 📚 Documentation
 
-- [Installation](./template/docs/installation.md)
-- [Upgrading](./template/docs/upgrading.md)
-- [Module Options](./template/docs/options.md)
-- [FAQ](./template/docs/faq.md)
-- [Troubleshooting & Issues](./template/docs/troubleshooting.md)
-- [Contributing](./template/docs/contributing.md)
-- [Community Configurations](./template/docs/community.md)
+- [Installation](./docs/src/installation.md)
+- [Upgrading](./docs/src/upgrading.md)
+- [Module Options](./docs/src/options.md)
+- [FAQ](./docs/src/faq.md)
+- [Troubleshooting & Issues](./docs/src/troubleshooting.md)
+- [Contributing](./docs/src/contributing.md)
+- [Community Configurations](./docs/src/community.md)
 <!-- - [Roadmap / Upcoming Features](./TODO.md) -->
 
 ## 🖥️ hydenix VM
 
 If your system supports virtualization, you can try **hydenix in a NixOS VM** without installing it on your machine.
 
-If you encounter issues running Hyprland inside the VM, see the [VirtIO guide](./template/docs/faq.md#how-do-i-run-hyprland-in-a-vm).
+If you encounter issues running Hyprland inside the VM, see the [VirtIO guide](./docs/src/faq.md#how-do-i-run-hyprland-in-a-vm).
 
 ```bash
 # run the flake remotely

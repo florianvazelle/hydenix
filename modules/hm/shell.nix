@@ -205,7 +205,7 @@ in {
             fzf --fish | source
             for file in ~/.config/fish/functions/fzf/*.fish
                 source $file
-                # NOTE: these funtions are built on top of fzf builtin widgets
+                # NOTE: these functions are built on top of fzf builtin widgets
                 # they help you navigate through directories and files "Blazingly" fast
                 # to get help on each one, just type `ff` in terminal and press `TAB`
                 # keep in mind all of them require an argument to be passed after the alias
