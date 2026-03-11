@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   lib,
   ...
 }: let
@@ -15,17 +14,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    nixpkgs.pkgs = lib.mkDefault (import inputs.nixpkgs {
-      system = "x86_64-linux";
-      config.allowUnfree = true;
-      overlays = [
-        (
-          if inputs ? hydenix
-          then inputs.hydenix.overlays.default
-          else inputs.self.overlays.default
-        )
-      ];
-    });
+    nixpkgs.config.allowUnfree = true;
 
     nix = {
       settings = {

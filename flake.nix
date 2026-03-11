@@ -8,12 +8,12 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/80bdc1e5ce51f56b19791b52b2901187931f5353";
+    nixpkgs.url = "github:nixos/nixpkgs/9dcb002ca1690658be4a04645215baea8b95f31d";
+
     # Home Manager (for user specific configuration)
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
     # NixOS hardware (for hardware profiles)
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
@@ -21,15 +21,14 @@
     hyprland.url = "github:hyprwm/Hyprland/v0.52.2";
 
     # Nix-index-database (for comma and command-not-found)
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     # treefmt (for formatting)
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
+
   outputs = inputs: let
     system = "x86_64-linux";
     pkgs = import inputs.nixpkgs {
@@ -39,50 +38,45 @@
 
     # Eval the treefmt modules from ./treefmt.nix
     treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
-
-    defaultConfig = import ./lib/config {
-      inherit inputs;
-    };
-
-    # Create VM variant of the NixOS configuration
-    vmConfig = import ./lib/vms/nixos-vm.nix {
-      inherit inputs;
-      nixosConfiguration = defaultConfig;
-    };
-
-    demoVmConfig = import ./lib/vms/demo-vm.nix {
-      inherit inputs;
-    };
   in {
-    lib.vmConfig = import ./lib/vms/nixos-vm.nix;
+    # Define custom NixOS modules
+    nixosModules.default = {...}: {
+      imports = [
+        inputs.home-manager.nixosModules.home-manager
+        ./modules/system
+      ];
+
+      home-manager.sharedModules = [
+        inputs.nix-index-database.homeModules.nix-index
+        inputs.self.homeModules.default
+      ];
+      nixpkgs.overlays = [inputs.self.overlays.default];
+    };
 
     # Define custom NixOS modules
     homeModules.default = import ./modules/hm;
 
-    # Define custom NixOS modules
-    nixosModules.default = import ./modules/system;
-
     # Define custom NixOS overlays
     overlays.default = final: prev: (inputs.hyprland.overlays.default final prev) // (import ./pkgs final prev);
 
-    # for `nix flake new -t <template>`
-    templates.default = {
-      path = ./template;
-      description = "Template for hydenix configuration";
+    # for `nix build .#nixosConfigurations.<name>`
+    nixosConfigurations.default = inputs.nixpkgs.lib.nixosSystem {
+      inherit system;
+      modules = [
+        inputs.self.nixosModules.default
+        (inputs.nixpkgs + "/nixos/modules/profiles/minimal.nix")
+        (inputs.nixpkgs + "/nixos/modules/profiles/qemu-guest.nix")
+        ./demo
+      ];
     };
 
-    # for `nix build .#nixosConfigurations.<name>`
-    nixosConfigurations.default = defaultConfig;
-
+    # for `nix run .#<name>`
     packages.${system} = {
       # Use the VM configuration as default
-      default = vmConfig.config.system.build.vm;
+      default = inputs.self.nixosConfigurations.default.config.system.build.vm;
 
-      # TODO: For a future demo installation & usage video
-      demo-vm = demoVmConfig.config.system.build.vm;
-
-      # Helper to manage hyde updates
-      hyde-update = pkgs.callPackage ./lib/hyde-update {};
+      # Helper tool to manage HyDE updates by comparing the pinned package with upstream master
+      hyde-diff = pkgs.callPackage ./pkgs/hyde-diff {};
 
       # Add hyprquery, hydectl, hyde-ipc, and hyde-config for building
       inherit (pkgs) hyprquery hydectl hyde-config hyde-ipc hyde hyde-gallery;
@@ -100,5 +94,11 @@
 
     # for `nix develop`
     devShells.${system}.default = pkgs.callPackage ./shell.nix {};
+
+    # for `nix flake new -t <template>`
+    templates.default = {
+      path = ./template;
+      description = "Template for hydenix configuration";
+    };
   };
 }

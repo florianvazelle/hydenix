@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  inputs,
   ...
 }:
 /*
@@ -14,15 +13,6 @@ Uses nix-index database to find and run packages on-demand and wraps in nix shel
 let
   cfg = config.hydenix.hm.comma;
 in {
-  imports = [
-    # handles both local build and template flake
-    (
-      if inputs ? nix-index-database
-      then inputs.nix-index-database.homeModules.nix-index
-      else inputs.hydenix.inputs.nix-index-database.homeModules.nix-index
-    )
-  ];
-
   options.hydenix.hm.comma = {
     enable = lib.mkOption {
       type = lib.types.bool;

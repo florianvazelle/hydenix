@@ -1,7 +1,6 @@
-_: {
+{
   hydenix.hm = {
     enable = true;
-
     theme = {
       enable = true;
       active = "BlueSky";

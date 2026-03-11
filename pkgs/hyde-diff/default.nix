@@ -8,12 +8,12 @@
       owner = "HyDE-Project";
       repo = "HyDE";
       rev = "master";
-      sha256 = "sha256-9Z045RQIvLR8uY4RQsW8C+aMG5kljY5ZvROVNnTbtkY=";
+      sha256 = "sha256-cNOryXKFpVSTiAuzD0VQAV+2GQhJTTs1HBM6Z0cZoFo=";
     };
   });
 in
   pkgs.writeShellApplication {
-    name = "hyde-update";
+    name = "hyde-diff";
     runtimeInputs = with pkgs; [
       coreutils
       diffutils
