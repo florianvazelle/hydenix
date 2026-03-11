@@ -29,14 +29,14 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
-      bluez
-      bluez-tools
-      blueman
-      pipewire
-      wireplumber
-      pavucontrol
-      pamixer
-      playerctl
+      bluez # Bluetooth protocol stack
+      bluez-tools # Bluetooth tools
+      blueman # Bluetooth manager
+      pipewire # Audio and video server
+      wireplumber # PipeWire session manager
+      pavucontrol # Audio mixer control
+      pamixer # PulseAudio mixer
+      playerctl # Media player controller
     ];
   };
 }

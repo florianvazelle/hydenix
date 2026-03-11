@@ -1,33 +1,28 @@
-<div align="center">
+
+<img align="right" width="75px" alt="NixOS" src="https://github.com/HyDE-Project/HyDE/blob/master/Source/assets/nixos.png?raw=true"/>
+
+# hydenix
 
 [![NixOS Unstable](https://img.shields.io/badge/NixOS-unstable-ebbcba.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
 [![Release](https://img.shields.io/github/v/release/florianvazelle/hydenix?style=flat-square&color=c79bf0)](https://github.com/florianvazelle/hydenix/releases)
 [![Last Commit](https://img.shields.io/github/last-commit/florianvazelle/hydenix/main?style=flat-square&color=ebbcba)](https://github.com/florianvazelle/hydenix/commits/main)
 [![Nix Flake Check](https://img.shields.io/github/actions/workflow/status/florianvazelle/hydenix/flake-check.yml?style=flat-square&color=c79bf0&label=flake%20check)](https://github.com/florianvazelle/hydenix/actions/workflows/flake-check.yml)
 
-</div>
-
-<div align="center">
-<a href="https://discord.gg/AYbJ9MJez7">
-<img alt="Dynamic JSON Badge" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdiscordapp.com%2Fapi%2Finvites%2FmT5YqjaJFh%3Fwith_counts%3Dtrue&query=%24.approximate_member_count&suffix=%20members&style=for-the-badge&logo=discord&logoSize=auto&label=The%20HyDe%20Project&labelColor=ebbcba&color=c79bf0">
-</a>
-<br>
-
-<https://github.com/user-attachments/assets/7f8fadc8-e293-4482-a851-e9c6464f5265>
-
-</div>
-
-<br>
-
-<img align="right" width="75px" alt="NixOS" src="https://github.com/HyDE-Project/HyDE/blob/master/Source/assets/nixos.png?raw=true"/>
-
-# hydenix
-
 **hydenix** is a **NixOS + Home Manager configuration** for [HyDE](https://github.com/HyDE-Project/HyDE).
 
 It brings the HyDE desktop experience to NixOS while taking advantage of
 the Nix module system and reproducible configuration management.
 
+<div align="center">
+
+[![discord](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdiscordapp.com%2Fapi%2Finvites%2FmT5YqjaJFh%3Fwith_counts%3Dtrue&query=%24.approximate_member_count&suffix=%20members&style=for-the-badge&logo=discord&logoSize=auto&label=The%20HyDe%20Project&labelColor=ebbcba&color=c79bf0)](https://discord.gg/AYbJ9MJez7)
+
+<br>
+<br>
+
+![demo](https://github.com/user-attachments/assets/7f8fadc8-e293-4482-a851-e9c6464f5265)
+
+</div>
 
 ## ✨ Features
 
@@ -47,8 +42,8 @@ Follow the official instructions from the [NixOS installation ISO](https://nixos
 
 > [!IMPORTANT]  
 > Some familiarity with **functional programming concepts** is recommended.  
->  
-> If you are new to Nix, check the  [Nix resources](./docs/src/faq.md#how-do-i-learn-more-about-nix) or ask questions in **Discussions** or **Discord**.
+>
+> If you are new to Nix, check the [Nix resources](./docs/src/faq.md#how-do-i-learn-more-about-nix) or ask questions in **Discussions** or **Discord**.
 
 ## 📚 Documentation
 
@@ -75,6 +70,8 @@ nix run github:florianvazelle/hydenix
 > [!NOTE]
 > Any configuration changes require rebuilding the VM.
 > To reset it, delete the disk image:
-> ```
+>
+```text
 > rm hydenix.qcow2
 > ```
+```
