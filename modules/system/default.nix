@@ -4,6 +4,13 @@
   ...
 }: let
   cfg = config.hydenix;
+
+  nospace = str: lib.filter (c: c == " ") (lib.stringToCharacters str) == [];
+  timezoneType =
+    lib.types.nullOr (lib.types.addCheck lib.types.str nospace)
+    // {
+      description = "null or string without spaces";
+    };
 in {
   imports = [
     ./audio.nix
@@ -27,7 +34,7 @@ in {
     };
 
     timezone = lib.mkOption {
-      type = lib.types.str;
+      type = timezoneType;
       description = "The time zone used when displaying times and dates.";
       example = "America/Vancouver";
       default = null;
@@ -45,9 +52,9 @@ in {
     hydenix.enable = lib.mkDefault false;
 
     # Configuration for variables (only applied when hydenix is enabled)
-    time.timeZone = lib.mkDefault (lib.mkIf cfg.enable cfg.timezone);
-    i18n.defaultLocale = lib.mkDefault (lib.mkIf cfg.enable cfg.locale);
-    networking.hostName = lib.mkDefault (lib.mkIf cfg.enable cfg.hostname);
+    time.timeZone = lib.mkIf cfg.enable (lib.mkDefault cfg.timezone);
+    i18n.defaultLocale = lib.mkIf cfg.enable (lib.mkDefault cfg.locale);
+    networking.hostName = lib.mkIf cfg.enable (lib.mkDefault cfg.hostname);
 
     system.stateVersion = "25.05";
   };

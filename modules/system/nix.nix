@@ -29,11 +29,13 @@ in {
 
     nix = {
       settings = {
+        # Optimize storage
         auto-optimise-store = true;
-        experimental-features = [
-          "nix-command"
-          "flakes"
-        ];
+
+        # Enable flakes
+        experimental-features = ["nix-command" "flakes"];
+
+        # Add substituters and trusted keys for cachix caches
         substituters = [
           "https://cache.nixos.org"
           "https://hyprland.cachix.org"

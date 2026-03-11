@@ -7,14 +7,17 @@ assignees: ''
 ---
 
 ## Bug Description
+
 <!-- A clear and concise description of the bug -->
 
 ## Steps to Reproduce
-1. 
-2. 
-3. 
+
+1.
+2.
+3.
 
 ## System Information
+
 <details>
 <summary>System Details</summary>
 
@@ -22,6 +25,7 @@ assignees: ''
 # Please paste the output of:
 nix-shell -p nix-info --run "nix-info -m"
 ```
+
 </details>
 
 <details>
@@ -32,6 +36,7 @@ nix-shell -p nix-info --run "nix-info -m"
 journalctl -b                                           # System logs
 sudo systemctl status home-manager-$HOSTNAME.service   # Home-manager status
 ```
+
 </details>
 
 ## Environment
@@ -40,6 +45,7 @@ sudo systemctl status home-manager-$HOSTNAME.service   # Home-manager status
 - [ ] Custom Flake
 
 ## Link to your flake (Required for a Custom Flake)
+
 <!-- Please provide a link to your custom templated flake -->
 
 ## Checklist
