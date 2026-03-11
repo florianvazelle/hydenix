@@ -1,6 +1,5 @@
 {lib, ...}: {
   imports = [
-    ./mutable.nix
     ./comma.nix
     ./dolphin.nix
     ./editors.nix
@@ -10,6 +9,7 @@
     ./hyde.nix
     ./hyprland
     ./lockscreen.nix
+    ./mutable.nix
     ./notifications.nix
     ./qt.nix
     ./rofi.nix

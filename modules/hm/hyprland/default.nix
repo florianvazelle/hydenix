@@ -7,16 +7,16 @@
   cfg = config.hydenix.hm.hyprland;
 in {
   imports = [
-    ./options.nix
-    ./assertions.nix
     ./animations.nix
-    ./shaders.nix
-    ./workflows.nix
+    ./assertions.nix
     ./hypridle.nix
     ./keybindings.nix
-    ./windowrules.nix
-    ./nvidia.nix
     ./monitors.nix
+    ./nvidia.nix
+    ./options.nix
+    ./shaders.nix
+    ./windowrules.nix
+    ./workflows.nix
   ];
 
   config = lib.mkIf cfg.enable {

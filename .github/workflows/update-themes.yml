@@ -24,11 +24,10 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
 
       - name: Run update script
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided by GitHub Actions
         run: |
-          chmod +x pkgs/hydenix-themes/utils/update-themes.sh
-          ./pkgs/hydenix-themes/utils/update-themes.sh
+          ./scripts/update-themes.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Pull Request
         id: create_pr
@@ -45,14 +44,7 @@ jobs:
           labels: |
             automated
             themes
-          assignees: ${{ github.actor }} # Assign to the user who triggered the workflow or the bot
-          reviewers: ${{ github.actor }}
           add-paths: "pkgs/hydenix-themes/*.nix"
-
-      - name: Install GitHub CLI
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gh
 
       - name: Enable Auto-merge
         if: steps.create_pr.outputs.pull-request-number

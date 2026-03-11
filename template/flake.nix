@@ -14,22 +14,34 @@
   };
 
   outputs = inputs: let
+    system = "x86_64-linux";
     hydenixConfig = inputs.nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {
-        inherit inputs;
-      };
+      inherit system;
       modules = [
+        # hydenix inputs - Required modules, don't modify unless you know what you're doing
+        inputs.hydenix.nixosModules.default
+
+        # Hardware Configuration - Uncomment lines that match your hardware
+        # Run `lshw -short` or `lspci` to identify your hardware
+
+        # GPU Configuration (choose one):
+        # inputs.nixos-hardware.nixosModules.common-gpu-nvidia # NVIDIA
+        # inputs.nixos-hardware.nixosModules.common-gpu-amd # AMD
+
+        # CPU Configuration (choose one):
+        # inputs.nixos-hardware.nixosModules.common-cpu-amd # AMD CPUs
+        # inputs.nixos-hardware.nixosModules.common-cpu-intel # Intel CPUs
+
+        # Additional Hardware Modules - Uncomment based on your system type:
+        # inputs.nixos-hardware.nixosModules.common-hidpi # High-DPI displays
+        # inputs.nixos-hardware.nixosModules.common-pc-laptop # Laptops
+        # inputs.nixos-hardware.nixosModules.common-pc-ssd # SSD storage
+
         ./configuration.nix
       ];
     };
-    vmConfig = inputs.hydenix.lib.vmConfig {
-      inherit inputs;
-      nixosConfiguration = hydenixConfig;
-    };
   in {
-    nixosConfigurations.hydenix = hydenixConfig;
     nixosConfigurations.default = hydenixConfig;
-    packages."x86_64-linux".vm = vmConfig.config.system.build.vm;
+    packages.${system}.vm = inputs.self.nixosConfigurations.default.config.system.build.vm;
   };
 }

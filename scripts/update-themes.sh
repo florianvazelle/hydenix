@@ -48,7 +48,7 @@ find "$THEMES_DIR" -name "*.nix" ! -name "default.nix" ! -path "*/utils/*" | whi
     # Construct the URL for nix-prefetch-url using the LATEST_COMMIT_HASH
     FETCH_URL="https://github.com/$OWNER/$REPO/archive/$LATEST_COMMIT_HASH.tar.gz"
     VERIFIED_SHA256=$(nix-prefetch-url --unpack "$FETCH_URL")
-    VERIFIED_SHA256=$(nix hash to-sri --type sha256 "$VERIFIED_SHA256")
+    VERIFIED_SHA256=$(nix hash convert --hash-algo sha256 "$VERIFIED_SHA256")
 
     if [ "$CURRENT_SHA256" == "$VERIFIED_SHA256" ]; then
       echo "  Theme $NAME (rev: $LATEST_COMMIT_HASH) is already up to date. Skipping."

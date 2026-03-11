@@ -54,7 +54,6 @@ in {
   "Red Stone" = callTheme ./Red-Stone.nix;
   "Rosé Pine" = callTheme ./Rose-Pine.nix;
   "Scarlet Night" = callTheme ./Scarlet-Night.nix;
-  "Sci-fi" = callTheme ./Sci-fi.nix;
   "Solarized Dark" = callTheme ./Solarized-Dark.nix;
   "Synth Wave" = callTheme ./Synth-Wave.nix;
   "Timeless Dream" = callTheme ./Timeless-Dream.nix;

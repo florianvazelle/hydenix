@@ -15,12 +15,6 @@ the Nix module system and reproducible configuration management.
 - Easy system rollbacks
 - Version-controlled desktop configuration
 
-## Requirements
-
-- A **minimal NixOS installation**
-
-Follow the official instructions from the [NixOS installation ISO](https://nixos.org/download/#nixos-iso).
-
 > [!IMPORTANT]  
 > Some familiarity with **functional programming concepts** is recommended.  
 >
@@ -51,8 +45,6 @@ nix run github:florianvazelle/hydenix
 > [!NOTE]
 > Any configuration changes require rebuilding the VM.
 > To reset it, delete the disk image:
->
-```text
+> ```text
 > rm hydenix.qcow2
 > ```
-```
