@@ -8,7 +8,7 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/9dcb002ca1690658be4a04645215baea8b95f31d";
+    nixpkgs.url = "github:nixos/nixpkgs/62dc67aa6a52b4364dd75994ec00b51fbf474e50";
 
     # Home Manager (for user specific configuration)
     home-manager.url = "github:nix-community/home-manager";
