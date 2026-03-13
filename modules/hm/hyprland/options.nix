@@ -1,4 +1,5 @@
 {
+  osConfig,
   config,
   lib,
   ...
@@ -179,11 +180,11 @@ in {
 
     # NVIDIA configurations
     nvidia = {
-      enable =
-        lib.mkEnableOption "NVIDIA configurations"
-        // {
-          default = config.hardware.nvidia.enabled or false;
-        };
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = osConfig.hardware.nvidia.enabled or false;
+        description = "NVIDIA configurations";
+      };
       extraConfig = lib.mkOption {
         type = lib.types.lines;
         default = "";

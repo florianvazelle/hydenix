@@ -14,9 +14,16 @@
         virtualisation.qemu.guestAgent.enable = true;
         virtualisation.qemu.options = [
           # "-vga virtio" # Use virtio
-          "-device VGA,vgamem_mb=256" # More video memory
-          "-display gtk,grab-on-hover=on" # "Grab on hover" option enable by default
+          # "-device VGA,vgamem_mb=256" # More video memory
+          "-device virtio-vga-gl,xres=1920,yres=1080"
+          "-display gtk,gl=on,grab-on-hover=on" # "Grab on hover" option enable by default
+          "-usb -device usb-tablet"
+          "-cpu host"
+          "-enable-kvm"
+          "-machine q35,accel=kvm"
         ];
+
+        services.xserver.videoDrivers = ["virtio"];
       };
     }
   ];

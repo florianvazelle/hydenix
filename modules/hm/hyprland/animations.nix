@@ -25,6 +25,7 @@
     "optimized"
     "standard"
     "vertical"
+    "theme"
   ];
 in {
   config = lib.mkIf (cfg.enable && cfg.animations.enable) {
