@@ -1,0 +1,945 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>hydenix</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-770d0c2a.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-6b092074.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">hydenix</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p><strong>hydenix</strong> is a <strong>NixOS + Home Manager configuration</strong> for <a href="https://github.com/HyDE-Project/HyDE">HyDE</a>.</p>
+<p>It brings the HyDE desktop experience to NixOS while taking advantage of
+the Nix module system and reproducible configuration management.</p>
+<h2 id="features"><a class="header" href="#features">Features</a></h2>
+<ul>
+<li>Declarative configuration via <code>hydenix</code> and <code>hydenix.hm</code> options</li>
+<li>Built on the <strong>NixOS module system</strong> (easily extend, override, or disable modules)</li>
+<li>Close feature parity with the upstream <a href="https://github.com/HyDE-Project/HyDE">HyDE</a></li>
+<li>Support for all community themes from <a href="https://github.com/HyDE-Project/hyde-gallery">hyde-gallery</a></li>
+<li>Fully reproducible desktop environments</li>
+<li>Easy system rollbacks</li>
+<li>Version-controlled desktop configuration</li>
+</ul>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p>Some familiarity with <strong>functional programming concepts</strong> is recommended.</p>
+<p>If you are new to Nix, check the <a href="#how-do-i-learn-more-about-nix">Nix resources</a> or ask questions in <strong>Discussions</strong> or <strong>Discord</strong>.</p>
+</blockquote>
+<h2 id="documentation"><a class="header" href="#documentation">Documentation</a></h2>
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#upgrading">Upgrading</a></li>
+<li><a href="#module-options">Module Options</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#troubleshooting">Troubleshooting &amp; Issues</a></li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#community">Community Configurations</a></li>
+</ul>
+<!-- - [Roadmap / Upcoming Features](./TODO.md) -->
+<h2 id="hydenix-vm"><a class="header" href="#hydenix-vm">hydenix VM</a></h2>
+<p>If your system supports virtualization, you can try <strong>hydenix in a NixOS VM</strong> without installing it on your machine.</p>
+<p>If you encounter issues running Hyprland inside the VM, see the <a href="#how-do-i-run-hyprland-in-a-vm">VirtIO guide</a>.</p>
+<pre><code class="language-bash"># run the flake remotely
+nix run github:florianvazelle/hydenix
+</code></pre>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>Any configuration changes require rebuilding the VM.
+To reset it, delete the disk image:</p>
+<pre><code class="language-text">rm hydenix.qcow2
+</code></pre>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
+<blockquote class="blockquote-tag blockquote-tag-caution">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Caution</p>
+<p>The provided flake template assumes a <strong>minimal NixOS installation</strong>.
+Install NixOS first, then follow the steps below.</p>
+</blockquote>
+<h2 id="1-initialize-the-flake-template"><a class="header" href="#1-initialize-the-flake-template">1. Initialize the flake template</a></h2>
+<p>Create a new directory for your configuration and initialize the <strong>hydenix flake template</strong>.</p>
+<pre><code class="language-bash"># create a new directory and initialize the template
+mkdir hydenix
+cd hydenix
+
+nix flake init -t github:florianvazelle/hydenix
+</code></pre>
+<p>This will generate the base configuration files required for hydenix.</p>
+<h2 id="2-configure-your-system"><a class="header" href="#2-configure-your-system">2. Configure your system</a></h2>
+<p>Open and edit the <code>configuration.nix</code> file and follow the inline comments to configure your system.</p>
+<p>Optional:
+For advanced customization, see the <a href="#module-options">module options</a>.</p>
+<hr>
+<h2 id="3-generate-hardware-configuration"><a class="header" href="#3-generate-hardware-configuration">3. Generate hardware configuration</a></h2>
+<p>Generate the hardware configuration for your machine:</p>
+<pre><code class="language-bash">sudo nixos-generate-config --show-hardware-config &gt; hardware-configuration.nix
+</code></pre>
+<p>This file contains hardware-specific settings such as drivers and device configuration.</p>
+<h2 id="4-initialize-a-git-repository"><a class="header" href="#4-initialize-a-git-repository">4. Initialize a Git repository</a></h2>
+<p>Flakes require the configuration to be managed in a <strong>Git repository</strong>.</p>
+<pre><code class="language-bash">git init
+git add .
+</code></pre>
+<p>Using Git also allows you to <strong>version control and track changes</strong> to your system configuration.</p>
+<h2 id="5-build-and-apply-the-configuration"><a class="header" href="#5-build-and-apply-the-configuration">5. Build and apply the configuration</a></h2>
+<p>Build the system and switch to the new configuration:</p>
+<pre><code class="language-bash">sudo nixos-rebuild switch --flake .#hydenix
+</code></pre>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>If something was misconfigured, the build may fail at this step. If that happens:</p>
+<ul>
+<li>Carefully read the error message — it often explains the issue.</li>
+<li>Check the <a href="#troubleshooting">troubleshooting &amp; issues</a> guide.</li>
+<li>Search the <a href="#faq">faq</a>.</li>
+<li>Ask the community for help:
+<ul>
+<li>Discord: <a href="https://discord.gg/AYbJ9MJez7">https://discord.gg/AYbJ9MJez7</a></li>
+<li>GitHub Discussions: <a href="https://github.com/florianvazelle/hydenix/discussions">https://github.com/florianvazelle/hydenix/discussions</a></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="6-launch-hydenix"><a class="header" href="#6-launch-hydenix">6. Launch hydenix</a></h2>
+<p>Reboot your system and log in.</p>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p>Make sure your user password is set:</p>
+<pre><code class="language-bash">passwd
+</code></pre>
+</blockquote>
+<p>After logging in, generate the theme cache:</p>
+<pre><code class="language-bash">hyde-shell reload
+</code></pre>
+<p>hydenix should now be installed and ready to use.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="upgrading"><a class="header" href="#upgrading">Upgrading</a></h1>
+<p>hydenix can be upgraded, downgraded, or version locked easy.
+In your template flake folder, update hydenix to main using:</p>
+<pre><code class="language-bash">nix flake update hydenix
+</code></pre>
+<p>Or define a specific version in your <code>flake.nix</code> template:</p>
+<pre><code class="language-nix">inputs = {
+    nixpkgs.follows = "hydenix/nixpkgs";
+    hydenix = {
+      # Available inputs:
+      # Main: github:florianvazelle/hydenix
+      # Commit: github:florianvazelle/hydenix/&lt;commit-hash&gt;
+      # Version: github:florianvazelle/hydenix/v1.0.0
+      url = "github:florianvazelle/hydenix";
+    };
+  };
+</code></pre>
+<p>Run <code>nix flake update hydenix</code> again to load the update, then rebuild your system to apply the changes.</p>
+<h2 id="when-to-upgrade"><a class="header" href="#when-to-upgrade">When to upgrade</a></h2>
+<p>Starting from your current version (for example v2.3.1) upgrades can come in three flavours:</p>
+<ul>
+<li>a <strong>major</strong> bump, which may introduce breaking changes; always read the release notes for API‑level changes before moving to a new major version,</li>
+<li>a <strong>minor</strong> bump, which brings new features and is generally safe to apply, and</li>
+<li>a <strong>patch</strong> bump, which contains bug fixes and is likewise safe to update.</li>
+</ul>
+<p>In other words, inspect major releases carefully, and you can routinely pull in minor and patch releases without worry.</p>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<ul>
+<li><strong>Always review <a href="https://github.com/florianvazelle/hydenix/releases">release notes</a> for major updates (API changes)</strong></li>
+<li>Update to minor versions for new features</li>
+<li>Keep up with patches for stability</li>
+</ul>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="module-options"><a class="header" href="#module-options">Module options</a></h1>
+<ul>
+<li><a href="#module-options">Module options</a>
+<ul>
+<li><a href="#module-documentation">Module documentation</a></li>
+<li><a href="#required-options">Required options</a></li>
+<li><a href="#default-options">Default options</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="module-documentation"><a class="header" href="#module-documentation">Module documentation</a></h2>
+<p>Going to let you in on a secret: the nix options system <em>is</em> the documentation.<br>Let’s walk through an example. say you want to find info about <code>hydenix.hm.theme</code>.<br>The easiest way is to search the github repo for the options:</p>
+<p><a href="https://github.com/florianvazelle/hydenix/search?q=hydenix.hm.theme">search for <code>hydenix.hm.theme</code></a></p>
+<p>You’ll see the options in the search results, something like this:</p>
+<p><img src="assets/option-search.png" alt="options search example"></p>
+<p>Click on the file to see the actual options definition, which looks something like this:</p>
+<pre><code class="language-nix">  options.hydenix.hm.theme = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = config.hydenix.hm.enable;
+      description = "Enable theme module";
+    };
+
+    active = lib.mkOption {
+      type = lib.types.str;
+      default = "Catppuccin Mocha";
+      description = "Active theme name";
+    };
+
+    themes = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [
+        "Catppuccin Mocha"
+        "Catppuccin Latte"
+      ];
+      description = "Available theme names";
+    };
+  };
+</code></pre>
+<p>Notice that <code>active</code> has type <code>str</code>, which means it accepts a string.
+So you’d configure it like this:</p>
+<pre><code class="language-nix">hydenix.hm.theme.active = "Catppuccin Mocha";
+</code></pre>
+<p>You can find the full list of option types in the <a href="https://nlewo.github.io/nixos-manual-sphinx/development/option-types.xml.html">nixos manual</a>.</p>
+<h2 id="required-options"><a class="header" href="#required-options">Required options</a></h2>
+<p>These are the required options for hydenix.
+You <em>must</em> set these options or else hydenix will not load.</p>
+<pre><code class="language-nix">{
+  hydenix = {
+    enable = true; # Enable Hydenix modules globally - required, default false
+    hm.enable = true; # Enable Hydenix home-manager modules globally - required, default false
+  };
+}
+</code></pre>
+<h2 id="default-options"><a class="header" href="#default-options">Default options</a></h2>
+<p>Below are the default options for hydenix. they are in <em>object format</em> and any options you may follow the steps above to see any of the options implementation and documentation.</p>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p><code>hydenix.hm</code> options must be used within a home-manager module, eg <code>./modules/hm/default.nix</code>.</p>
+</blockquote>
+<pre><code class="language-nix">hydenix = {
+  enable = false; # Enable Hydenix modules globally
+  audio.enable = config.hydenix.enable; # Enable audio module
+  boot = {
+    enable = config.hydenix.enable; # Enable boot module
+    grubExtraConfig = ""; # Additional configuration for GRUB
+    grubTheme = "Retroboot"; # GRUB theme to use, use either `Retroboot` or `Pochita`
+    kernelPackages = pkgs.linuxPackages_zen; # Kernel packages to use
+    useSystemdBoot = true; # Whether to use systemd-boot (true) or GRUB (false)
+  };
+  gaming.enable = config.hydenix.enable; # Enable gaming module
+  hardware.enable = config.hydenix.enable; # Enable hardware module
+  hostname = config.system.nixos.distroId; # The name of the machine.
+  locale = "en_US.UTF-8"; # The default locale.
+  network.enable = config.hydenix.enable; # Enable network module
+  nix.enable = true; # Enable nix module
+  sddm.enable = true; # Enable sddm module
+  system.enable = true; # Enable system module
+  timezone = null; # The time zone used when displaying times and dates.
+  hm = {
+    enable = false; # Enable Hydenix home-manager modules globally
+    comma.enable = config.hydenix.hm.enable; # Enable comma module
+    dolphin.enable = config.hydenix.hm.enable; # Enable dolphin module
+    editors = {
+      enable = config.hydenix.hm.enable; # Enable text editors module
+      default = "code"; # Default text editor
+      neovim = true; # Enable neovim
+      vim = true; # Enable vim
+      vscode = {
+        enable = true; # Enable vscode
+        wallbash = true; # Enable wallbash extension for vscode
+      };
+    };
+    fastfetch.enable = config.hydenix.hm.enable; # Enable fastfetch configuration
+    firefox.enable = config.hydenix.hm.enable; # Enable firefox module
+    gtk.enable = config.hydenix.hm.enable; # Enable gtk module
+    hyde.enable = config.hydenix.hm.enable; # Enable hyde module
+    hyprland = {
+      enable = config.hydenix.hm.enable; # Enable hyprland module
+      animations = {
+        enable = cfg.enable; # Enable animation configurations
+        extraConfig = ""; # Additional animation configuration
+        overrides = {}; # Override specific animation files by name
+        preset = "standard"; # Animation preset to use
+      };
+      extraConfig = ""; # Extra config appended to userprefs.conf
+      hypridle = {
+        enable = cfg.enable; # Enable hypridle configurations
+        extraConfig = ""; # Additional hypridle configuration
+        overrideConfig = null; # Complete hypridle configuration override
+      };
+      keybindings = {
+        enable = cfg.enable; # Enable keybindings configurations
+        extraConfig = ""; # Additional keybindings configuration
+        overrideConfig = null; # Complete keybindings configuration override
+      };
+      monitors = {
+        enable = cfg.enable; # Enable monitor configurations
+        overrideConfig = null; # Complete monitor configuration override
+      };
+      nvidia = {
+        extraConfig = ""; # Additional NVIDIA configuration
+        overrideConfig = null; # Complete NVIDIA configuration override
+      };
+      overrideMain = null; # Complete override of hyprland.conf
+      pyprland = {
+        enable = cfg.enable; # Enable pyprland configurations
+        extraConfig = ""; # Additional pyprland configuration
+        overrideConfig = null; # Complete pyprland configuration override
+      };
+      shaders = {
+        enable = cfg.enable; # Enable shader configurations
+        active = "disable"; # Active shader preset
+        overrides = {}; # Override or add custom shaders
+      };
+      suppressWarnings = false; # Suppress warnings about configuration overrides
+      windowrules = {
+        enable = cfg.enable; # Enable window rules configurations
+        extraConfig = ""; # Additional window rules configuration
+        overrideConfig = null; # Complete window rules configuration override
+      };
+      workflows = {
+        enable = cfg.enable; # Enable workflow configurations
+        active = "default"; # Active workflow preset
+        overrides = {}; # Override or add custom workflows
+      };
+    };
+    lockscreen = {
+      enable = config.hydenix.hm.enable; # Enable lockscreen module
+      hyprlock = true; # Enable hyprlock lockscreen
+      swaylock = false; # Enable swaylock lockscreen
+    };
+    notifications.enable = config.hydenix.hm.enable; # Enable notifications module
+    qt.enable = config.hydenix.hm.enable; # Enable qt module
+    rofi.enable = config.hydenix.hm.enable; # Enable rofi module
+    screenshots = {
+      enable = config.hydenix.hm.enable; # Enable screenshots module
+      grim.enable = true; # Enable grim screenshot tool
+      satty.enable = true; # Enable satty screenshot annotation tool
+      slurp.enable = true; # Enable slurp region selection tool
+      swappy.enable = false; # Enable swappy screenshot editor
+    };
+    shell = {
+      enable = config.hydenix.hm.enable; # Enable shell module
+      bash.enable = false; # Enable bash shell
+      fastfetch.enable = true; # Enable fastfetch on shell startup
+      fish.enable = false; # Enable fish shell
+      p10k.enable = false; # Enable p10k shell
+      pokego.enable = false; # Enable Pokemon ASCII art scripts on shell startup
+      starship.enable = true; # Enable starship shell
+      zsh = {
+        enable = true; # Enable zsh shell
+        configText = ""; # Zsh config multiline text, use this to extend zsh settings in .zshrc
+        plugins = [ "sudo" ]; # Zsh plugins to enable
+      };
+    };
+    social = {
+      enable = config.hydenix.hm.enable; # Enable social module
+      discord.enable = true; # Enable discord module
+      vesktop.enable = true; # Enable vesktop module
+    };
+    spotify.enable = config.hydenix.hm.enable; # Enable spotify module
+    swww.enable = config.hydenix.hm.enable; # Enable swww wallpaper daemon
+    terminals = {
+      enable = config.hydenix.hm.enable; # Enable terminals module
+      kitty = {
+        enable = true; # Enable kitty terminal
+        configText = ""; # Kitty config multiline text, use this to extend kitty settings
+      };
+    };
+    theme = {
+      enable = config.hydenix.hm.enable; # Enable theme module
+      active = "Catppuccin Mocha"; # Active theme name
+      themes = [ "Catppuccin Mocha" "Catppuccin Latte" ]; # Available theme names
+    };
+    uwsm.enable = config.hydenix.hm.enable; # Enable uwsm module
+    waybar = {
+      enable = config.hydenix.hm.enable; # Enable bar module
+      userStyle = ""; # Custom CSS styles for waybar user-style.css
+      waybar.enable = true; # Enable waybar
+    };
+    wlogout.enable = config.hydenix.hm.enable; # Enable logout module
+    xdg.enable = config.hydenix.hm.enable; # Enable XDG base directory specification
+  };
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="faq"><a class="header" href="#faq">FAQ</a></h1>
+<h2 id="general-faq"><a class="header" href="#general-faq">General FAQ</a></h2>
+<ul>
+<li><a href="#faq">FAQ</a>
+<ul>
+<li><a href="#general-faq">General FAQ</a>
+<ul>
+<li><a href="#why-should-i-use-nixos">Why should I use nixos?</a></li>
+<li><a href="#how-do-i-learn-more-about-nix">How do I learn more about nix?</a></li>
+</ul>
+</li>
+<li><a href="#hydenix-faq">hydenix FAQ</a>
+<ul>
+<li><a href="#how-do-i-upgrade-hydenix">How do I upgrade hydenix?</a></li>
+<li><a href="#how-do-i-fix-nix-error--system-error--bug--etc">How do I fix (nix error / system error / bug / etc)?</a></li>
+<li><a href="#common-errors">Common errors</a>
+<ul>
+<li><a href="#existing-file--is-in-the-way-of-"><code>Existing file '...' is in the way of '...'</code></a></li>
+</ul>
+</li>
+<li><a href="#what-are-the-module-options">What are the module options?</a></li>
+<li><a href="#what-if-i-want-to-customize-hydenix">What if I want to customize hydenix?</a></li>
+<li><a href="#what-are-some-example-configurations">What are some example configurations?</a></li>
+<li><a href="#how-do-i-persist-changes-on-rebootrebuildetc">How do I persist changes on reboot/rebuild/etc?</a></li>
+<li><a href="#how-do-i-add-a-new-theme">How do I add a new theme?</a></li>
+<li><a href="#what-is-mutablenix">What is mutable.nix?</a></li>
+<li><a href="#why-do-themes-still-show-after-i-remove-them-from-hydenixhmthemethemes">Why do themes still show after I remove them from <code>hydenix.hm.theme.themes</code>?</a></li>
+<li><a href="#requesting-features">Requesting features</a></li>
+</ul>
+</li>
+<li><a href="#other-faq">Other faq</a>
+<ul>
+<li><a href="#how-do-i-run-hyprland-in-a-vm">How do I run hyprland in a vm?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="why-should-i-use-nixos"><a class="header" href="#why-should-i-use-nixos">Why should I use nixos?</a></h3>
+<p>Nixos offers several key advantages:</p>
+<ol>
+<li><strong>Reproducible setups</strong>: roll back to working states instantly if something breaks.</li>
+<li><strong>Configuration as code</strong>: version control your entire OS setup.</li>
+<li><strong>No dependency hell</strong>: packages are isolated, allowing multiple versions side by side.</li>
+<li><strong>Declarative approach</strong>: describe the desired end state rather than steps to achieve it.</li>
+<li><strong>Risk-free experimentation</strong>: test configurations without permanent consequences.</li>
+<li><strong>Developer-friendly</strong>: create isolated environments with precise dependencies.</li>
+</ol>
+<p>There’s a learning curve, but the benefits are worth it.</p>
+<h3 id="how-do-i-learn-more-about-nix"><a class="header" href="#how-do-i-learn-more-about-nix">How do I learn more about nix?</a></h3>
+<blockquote class="blockquote-tag blockquote-tag-tip">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p>Nix is a powerful package manager and configuration system that can be overwhelming at first. here are some resources to help you get started:</p>
+</blockquote>
+<p>General resources</p>
+<ul>
+<li><a href="https://search.nixos.org/packages">Nix packages</a></li>
+<li><a href="https://search.nixos.org/options">Nix options</a></li>
+<li><a href="https://home-manager-options.extranix.com/?query=&amp;release=master">Home manager options</a></li>
+<li><a href="https://nixos.wiki">Nixos wiki</a></li>
+<li><a href="https://discourse.nixos.org">Nixpkgs discussions</a></li>
+<li><a href="https://github.com/NixOS/nixpkgs/issues">Nixpkgs issues</a></li>
+</ul>
+<h2 id="hydenix-faq"><a class="header" href="#hydenix-faq">hydenix FAQ</a></h2>
+<h3 id="how-do-i-upgrade-hydenix"><a class="header" href="#how-do-i-upgrade-hydenix">How do I upgrade hydenix?</a></h3>
+<p>Please see the <a href="#upgrading">upgrading</a> guide for more information on how to update/upgrade your system.</p>
+<h3 id="how-do-i-fix-nix-error--system-error--bug--etc"><a class="header" href="#how-do-i-fix-nix-error--system-error--bug--etc">How do I fix (nix error / system error / bug / etc)?</a></h3>
+<p>Please see the <a href="#troubleshooting">troubleshooting</a> guide for more information on how to diagnose and fix issues.
+Or create an issue in the <a href="https://github.com/florianvazelle/hydenix/issues">hydenix GitHub repository</a>.</p>
+<h3 id="common-errors"><a class="header" href="#common-errors">Common errors</a></h3>
+<h4 id="existing-file--is-in-the-way-of-"><a class="header" href="#existing-file--is-in-the-way-of-"><code>Existing file '...' is in the way of '...'</code></a></h4>
+<p>This error occurs when home-manager tries to manage a file that already exists and wasn’t created by home-manager.</p>
+<p>Example:</p>
+<pre><code class="language-bash">Existing file '/home/user/.config/kitty/kitty.conf' is in the way of '/nix/store/...-home-manager-files/.config/kitty/kitty.conf'
+</code></pre>
+<p><strong>Solution 1: remove existing files (recommended)</strong></p>
+<p>Remove the conflicting files and let home-manager recreate them:</p>
+<pre><code class="language-bash"># Remove the specific file
+rm ~/.config/kitty/kitty.conf
+
+# Or remove entire config directory if needed (careful not to delete important files)
+rm -rf ~/.config/kitty/
+</code></pre>
+<p><strong>Solution 2: backup existing files</strong></p>
+<p>If you want to preserve your existing configuration:</p>
+<pre><code class="language-bash"># Create backup
+mv ~/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf.backup
+
+# Then rebuild to let home-manager create the new file
+sudo nixos-rebuild switch
+</code></pre>
+<p><strong>Solution 3: force home-manager to backup automatically</strong></p>
+<p>Add this to your <code>configuration.nix</code> to automatically backup conflicting files:</p>
+<pre><code class="language-nix">{
+  home-manager.backupFileExtension = "backup";
+}
+</code></pre>
+<p>This will automatically rename existing files with a <code>.backup</code> extension when home-manager encounters conflicts, allowing the rebuild to proceed without manual intervention only once.</p>
+<blockquote class="blockquote-tag blockquote-tag-warning">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
+<p>If there is a conflict again, home-manager will error for you to manually resolve it. i don’t include this by default as automating backups may not be ideal for users and it does not really solve the issue with managing backups</p>
+</blockquote>
+<h3 id="what-are-the-module-options"><a class="header" href="#what-are-the-module-options">What are the module options?</a></h3>
+<p>Visit <a href="#module-options">options.md</a> for more information on the module options.</p>
+<h3 id="what-if-i-want-to-customize-hydenix"><a class="header" href="#what-if-i-want-to-customize-hydenix">What if I want to customize hydenix?</a></h3>
+<p>hydenix is designed to be customizable outside of the module options. write your own modules, import your own flakes, packages, etc.</p>
+<p>If you need to disable any of the modules above in <a href="#what-are-the-module-options">module options</a>, simply disable the module and write your own configuration. ideally referencing the module in the source code.</p>
+<p>Note however, it’s very easy to overwrite hydenix defaults this way and may lead to bugs. feel free to ask questions in our <a href="https://discord.gg/AYbJ9MJez7">discord</a> if you need help.</p>
+<h3 id="what-are-some-example-configurations"><a class="header" href="#what-are-some-example-configurations">What are some example configurations?</a></h3>
+<p>See <a href="#community">community configs</a> for examples.</p>
+<h3 id="how-do-i-persist-changes-on-rebootrebuildetc"><a class="header" href="#how-do-i-persist-changes-on-rebootrebuildetc">How do I persist changes on reboot/rebuild/etc?</a></h3>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p>Do not edit any mutable files at runtime as they may be overwritten on rebuild <br>
+all edits must be done in your flake via nixos &amp; home-manager options</p>
+</blockquote>
+<p>Some state files in hydenix are mutable by design. this allows certain theme changes during runtime.</p>
+<p>Example:</p>
+<p>Lets say you have the default theme set to <code>Catppuccin Mocha</code> in <code>hydenix.hm.theme.active</code>.</p>
+<p>You change a theme during runtime using <code>Meta + Shift + T</code> to <code>Catppuccin Latte</code>.
+Your config is unchanged so when you reboot/relog/rebuild, the theme will revert to <code>Catppuccin Mocha</code>.</p>
+<pre><code class="language-nix">{
+  hydenix.hm.theme.active = "Catppuccin Mocha";
+}
+</code></pre>
+<p>Simply change the theme in your config to match your desired theme and rebuild.</p>
+<pre><code class="language-nix">{
+  hydenix.hm.theme.active = "Catppuccin Latte";
+}
+</code></pre>
+<p>But what about file you want to stop from reverting? waybar position or kitty config?
+home-managers <code>home.file</code> allows you to do this</p>
+<pre><code class="language-nix"># any file in `./modules/hm/`
+{
+  home.file = {
+    # copy kitty config to your template flake
+    # cp ~/.config/kitty/kitty.conf ~/path/to/flake/kitty.conf
+    ".config/kitty/kitty.conf" = {
+      source = ./kitty.conf; # path to your kitty config in your template flake
+    };
+    # copy waybar position state to your template flake
+    # cp ~/.config/waybar/config.ctl ~/path/to/flake/config.ctl
+    ".config/waybar/config.ctl" = {
+      source = ./config.ctl; # path to your waybar config in your template flake
+    };
+  };
+}
+</code></pre>
+<p>See <a href="https://home-manager-options.extranix.com/?query=home.file&amp;release=master">home.file options</a> for more information</p>
+<h3 id="how-do-i-add-a-new-theme"><a class="header" href="#how-do-i-add-a-new-theme">How do I add a new theme?</a></h3>
+<!-- TODO: docs: Add a guide on how to add a new theme -->
+<h3 id="what-is-mutablenix"><a class="header" href="#what-is-mutablenix">What is mutable.nix?</a></h3>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p>Do not edit any mutable files at runtime as they may be overwritten on rebuild <br>
+all edits must be done in your flake via nixos &amp; home-manager options</p>
+</blockquote>
+<p><code>mutable.nix</code> is a custom module that allows certain files to be copied instead of symlinked during system builds, making them writable at runtime. key points:</p>
+<ul>
+<li>Extends <code>home.file</code>, <code>xdg.configFile</code>, and <code>xdg.dataFile</code> with a <code>mutable</code> option</li>
+<li>Files marked as <code>mutable = true</code> (and <code>force = true</code>) will be writable</li>
+<li>Changes persist across rebuilds</li>
+<li>Useful for programs that need runtime configuration changes</li>
+</ul>
+<p>Example usage in scripts:</p>
+<pre><code class="language-nix">home.activation = {
+    example = lib.hm.dag.entryAfter [ "mutableGeneration" ] ''
+        $DRY_RUN_CMD echo "example"
+    '';
+}
+</code></pre>
+<p>Credit: <a href="https://gist.github.com/piousdeer/b29c272eaeba398b864da6abf6cb5daa">@piousdeer</a></p>
+<h3 id="why-do-themes-still-show-after-i-remove-them-from-hydenixhmthemethemes"><a class="header" href="#why-do-themes-still-show-after-i-remove-them-from-hydenixhmthemethemes">Why do themes still show after I remove them from <code>hydenix.hm.theme.themes</code>?</a></h3>
+<p>Themes are saved in <code>~/.config/hydenix/themes</code> so they will still show after you remove them from <code>hydenix.hm.theme.themes</code>.
+To clear the saved themes, run <code>rm -rf ~/.config/hydenix/themes/THEME_NAME</code> for each theme you want to remove.</p>
+<h3 id="requesting-features"><a class="header" href="#requesting-features">Requesting features</a></h3>
+<p>Please open a <a href="https://github.com/florianvazelle/hydenix/issues/new?template=feature_request.md">feature request</a> if you have any feature requests.</p>
+<h2 id="other-faq"><a class="header" href="#other-faq">Other faq</a></h2>
+<h3 id="how-do-i-run-hyprland-in-a-vm"><a class="header" href="#how-do-i-run-hyprland-in-a-vm">How do I run hyprland in a vm?</a></h3>
+<p>Hyprland vm is not well supported. check out <a href="https://wiki.hyprland.org/Getting-Started/Installation/#running-in-a-vm">hyprland - running in a vm</a></p>
+<p>Best bet is to have virtio, opengl, and VT-x support</p>
+<p>Non-nixos hosts should run with <a href="https://github.com/nix-community/nixGL">nixGL</a> eg <code>nixGL nix run .</code></p>
+<details>
+<summary>Hardware requirements</summary>
+CPU
+<ul>
+<li>Intel CPU with VT-x or AMD CPU with AMD-V</li>
+<li>Virtualization enabled in BIOS/UEFI</li>
+</ul>
+<p>GPU</p>
+<ul>
+<li>NVIDIA: GTX 600+ series (proprietary drivers)</li>
+<li>AMD: HD 7000+ series</li>
+<li>Intel: HD 4000+ (Ivy Bridge)</li>
+<li>OpenGL 3.3+ support required</li>
+</ul>
+</details>
+<br>
+<details>
+<summary>1. Install drivers</summary>
+<pre><code class="language-bash"># Nvidia
+sudo apt install nvidia-driver nvidia-utils     # Debian/Ubuntu
+sudo pacman -S nvidia nvidia-utils              # Arch
+# NixOS configuration
+{
+  hardware.graphics.enable = true;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  hardware.nvidia.modesetting.enable = true;
+}
+
+# AMD
+sudo apt install mesa-utils vulkan-tools        # Debian/Ubuntu
+sudo pacman -S mesa lib32-mesa vulkan-radeon    # Arch
+# NixOS configuration
+{
+  hardware.graphics.enable = true;
+  hardware.graphics.extraPackages = with pkgs; [ amdvlk ];
+}
+
+# Intel
+sudo apt install mesa-utils intel-media-va-driver  # Debian/Ubuntu
+sudo pacman -S mesa lib32-mesa intel-media-driver  # Arch
+# NixOS configuration
+{
+  hardware.graphics.enable = true;
+  hardware.graphics.extraPackages = with pkgs; [ intel-media-driver ];
+}
+
+# KVM modprobe
+modprobe kvm
+modprobe kvm_intel # or kvm_amd
+# NixOS configuration
+{
+  boot.kernelModules = [ "kvm-intel" ]; # or "kvm-amd" for AMD processors
+  virtualisation.libvirtd.enable = true;
+}
+</code></pre>
+</details>
+<div style="margin-top: 10px;"></div>
+
+<details>
+<summary>2. Verify setup</summary>
+<pre><code class="language-bash"># Verify KVM support
+egrep -c '(vmx|svm)' /proc/cpuinfo    # Should return &gt; 0
+lsmod | grep kvm                       # Check KVM modules
+
+# Host: Check OpenGL
+glxinfo | grep "OpenGL"
+</code></pre>
+</details>
+<div style="margin-top: 10px;"></div>
+
+<details>
+<summary>3. Setup the vm</summary>
+<p>To set up the vm, follow the instructions in the <a href="https://wiki.hyprland.org/Getting-Started/Installation/#running-in-a-vm">hyprland - running in a vm</a> guide.</p>
+<p>Additionally, the following qemu options have been found to be successful:</p>
+<pre><code class="language-bash">-device virtio-vga-gl
+-display gtk,gl=on,grab-on-hover=on
+-usb -device usb-tablet
+-cpu host
+-enable-kvm
+-machine q35
+-device intel-iommu
+-device ich9-intel-hda
+-device hda-output
+-vga none
+</code></pre>
+</details>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="troubleshooting"><a class="header" href="#troubleshooting">Troubleshooting</a></h1>
+<h2 id="nix-errors"><a class="header" href="#nix-errors">Nix errors</a></h2>
+<p>Bix errors can be tricky to diagnose, but the below might assist in diagnosing the issue.</p>
+<blockquote class="blockquote-tag blockquote-tag-tip">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p>Rerun the command with <code>-v</code> to get more verbose output.
+You can also rerun the command with <code>--show-trace</code> to get a more detailed traceback.
+If the nix error is not clear, often the correct error message is somewhere in the <em>middle</em> of the error message.</p>
+</blockquote>
+<h2 id="system-errors"><a class="header" href="#system-errors">System errors</a></h2>
+<p>The following information is required when creating an issue, please provide as much as possible.
+It’s also possible to diagnose issues yourself with the information below.</p>
+<ol>
+<li>
+<p><strong>System logs</strong></p>
+<pre><code class="language-bash">journalctl -b                                          # System logs
+sudo systemctl status home-manager-$HOSTNAME.service   # Home-manager status
+</code></pre>
+</li>
+<li>
+<p><strong>System information</strong></p>
+<pre><code class="language-bash">nix-shell -p nix-info --run "nix-info -m"
+</code></pre>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="contributing"><a class="header" href="#contributing">Contributing</a></h1>
+<p>This project uses <a href="https://direnv.net/">direnv</a> for pre-commit hooks. please install it first:</p>
+<ul>
+<li><strong>nix</strong>: <code>nix-env -iA nixpkgs.direnv</code></li>
+<li><strong>macos</strong>: <code>brew install direnv</code></li>
+<li><strong>ubuntu/debian</strong>: <code>apt-get install direnv</code></li>
+</ul>
+<p>Then run <code>direnv allow</code> to enable the hooks</p>
+<p>More documentation on the codebase can be found at <a href="template/README.html">template README</a></p>
+<p>This project enforces <a href="https://www.conventionalcommits.org/">conventional commits</a> format for all commit messages. each commit message must follow this structure:</p>
+<pre><code class="language-bash">type(optional-scope): subject
+
+[optional body]
+
+[optional footer(s)]
+</code></pre>
+<p>Where:</p>
+<ul>
+<li>
+<p><strong>type</strong> must be one of:</p>
+<ul>
+<li><code>feat</code>: A new feature</li>
+<li><code>fix</code>: A bug fix</li>
+<li><code>docs</code>: Documentation changes</li>
+<li><code>style</code>: Code style changes (formatting, etc)</li>
+<li><code>refactor</code>: Code changes that neither fix bugs nor add features</li>
+<li><code>perf</code>: Performance improvements</li>
+<li><code>test</code>: Adding or modifying tests</li>
+<li><code>chore</code>: Maintenance tasks</li>
+</ul>
+</li>
+<li>
+<p><strong>scope</strong> is optional but if used:</p>
+<ul>
+<li>must be lowercase</li>
+<li>should be descriptive of the area of change</li>
+<li>examples: vm, themes, home, cli, docs, etc.</li>
+</ul>
+</li>
+<li>
+<p><strong>subject</strong> must:</p>
+<ul>
+<li>not end with a period</li>
+<li>be descriptive</li>
+</ul>
+</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li><code>feat(vm): add support for fedora vm configuration</code></li>
+<li><code>fix: correct wallpaper path in material theme</code></li>
+<li><code>docs: update installation instructions</code></li>
+<li><code>chore: update dependencies</code></li>
+</ul>
+<h2 id="pull-requests"><a class="header" href="#pull-requests">Pull requests</a></h2>
+<ol>
+<li>Fork the repository</li>
+<li>Create your feature branch (<code>git checkout -b feature/amazing-feature</code>)</li>
+<li>Commit your changes using conventional commits</li>
+<li>Push to the branch (<code>git push origin feature/amazing-feature</code>)</li>
+<li>Open a pull request</li>
+</ol>
+<h2 id="changelog"><a class="header" href="#changelog">Changelog</a></h2>
+<p>The changelog is automatically generated from commit messages. clear, well-formatted commit messages ensure your changes are properly documented.</p>
+<p>For more details, see the <a href="https://www.conventionalcommits.org/">conventional commits specification</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="community"><a class="header" href="#community">Community</a></h1>
+<p>Here are a list of community configs using hydenix.</p>
+<ul>
+<li><a href="https://github.com/richen604/richendots">richen604/richendots</a></li>
+<li><a href="https://github.com/Razkaroth/solitude">Razkaroth/solitude</a></li>
+</ul>
+<p>If you have a config you’d like to share, please open a PR to add it to the list.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>
