@@ -1,6 +1,22 @@
 {
+  home.username = "hydenix";
+  home.homeDirectory = "/home/hydenix";
+
   hydenix.hm = {
     enable = true;
+
+    shell = {
+      bash.enable = true;
+      fish.enable = true;
+      p10k.enable = true;
+      pokego.enable = true;
+    };
+
+    lockscreen = {
+      hyprlock = true;
+      swaylock = true;
+    };
+
     theme = {
       enable = true;
       active = "BlueSky";
@@ -56,7 +72,6 @@
         "Red Stone"
         "Rosé Pine"
         "Scarlet Night"
-        "Sci-fi"
         "Solarized Dark"
         "Synth Wave"
         "Timeless Dream"

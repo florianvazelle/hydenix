@@ -70,13 +70,29 @@
       ];
     };
 
+    # for `home-manager switch --flake .#<name>`
+    homeConfigurations.default = inputs.home-manager.lib.homeManagerConfiguration {
+      pkgs = import inputs.nixpkgs {
+        inherit system;
+        config.allowUnfree = true; # for home
+        overlays = [inputs.self.overlays.default];
+      };
+      modules = [
+        inputs.nix-index-database.homeModules.nix-index
+        inputs.self.homeModules.default
+        ./demo/home.nix
+      ];
+    };
+
     # for `nix run .#<name>`
     packages.${system} = {
       # Use the VM configuration as default
       default = inputs.self.nixosConfigurations.default.config.system.build.vm;
 
-      # Helper tool to manage HyDE updates by comparing the pinned package with upstream master
-      hyde-diff = pkgs.callPackage ./pkgs/hyde-diff {};
+      # Helper tools to manage HyDE updates by comparing the pinned package with upstream master
+      hyde-diff-upstream = pkgs.callPackage ./pkgs/hyde-diff-upstream {};
+      # Helper tool to manage HyDE updates by comparing the pinned package with a built home configuration
+      hyde-diff-home = pkgs.callPackage ./pkgs/hyde-diff-home {};
 
       # Add hyprquery, hydectl, hyde-ipc, and hyde-config for building
       inherit (pkgs) hyprquery hydectl hyde-config hyde-ipc hyde hyde-gallery;

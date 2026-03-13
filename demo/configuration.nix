@@ -19,7 +19,7 @@
   };
 
   # Define the hydenix user account
-  users.users.hydenix = {
+  users.users."hydenix" = {
     isNormalUser = true; # Create a normal user account
     initialPassword = "hydenix"; # Set initial password (change after first login)
     extraGroups = [

@@ -39,6 +39,11 @@ in {
           source = "${pkgs.hyde}/Configs/.config/hypr/hyprlock.conf";
           force = true;
         };
+        ".config/hypr/hyprlock/IMB Xtented.conf" = {
+          source = "${pkgs.hyde}/Configs/.config/hypr/hyprlock/IMB Xtented.conf";
+          mutable = true;
+          force = true;
+        };
         ".config/hypr/hyprlock/theme.conf" = {
           source = "${pkgs.hyde}/Configs/.config/hypr/hyprlock/theme.conf";
           mutable = true;

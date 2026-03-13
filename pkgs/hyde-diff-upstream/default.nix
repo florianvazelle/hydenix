@@ -13,7 +13,7 @@
   });
 in
   pkgs.writeShellApplication {
-    name = "hyde-diff";
+    name = "hyde-diff-upstream";
     runtimeInputs = with pkgs; [
       coreutils
       diffutils

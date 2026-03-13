@@ -242,6 +242,10 @@ in {
         force = true;
         mutable = true;
       };
+      ".config/waybar/theme.css" = {
+        source = "${pkgs.hyde}/Configs/.config/waybar/theme.css";
+        force = true;
+      };
     };
   };
 }
