@@ -1,8 +1,6 @@
-# Summary
-
 [Introduction](README.md)
 
-## User guide
+# User guide
 
 - [Installation](./installation.md)
 - [Upgrading](./upgrading.md)
