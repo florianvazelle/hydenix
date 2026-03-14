@@ -6,7 +6,7 @@ This is now your personal NixOS configuration.\
 Add packages, customize themes, or even disable hydenix and setup your own wm/de.\
 Enjoy the full power of Nix!
 
-Visit the [docs/installation.md](https://florianvazelle.github.io/hydenix/installation.md) to get started.
+Visit the [Installation](https://florianvazelle.github.io/hydenix/installation.html) to get started.
 
 ## File structure
 
@@ -22,13 +22,13 @@ Visit the [docs/installation.md](https://florianvazelle.github.io/hydenix/instal
 
 | file                                                                                     | purpose                                   |
 | ---------------------------------------------------------------------------------------- | ----------------------------------------- |
-| [`docs/installation.md`](https://florianvazelle.github.io/hydenix/installation.md)       | installation guide and setup instructions |
-| [`docs/options.md`](https://florianvazelle.github.io/hydenix/options.md)                 | available module configuration options    |
-| [`docs/faq.md`](https://florianvazelle.github.io/hydenix/faq.md)                         | frequently asked questions and solutions  |
-| [`docs/troubleshooting.md`](https://florianvazelle.github.io/hydenix/troubleshooting.md) | common issues and fixes                   |
-| [`docs/upgrading.md`](https://florianvazelle.github.io/hydenix/upgrading.md)             | how to upgrade your configuration         |
-| [`docs/contributing.md`](https://florianvazelle.github.io/hydenix/contributing.md)       | guidelines for contributing               |
-| [`docs/community.md`](https://florianvazelle.github.io/hydenix/community.md)             | community configurations and examples     |
+| [`Installation`](https://florianvazelle.github.io/hydenix/installation.html)       | Installation guide and setup instructions |
+| [`Options`](https://florianvazelle.github.io/hydenix/options.html)                 | Available module configuration options    |
+| [`FAQ`](https://florianvazelle.github.io/hydenix/faq.html)                         | Frequently asked questions and solutions  |
+| [`Troubleshooting`](https://florianvazelle.github.io/hydenix/troubleshooting.html) | Common issues and fixes                   |
+| [`Upgrading`](https://florianvazelle.github.io/hydenix/upgrading.html)             | How to upgrade your configuration         |
+| [`Contributing`](https://florianvazelle.github.io/hydenix/contributing.html)       | Guidelines for contributing               |
+| [`Community`](https://florianvazelle.github.io/hydenix/community.html)             | Community configurations and examples     |
 
 ### Write your own modules
 
@@ -54,9 +54,9 @@ hydenix/
 
 ## Next steps
 
-- To learn more about nix, see [nix resources](https://florianvazelle.github.io/hydenix/faq.md#how-do-i-learn-more-about-nix)
-- See [module options](https://florianvazelle.github.io/hydenix/options.md) for configuration
-- Check the [faq](https://florianvazelle.github.io/hydenix/faq.md) and [troubleshooting](https://florianvazelle.github.io/hydenix/troubleshooting.md) guides
+- To learn more about nix, see [nix resources](https://florianvazelle.github.io/hydenix/faq.html#how-do-i-learn-more-about-nix)
+- See [module options](https://florianvazelle.github.io/hydenix/options.html) for configuration
+- Check the [faq](https://florianvazelle.github.io/hydenix/faq.html) and [troubleshooting](https://florianvazelle.github.io/hydenix/troubleshooting.html) guides
 
 ## Getting help
 

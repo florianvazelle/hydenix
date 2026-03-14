@@ -4,6 +4,7 @@
 # hydenix
 
 [![NixOS Unstable](https://img.shields.io/badge/NixOS-unstable-ebbcba.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
+[![Github Pages](https://img.shields.io/github/actions/workflow/status/florianvazelle/hydenix/pages.yml?style=flat-square&color=c79bf0&label=docs&logo=mdbook&logoColor=white)](https://github.com/florianvazelle/hydenix/actions/workflows/flake-check.yml)
 [![Last Commit](https://img.shields.io/github/last-commit/florianvazelle/hydenix/main?style=flat-square&color=ebbcba)](https://github.com/florianvazelle/hydenix/commits/main)
 [![Nix Flake Check](https://img.shields.io/github/actions/workflow/status/florianvazelle/hydenix/flake-check.yml?style=flat-square&color=c79bf0&label=flake%20check)](https://github.com/florianvazelle/hydenix/actions/workflows/flake-check.yml)
 
@@ -24,7 +25,7 @@ the Nix module system and reproducible configuration management.
 
 > [!IMPORTANT]
 > Some familiarity with **functional programming concepts** is recommended.  
-> If you are new to Nix, check the [Nix resources](./docs/src/faq.md#how-do-i-learn-more-about-nix) or ask questions in **Discussions** or **Discord**.
+> If you are new to Nix, check the [Nix resources](https://florianvazelle.github.io/hydenix/faq.html#how-do-i-learn-more-about-nix) or ask questions in **Discussions** or **Discord**.
 
 ## 🚀 Getting Started
 
@@ -43,20 +44,20 @@ This creates a pre-configured flake with hydenix already integrated, allowing yo
 
 ## 📚 Documentation
 
-- [Installation](./docs/src/installation.md)
-- [Upgrading](./docs/src/upgrading.md)
-- [Module Options](./docs/src/options.md)
-- [FAQ](./docs/src/faq.md)
-- [Troubleshooting & Issues](./docs/src/troubleshooting.md)
-- [Contributing](./docs/src/contributing.md)
-- [Community Configurations](./docs/src/community.md)
+- [Installation](https://florianvazelle.github.io/hydenix/installation.html)
+- [Upgrading](https://florianvazelle.github.io/hydenix/upgrading.html)
+- [Module Options](https://florianvazelle.github.io/hydenix/options.html)
+- [FAQ](https://florianvazelle.github.io/hydenix/faq.html)
+- [Troubleshooting & Issues](https://florianvazelle.github.io/hydenix/troubleshooting.html)
+- [Contributing](https://florianvazelle.github.io/hydenix/contributing.html)
+- [Community Configurations](https://florianvazelle.github.io/hydenix/community.html)
 <!-- - [Roadmap / Upcoming Features](./TODO.md) -->
 
 ## 🖥️ hydenix VM
 
 If your system supports virtualization, you can try **hydenix in a NixOS VM** without installing it on your machine.
 
-If you encounter issues running Hyprland inside the VM, see the [VirtIO guide](./docs/src/faq.md#how-do-i-run-hyprland-in-a-vm).
+If you encounter issues running Hyprland inside the VM, see the [VirtIO guide](https://florianvazelle.github.io/hydenix/faq.html#how-do-i-run-hyprland-in-a-vm).
 
 ```bash
 # run the flake remotely
