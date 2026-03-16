@@ -1,5 +1,4 @@
 {
-  osConfig,
   config,
   lib,
   ...
@@ -26,6 +25,53 @@ in {
       type = lib.types.bool;
       default = false;
       description = "Suppress warnings about configuration overrides";
+    };
+
+    systemd = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = cfg.enable;
+        description = ''
+          Whether to enable {file}`hyprland-session.target` on
+          hyprland startup. This links to `graphical-session.target`.
+          Some important environment variables will be imported to systemd
+          and D-Bus user environment before reaching the target, including
+          - `DISPLAY`
+          - `HYPRLAND_INSTANCE_SIGNATURE`
+          - `WAYLAND_DISPLAY`
+          - `XDG_CURRENT_DESKTOP`
+          - `XDG_SESSION_TYPE`
+        '';
+      };
+
+      variables = lib.mkOption {
+        type = with lib.types; listOf str;
+        default = [
+          "DISPLAY"
+          "HYPRLAND_INSTANCE_SIGNATURE"
+          "WAYLAND_DISPLAY"
+          "XDG_CURRENT_DESKTOP"
+          "XDG_SESSION_TYPE"
+        ];
+        example = ["--all"];
+        description = ''
+          Environment variables to be imported in the systemd & D-Bus user
+          environment.
+        '';
+      };
+
+      extraCommands = lib.mkOption {
+        type = with lib.types; listOf str;
+        default = [
+          "systemctl --user stop hyprland-session.target"
+          "systemctl --user start hyprland-session.target"
+        ];
+        description = "Extra commands to be run after D-Bus activation.";
+      };
+
+      enableXdgAutostart = lib.mkEnableOption ''
+        autostart of applications using
+        {manpage}`systemd-xdg-autostart-generator(8)`'';
     };
 
     # Animation configurations
@@ -118,115 +164,6 @@ in {
             ''';
           }
         '';
-      };
-    };
-
-    # Hypridle configurations
-    hypridle = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = cfg.enable;
-        description = "Enable hypridle configurations";
-      };
-      extraConfig = lib.mkOption {
-        type = lib.types.lines;
-        default = "";
-        description = "Additional hypridle configuration";
-      };
-      overrideConfig = lib.mkOption {
-        type = lib.types.nullOr lib.types.lines;
-        default = null;
-        description = "Complete hypridle configuration override";
-      };
-    };
-
-    # Keybindings configurations
-    keybindings = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = cfg.enable;
-        description = "Enable keybindings configurations";
-      };
-      extraConfig = lib.mkOption {
-        type = lib.types.lines;
-        default = "";
-        description = "Additional keybindings configuration";
-      };
-      overrideConfig = lib.mkOption {
-        type = lib.types.nullOr lib.types.lines;
-        default = null;
-        description = "Complete keybindings configuration override";
-      };
-    };
-
-    # Window rules configurations
-    windowrules = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = cfg.enable;
-        description = "Enable window rules configurations";
-      };
-      extraConfig = lib.mkOption {
-        type = lib.types.lines;
-        default = "";
-        description = "Additional window rules configuration";
-      };
-      overrideConfig = lib.mkOption {
-        type = lib.types.nullOr lib.types.lines;
-        default = null;
-        description = "Complete window rules configuration override";
-      };
-    };
-
-    # NVIDIA configurations
-    nvidia = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = osConfig.hardware.nvidia.enabled or false;
-        description = "NVIDIA configurations";
-      };
-      extraConfig = lib.mkOption {
-        type = lib.types.lines;
-        default = "";
-        description = "Additional NVIDIA configuration";
-      };
-      overrideConfig = lib.mkOption {
-        type = lib.types.nullOr lib.types.lines;
-        default = null;
-        description = "Complete NVIDIA configuration override";
-      };
-    };
-
-    # Pyprland configurations
-    pyprland = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = cfg.enable;
-        description = "Enable pyprland configurations";
-      };
-      extraConfig = lib.mkOption {
-        type = lib.types.lines;
-        default = "";
-        description = "Additional pyprland configuration";
-      };
-      overrideConfig = lib.mkOption {
-        type = lib.types.nullOr lib.types.lines;
-        default = null;
-        description = "Complete pyprland configuration override";
-      };
-    };
-
-    # Monitor configurations
-    monitors = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = cfg.enable;
-        description = "Enable monitor configurations";
-      };
-      overrideConfig = lib.mkOption {
-        type = lib.types.nullOr lib.types.lines;
-        default = null;
-        description = "Complete monitor configuration override";
       };
     };
   };
