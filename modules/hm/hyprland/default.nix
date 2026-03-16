@@ -5,18 +5,25 @@
   ...
 }: let
   cfg = config.hydenix.hm.hyprland;
+  mkHyprConfig = import ./utils/mkHyprConfig.nix {inherit lib pkgs config;};
+
+  variables = builtins.concatStringsSep " " cfg.systemd.variables;
+  extraCommands = builtins.concatStringsSep " " (map (f: "&& ${f}") cfg.systemd.extraCommands);
+  systemdActivation = ''
+    exec-once = ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd ${variables} ${extraCommands}
+  '';
 in {
   imports = [
     ./animations.nix
     ./assertions.nix
-    ./hypridle.nix
-    ./keybindings.nix
-    ./monitors.nix
-    ./nvidia.nix
     ./options.nix
     ./shaders.nix
-    ./windowrules.nix
     ./workflows.nix
+    (mkHyprConfig "hypridle")
+    (mkHyprConfig "keybindings")
+    (mkHyprConfig "monitors")
+    (mkHyprConfig "nvidia")
+    (mkHyprConfig "windowrules")
   ];
 
   config = lib.mkIf cfg.enable {
@@ -42,7 +49,6 @@ in {
       chmod 644 "$HOME/.config/hypr/themes/colors.conf"
       chmod 644 "$HOME/.config/hypr/themes/theme.conf"
       chmod 644 "$HOME/.config/hypr/themes/wallbash.conf"
-
     '';
 
     home.file = {
@@ -51,6 +57,7 @@ in {
         recursive = true;
         force = true;
       };
+
       ".config/hypr/hyprland.conf" =
         if cfg.overrideMain != null
         then {
@@ -58,13 +65,31 @@ in {
           force = true;
         }
         else {
-          source = "${pkgs.hyde}/Configs/.config/hypr/hyprland.conf";
+          text = ''
+            ${lib.readFile "${pkgs.hyde}/Configs/.config/hypr/hyprland.conf"}
+            ${systemdActivation}
+          '';
           force = true;
         };
 
       ".config/hypr/userprefs.conf" = {
         text = cfg.extraConfig;
         force = true;
+      };
+    };
+
+    systemd.user.targets.hyprland-session = lib.mkIf cfg.systemd.enable {
+      Unit = {
+        Description = "Hyprland compositor session";
+        Documentation = ["man:systemd.special(7)"];
+        BindsTo = ["graphical-session.target"];
+        Wants =
+          [
+            "graphical-session-pre.target"
+          ]
+          ++ lib.optional cfg.systemd.enableXdgAutostart "xdg-desktop-autostart.target";
+        After = ["graphical-session-pre.target"];
+        Before = lib.mkIf cfg.systemd.enableXdgAutostart ["xdg-desktop-autostart.target"];
       };
     };
   };
