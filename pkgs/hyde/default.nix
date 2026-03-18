@@ -103,7 +103,7 @@ pkgs.stdenv.mkDerivation {
     description = "HyDE, your Development Environment";
     homepage = "https://github.com/HyDE-Project/HyDE";
     license = lib.licenses.gpl3Only;
-    maintainers = ["florianvazelle"];
+    maintainers = [];
     platforms = lib.platforms.all;
   };
 }

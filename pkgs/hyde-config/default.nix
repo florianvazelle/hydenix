@@ -20,7 +20,7 @@ buildGoModule {
   meta = with lib; {
     description = "A Go-based tool for parsing TOML configuration files for HyDE and Hyprland";
     homepage = "https://github.com/HyDE-Project/hyde-config";
-    maintainers = ["florianvazelle"];
+    maintainers = [];
     platforms = platforms.linux;
     mainProgram = "hyde-config";
   };
