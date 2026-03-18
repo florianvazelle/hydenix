@@ -1,4 +1,5 @@
 {
+  "baseBranchPatterns": ["main", "unstable"],
   "enabledManagers": ["custom.regex"],
   "ignorePaths": ["**/hydenix-themes/**"],
   "customManagers": [
@@ -11,13 +12,39 @@
       "datasourceTemplate": "github-releases",
       "packageNameTemplate": "{{depOwner}}/{{depName}}",
       "versioningTemplate": "loose"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/\\.nix$/"],
+      "matchStrings": [
+        "fetchFromGitHub\\s*{[^}]*owner = \"(?<depOwner>[^\"]+)\";[^}]*repo = \"(?<depName>[^\"]+)\";[^}]*rev = \"(?<currentDigest>[a-f0-9]{40})\"; # renovate: branch=\"(?<currentValue>[^\"]+)\""
+      ],
+      "datasourceTemplate": "github-digest",
+      "packageNameTemplate": "{{depOwner}}/{{depName}}",
+      "versioningTemplate": "exact"
     }
   ],
-  "postUpgradeTasks": {
-    "commands": [
-      "nix run github:Mic92/nix-update -- {{depName}} --flake"
-    ],
-    "executionMode": "update",
-    "fileFilters": ["**/*.nix"]
-  }
+  "packageRules": [
+    {
+      "matchBaseBranches": ["main"],
+      "matchDatasources": ["github-releases"],
+      "matchManagers": ["custom.regex"],
+      "postUpgradeTasks": {
+        "commands": ["nix run github:florianvazelle/nix-update -- {{depName}} --flake"],
+        "executionMode": "update",
+        "fileFilters": ["**/*.nix"]
+      }
+    },
+    {
+      "matchBaseBranches": ["unstable"],
+      "matchDatasources": ["github-digest"],
+      "matchPackageNames": ["HyDE-Project/HyDE"],
+      "matchManagers": ["custom.regex"],
+      "postUpgradeTasks": {
+        "commands": ["nix run github:florianvazelle/nix-update -- {{depName}} --flake --version=branch={{currentValue}} --version-regex '(v[0-9][0-9]\\.[0-9]+\\.[0-9]+-unstable.*)'"],
+        "executionMode": "update",
+        "fileFilters": ["**/*.nix"]
+      }
+    }
+  ]
 }
