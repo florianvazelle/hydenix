@@ -14,7 +14,6 @@ permissions: {}
 jobs:
   renovate-config-validator:
     runs-on: ubuntu-latest
-    if: ${{ github.event.issue.pull_request }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
@@ -39,7 +38,7 @@ jobs:
           persist-credentials: false
 
       - name: Sets env var for dry-run
-        if: ${{ github.event.issue.pull_request }}
+        if: github.event_name == 'pull_request'
         run: echo "RENOVATE_DRY_RUN=full" >> $GITHUB_ENV
 
       - name: Renovate
