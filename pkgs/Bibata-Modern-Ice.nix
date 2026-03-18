@@ -26,7 +26,7 @@ stdenv.mkDerivation {
     description = "Bibata Modern Ice cursor theme";
     homepage = "https://github.com/HyDE-Project/HyDE";
     license = lib.licenses.gpl3;
-    platforms = lib.platforms.all;
     maintainers = [];
+    platforms = lib.platforms.all;
   };
 }

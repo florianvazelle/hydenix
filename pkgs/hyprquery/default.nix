@@ -49,7 +49,7 @@ stdenv.mkDerivation {
     description = "A command-line utility for querying configuration values from Hyprland";
     homepage = "https://github.com/HyDE-Project/hyprquery";
     license = licenses.mit;
-    maintainers = ["florianvazelle"];
+    maintainers = [];
     platforms = platforms.linux;
     mainProgram = "hyq";
   };

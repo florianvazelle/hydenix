@@ -21,7 +21,7 @@ buildGoModule {
     description = "Ported core scripts of HyDE";
     homepage = "https://github.com/HyDE-Project/hydectl";
     license = licenses.gpl3;
-    maintainers = ["florianvazelle"];
+    maintainers = [];
     platforms = platforms.linux;
     mainProgram = "hyde-ipc";
   };

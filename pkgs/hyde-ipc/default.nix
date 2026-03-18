@@ -36,7 +36,7 @@ rustPlatform.buildRustPackage {
     description = "Control Hyprland, query its state, listen for events, and create automated reactions to events";
     homepage = "https://github.com/HyDE-Project/hyde-ipc";
     license = licenses.mit;
-    maintainers = ["florianvazelle"];
+    maintainers = [];
     platforms = platforms.linux;
     mainProgram = "hyde-ipc";
   };
