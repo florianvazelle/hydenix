@@ -3,7 +3,10 @@
   pkgs,
   lib,
   ...
-}: name: let
+}: {
+  name,
+  extension ? "conf",
+}: let
   hyprCfg = config.hydenix.hm.hyprland;
   cfg = hyprCfg.${name};
 in {
@@ -28,12 +31,12 @@ in {
   };
 
   config = lib.mkIf (hyprCfg.enable && cfg.enable) {
-    home.file.".config/hypr/${name}.conf" = {
+    home.file.".config/hypr/${name}.${extension}" = {
       text =
         if cfg.overrideConfig != null
         then cfg.overrideConfig
         else ''
-          ${lib.readFile "${pkgs.hyde}/Configs/.config/hypr/${name}.conf"}
+          ${lib.readFile "${pkgs.hyde}/Configs/.config/hypr/${name}.${extension}"}
           ${cfg.extraConfig}
         '';
       force = true;

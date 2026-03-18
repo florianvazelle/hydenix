@@ -19,11 +19,12 @@ in {
     ./options.nix
     ./shaders.nix
     ./workflows.nix
-    (mkHyprConfig "hypridle")
-    (mkHyprConfig "keybindings")
-    (mkHyprConfig "monitors")
-    (mkHyprConfig "nvidia")
-    (mkHyprConfig "windowrules")
+    (mkHyprConfig {name = "hypridle";})
+    (mkHyprConfig {name = "keybindings";})
+    (mkHyprConfig {name = "monitors";})
+    (mkHyprConfig {name = "nvidia";})
+    (mkHyprConfig {name = "pyprland"; extension = "toml";})
+    (mkHyprConfig {name = "windowrules";})
   ];
 
   config = lib.mkIf cfg.enable {
