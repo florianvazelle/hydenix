@@ -18,7 +18,7 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     # Hyprland (pin it to the latest version supported by HyDE)
-    hyprland.url = "github:hyprwm/Hyprland/v0.52.2";
+    hyprland.url = "github:hyprwm/Hyprland/v0.53.3";
 
     # Nix-index-database (for comma and command-not-found)
     nix-index-database.url = "github:nix-community/nix-index-database";
