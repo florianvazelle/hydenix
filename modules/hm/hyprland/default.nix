@@ -23,7 +23,7 @@ in {
     (mkHyprConfig {name = "keybindings";})
     (mkHyprConfig {name = "monitors";})
     (mkHyprConfig {name = "nvidia";})
-    (mkHyprConfig {name = "pyprland"; extension = "toml";})
+    # (mkHyprConfig {name = "pyprland"; extension = "toml";})
     (mkHyprConfig {name = "windowrules";})
   ];
 
