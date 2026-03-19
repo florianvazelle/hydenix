@@ -17,6 +17,10 @@
       swaylock = true;
     };
 
+    notifications = {
+      swaync.enable = true;
+    };
+
     theme = {
       enable = true;
       active = "BlueSky";
