@@ -1,7 +1,4 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "baseBranchPatterns": ["main", "unstable"],
   "enabledManagers": ["custom.regex"],
   "ignorePaths": ["**/hydenix-themes/**"],
   "customManagers": [
@@ -14,39 +11,13 @@
       "datasourceTemplate": "github-releases",
       "packageNameTemplate": "{{depOwner}}/{{depName}}",
       "versioningTemplate": "loose"
-    },
-    {
-      "customType": "regex",
-      "managerFilePatterns": ["/^pkgs/hyde/default\\.nix$/"],
-      "matchStrings": [
-        "fetchFromGitHub\\s*{[^}]*owner = \"HyDE-Project\";[^}]*repo = \"HyDE\";[^}]*rev = \"(?<currentDigest>[^\"]+)\";"
-      ],
-      "currentValueTemplate": "dev",
-      "depNameTemplate": "HyDE",
-      "packageNameTemplate": "HyDE-Project/HyDE",
-      "datasourceTemplate": "github-digest"
     }
   ],
-  "packageRules": [
-    {
-      "matchBaseBranches": ["main"],
-      "matchDatasources": ["github-releases"],
-      "matchManagers": ["custom.regex"],
-      "postUpgradeTasks": {
-        "commands": ["nix run github:florianvazelle/nix-update -- {{depName}} --flake"],
-        "executionMode": "update",
-        "fileFilters": ["**/*.nix"]
-      }
-    },
-    {
-      "matchBaseBranches": ["unstable"],
-      "matchDatasources": ["github-digest"],
-      "matchManagers": ["custom.regex"],
-      "postUpgradeTasks": {
-        "commands": ["nix run github:florianvazelle/nix-update -- {{depName}} --flake --version=branch=dev --version-regex '(v[0-9][0-9]\\.[0-9]+\\.[0-9]+-unstable.*)'"],
-        "executionMode": "update",
-        "fileFilters": ["**/*.nix"]
-      }
-    }
-  ]
+  "postUpgradeTasks": {
+    "commands": [
+      "nix run github:Mic92/nix-update -- {{depName}} --flake --version {{newVersion}}"
+    ],
+    "executionMode": "update",
+    "fileFilters": ["**/*.nix"]
+  }
 }
