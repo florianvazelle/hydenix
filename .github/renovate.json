@@ -15,7 +15,7 @@
   ],
   "postUpgradeTasks": {
     "commands": [
-      "nix run github:Mic92/nix-update -- {{depName}} --flake"
+      "nix run github:Mic92/nix-update -- {{depName}} --flake --version {{newVersion}}"
     ],
     "executionMode": "update",
     "fileFilters": ["**/*.nix"]

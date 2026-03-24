@@ -5,13 +5,13 @@
 }:
 pkgs.stdenv.mkDerivation {
   name = "hyde";
-  version = "25.10.1";
+  version = "26.03.23";
 
   src = fetchFromGitHub {
     owner = "HyDE-Project";
     repo = "HyDE";
-    rev = "v25.10.1";
-    hash = "sha256-aJ5tOBf+XIq7fJygrsxQ+7adPwaZI6d7c+dFoCBm3V8=";
+    rev = "v26.03.23";
+    hash = "sha256-jAhiKjS8CiGc07HoM6BGF6N/wRwTb2+WgHgm0EV3bO8=";
   };
 
   nativeBuildInputs = with pkgs; [
