@@ -49,10 +49,10 @@ pkgs.stdenv.mkDerivation {
 
     # remove lines 187-190 from Configs/.local/lib/hyde/theme.switch.sh
     # fixes gtk4 themes
-    sed -i '187,190d' Configs/.local/lib/hyde/theme.switch.sh
+    # sed -i '187,190d' Configs/.local/lib/hyde/theme.switch.sh
 
     # remove pkill command from rofilaunch.sh
-    sed -i '5d' Configs/.local/lib/hyde/rofilaunch.sh
+    # sed -i '2d' Configs/.local/lib/hyde/rofilaunch.sh
 
     # BUILD FONTS
     mkdir -p $out/share/fonts/truetype
