@@ -49,6 +49,6 @@ jobs:
         env:
           RENOVATE_REPOSITORIES: ${{ github.repository }}
           RENOVATE_ONBOARDING: "false"
-          RENOVATE_ALLOWED_COMMANDS: "^nix run github:florianvazelle/nix-update"
+          RENOVATE_ALLOWED_COMMANDS: "^nix run github:Mic92/nix-update"
           LOG_LEVEL: debug
           RENOVATE_DRY_RUN: ${{ env.RENOVATE_DRY_RUN }}
