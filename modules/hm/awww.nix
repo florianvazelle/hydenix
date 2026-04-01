@@ -4,19 +4,19 @@
   pkgs,
   ...
 }: let
-  cfg = config.hydenix.hm.swww;
+  cfg = config.hydenix.hm.awww;
 in {
-  options.hydenix.hm.swww = {
+  options.hydenix.hm.awww = {
     enable = lib.mkOption {
       type = lib.types.bool;
       default = config.hydenix.hm.enable;
-      description = "Enable swww wallpaper daemon";
+      description = "Enable awww wallpaper daemon";
     };
   };
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      (lib.mkIf cfg.enable swww) # wallpaper daemon for wayland
+      (lib.mkIf cfg.enable awww) # wallpaper daemon for wayland
     ];
   };
 }

@@ -197,7 +197,7 @@ hydenix = {
       vesktop.enable = true; # Enable vesktop module
     };
     spotify.enable = config.hydenix.hm.enable; # Enable spotify module
-    swww.enable = config.hydenix.hm.enable; # Enable swww wallpaper daemon
+    awww.enable = config.hydenix.hm.enable; # Enable awww wallpaper daemon
     terminals = {
       enable = config.hydenix.hm.enable; # Enable terminals module
       kitty = {
