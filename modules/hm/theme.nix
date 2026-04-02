@@ -85,7 +85,7 @@ in {
       export PATH="${
         lib.makeBinPath (
           with pkgs; [
-            swww
+            awww
             killall
             hyprland
             dunst
@@ -147,7 +147,7 @@ in {
           imagemagick
           gawk
           parallel
-          swww
+          awww
           waybar
           kitty
           dunst
@@ -176,7 +176,7 @@ in {
           ${config.home.homeDirectory}/.local/lib/hyde/theme.switch.sh -s "${cfg.active}" || true
         '';
         Path = with pkgs; [
-          swww
+          awww
           killall
           hyprland
           dunst

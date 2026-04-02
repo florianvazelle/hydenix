@@ -24,6 +24,10 @@
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
+    # awww (for wallpaper management)
+    awww.url = "git+https://codeberg.org/LGFae/awww";
+    awww.inputs.nixpkgs.follows = "nixpkgs";
+
     # treefmt (for formatting)
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -57,7 +61,10 @@
     homeModules.default = import ./modules/hm;
 
     # Define custom NixOS overlays
-    overlays.default = final: prev: (inputs.hyprland.overlays.default final prev) // (import ./pkgs final prev);
+    overlays.default = final: prev:
+      (inputs.hyprland.overlays.default final prev)
+      // (inputs.awww.overlays.default final prev)
+      // (import ./pkgs final prev);
 
     # for `nix build .#nixosConfigurations.<name>`
     nixosConfigurations.default = inputs.nixpkgs.lib.nixosSystem {

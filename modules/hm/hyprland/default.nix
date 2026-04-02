@@ -25,6 +25,7 @@ in {
     (mkHyprConfig {name = "nvidia";})
     # (mkHyprConfig {name = "pyprland"; extension = "toml";})
     (mkHyprConfig {name = "windowrules";})
+    (mkHyprConfig {name = "hyprsunset";})
   ];
 
   config = lib.mkIf cfg.enable {
