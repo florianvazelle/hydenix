@@ -1,23 +1,79 @@
 {
-  "enabledManagers": ["custom.regex"],
-  "ignorePaths": ["**/hydenix-themes/**"],
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices"
+  ],
+  "enabledManagers": [
+    "nix",
+    "custom.regex"
+  ],
+  "nix": {
+    "enabled": true
+  },
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "ignorePaths": [
+    "**/hydenix-themes/**",
+    "**/template/**",
+    "**/demo/**"
+  ],
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": ["/\\.nix$/"],
+      "depTypeTemplate": "nix-raw-pkgs",
+      "managerFilePatterns": [
+        "/^pkgs\/.*\\.nix$/"
+      ],
       "matchStrings": [
         "fetchFromGitHub\\s*{[^}]*owner = \"(?<depOwner>[^\"]+)\";[^}]*repo = \"(?<depName>[^\"]+)\";[^}]*rev = \"(?<currentValue>[^\"]+)\";"
       ],
       "datasourceTemplate": "github-releases",
       "packageNameTemplate": "{{depOwner}}/{{depName}}",
       "versioningTemplate": "loose"
+    },
+    {
+      "customType": "regex",
+      "depTypeTemplate": "nix-flake-inputs",
+      "managerFilePatterns": [
+        "/flake\\.nix$/"
+      ],
+      "matchStrings": [
+        "(?<depName>\\w+)\\.url = \"github:(?<packageName>[a-zA-Z-]+\/[a-zA-Z-]+)\/(?<currentValue>[^\"]+)\";"
+      ],
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
     }
   ],
-  "postUpgradeTasks": {
-    "commands": [
-      "nix run github:Mic92/nix-update -- {{depName}} --flake --version {{newVersion}}"
-    ],
-    "executionMode": "update",
-    "fileFilters": ["**/*.nix"]
-  }
+  "packageRules": [
+    {
+      "matchDepTypes": [
+        "nix-raw-pkgs"
+      ],
+      "postUpgradeTasks": {
+        "commands": [
+          "nix run github:Mic92/nix-update -- {{depName}} --flake --version {{newVersion}}"
+        ],
+        "executionMode": "update",
+        "fileFilters": [
+          "pkgs/**/*.nix"
+        ]
+      }
+    },
+    {
+      "matchDepTypes": [
+        "nix-flake-inputs"
+      ],
+      "postUpgradeTasks": {
+        "commands": [
+          "nix flake lock"
+        ],
+        "workingDirTemplate": "{{{packageFileDir}}}",
+        "executionMode": "update",
+        "fileFilters": [
+          "**/flake.nix"
+        ]
+      }
+    }
+  ]
 }

@@ -21,7 +21,7 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
 
       - name: Validate renovate config
-        run: nix-shell -p renovate --run "renovate-config-validator"
+        run: nix-shell -p renovate --run "renovate-config-validator --strict"
 
   renovate-local:
     runs-on: ubuntu-latest
