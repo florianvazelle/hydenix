@@ -71,7 +71,7 @@
         "workingDirTemplate": "{{{packageFileDir}}}",
         "executionMode": "update",
         "fileFilters": [
-          "**/flake.nix"
+          "**/flake.lock"
         ]
       }
     }
