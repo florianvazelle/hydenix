@@ -34,6 +34,19 @@
     },
     {
       "customType": "regex",
+      "depTypeTemplate": "nix-raw-pkgs",
+      "managerFilePatterns": [
+        "/^pkgs\/hyde\/default\\.nix$/"
+      ],
+      "matchStrings": [
+        "fetchFromGitHub\\s*{[^}]*owner = \"(?<depOwner>[^\"]+)\";[^}]*repo = \"(?<depName>[^\"]+)\";[^}]*rev = \"(?<currentValue>[^\"]+)\";"
+      ],
+      "datasourceTemplate": "github-digest",
+      "packageNameTemplate": "{{depOwner}}/{{depName}}",
+      "versioningTemplate": "loose"
+    },
+    {
+      "customType": "regex",
       "depTypeTemplate": "nix-flake-inputs",
       "managerFilePatterns": [
         "/flake\\.nix$/"
@@ -74,6 +87,15 @@
           "**/flake.lock"
         ]
       }
+    },
+    {
+      "matchDatasources": [
+        "github-releases"
+      ],
+      "matchDepNames": [
+        "HyDE"
+      ],
+      "enabled": false
     }
   ]
 }
