@@ -18,7 +18,7 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     # Hyprland (pin it to the latest version supported by HyDE)
-    hyprland.url = "github:hyprwm/Hyprland/v0.54.3";
+    hyprland.url = "github:hyprwm/Hyprland/v0.55.4";
 
     # Nix-index-database (for comma and command-not-found)
     nix-index-database.url = "github:nix-community/nix-index-database";
@@ -58,7 +58,7 @@
 
     # Define custom NixOS overlays
     overlays.default = final: prev:
-      (inputs.hyprland.overlays.default final prev)
+      (inputs.hyprland.overlays.hyprland-packages final prev)
       // (import ./pkgs final prev);
 
     # for `nix build .#nixosConfigurations.<name>`
