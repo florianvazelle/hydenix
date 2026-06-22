@@ -8,7 +8,7 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/9ae611a455b90cf061d8f332b977e387bda8e1ca";
+    nixpkgs.url = "github:nixos/nixpkgs/567a49d1913ce81ac6e9582e3553dd90a955875f";
 
     # Home Manager (for user specific configuration)
     home-manager.url = "github:nix-community/home-manager";
@@ -18,7 +18,7 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     # Hyprland (pin it to the latest version supported by HyDE)
-    hyprland.url = "github:hyprwm/Hyprland/v0.54.3";
+    hyprland.url = "github:hyprwm/Hyprland/v0.55.4";
 
     # Nix-index-database (for comma and command-not-found)
     nix-index-database.url = "github:nix-community/nix-index-database";
@@ -58,7 +58,7 @@
 
     # Define custom NixOS overlays
     overlays.default = final: prev:
-      (inputs.hyprland.overlays.default final prev)
+      (inputs.hyprland.overlays.hyprland-packages final prev)
       // (import ./pkgs final prev);
 
     # for `nix build .#nixosConfigurations.<name>`
