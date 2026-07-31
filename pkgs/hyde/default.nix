@@ -5,12 +5,12 @@
 }:
 pkgs.stdenv.mkDerivation {
   name = "hyde";
-  version = "0-unstable-2026-05-26";
+  version = "26.7.4";
 
   src = fetchFromGitHub {
     owner = "HyDE-Project";
     repo = "HyDE";
-    rev = "a51460a7b1a822ee7194318b60a38850f711b923";
+    rev = "v26.7.4";
     hash = "sha256-saNXLFMSi2MFRR/RyPGV2KWCKCJqjWRIKGDqdv+f5VE=";
   };
 
