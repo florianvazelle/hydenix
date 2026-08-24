@@ -10,7 +10,7 @@ pkgs.stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "HyDE-Project";
     repo = "HyDE";
-    rev = "v26.7.4";
+    rev = "v26.08.21";
     hash = "sha256-saNXLFMSi2MFRR/RyPGV2KWCKCJqjWRIKGDqdv+f5VE=";
   };
 
